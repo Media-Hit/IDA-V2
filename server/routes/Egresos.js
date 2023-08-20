@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { Egresos } = require("../models")
 
-router.get("/movimientos", (req, res) => {
-    res.json("Hello World");
+router.get("/movimientos", async (req, res) => {
+    const listOfMovements = await Egresos.findAll()
+    res.json(listOfMovements);
 });
 
 router.post("/nuevo-egreso", async (req, res) => {

@@ -1,6 +1,11 @@
 //Inicializar el framework express
 const express = require('express');
 const app = express();
+const cors = require("cors");
+
+app.use(express.json());
+app.use(cors());
+
 
 const db = require('./models');
 
@@ -8,6 +13,8 @@ const db = require('./models');
 const egresosRouter = require('./routes/Egresos');
 app.use("/egresos", egresosRouter);
 
+
+//Definir puerto
 //Antes de iniciar la app, sincronizar la base de datos (con las tablas de la carpeta models)
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

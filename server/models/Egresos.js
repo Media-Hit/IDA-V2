@@ -3,16 +3,9 @@ const { Sequelize } = require("sequelize")
 module.exports = (sequelize, DataTypes) => {
  
     const Egresos = sequelize.define("Egresos", {
-
-    egreso_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoincrement: true
-    },
     fecha: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
     },
     estado: {
         type: DataTypes.STRING,
@@ -36,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     descripcion: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     subtotal: {
         type: DataTypes.INTEGER,
