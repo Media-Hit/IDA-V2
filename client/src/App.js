@@ -7,8 +7,8 @@ function App() {
   //App
   return (
     <div className="App">
-      <MainMenu />
-      <Movimientos />
+      {/* <MainMenu />
+      <Movimientos /> */}
     </div>
   );
 }
