@@ -1,0 +1,84 @@
+:root{
+    /* Main Colors*/
+    --White: #FFFFFF;
+    --Black: #000000;
+    --Media-Hit-Blue: #4280f5;
+    --Media-Hit-Pink: #F5427E;
+    --Media-Hit-Grey: #606060;
+
+    /* Secondary Colors*/
+    --Media-Hit-Dark-Blue: #0068CE;
+    --Media-Hit-Light-Blue: #4E9BFB;
+    --Media-Hit-Light-Grey: #EFF2F7;
+    --Media-Hit-Dark-Grey: #4F5050;
+
+    /*Especial Colors*/
+    --Media-Hit-Green: #4EE32D;
+    --Media-Hit-Red: #F53A31;
+    --Media-Hit-Yellow: #FFD926;
+
+    /* Interface Colors */
+    --IDA-Body-Grey-Background: #EFF2F7;
+    --IDA-Tittles-Color: #2e3e4e;
+    --IDA-Fondo-Gris: #2e3e4e;
+    --IDA-Texto-Sobre-Fondo: #b6bcc2;
+    --IDA-Muted-Grey: #00000050;
+    --IDA-Border:  #00000020;
+}
+
+.mainAppContainer {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.inactive {
+    display: none;
+}
+
+.box-shadow {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.box-padding {
+    padding: 30px 30px;
+}
+
+.tittle {
+    font-size: 1.45rem;
+    font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.tittle-light {
+    font-size: 1.45rem;
+    font-weight: 200;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.interface-icon {
+    font-size: 1rem !important;
+    padding: 8px 8px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.interface-icon:hover {
+    background-color: var(--Media-Hit-Light-Grey);
+}
+
+.grey-btn {
+    padding:5px 10px;
+    border-radius: 5px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.grey-btn:hover {
+    background-color: var(--Media-Hit-Light-Grey);
+}

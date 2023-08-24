@@ -1,13 +1,18 @@
 import './App.css';
+import './assets/uicons-bold-rounded/css/uicons-bold-rounded.css';
 import axios from "axios";
 import {useEffect, useState} from "react"
-import { MainMenu } from './modules/MainMenu/MainMenu';
+import { MainMenu } from './components/MainMenu/MainMenu';
+
+
 function App() {
   
   //App
   return (
     <div className="App">
-    <MainMenu />
+      <div className='mainAppContainer'>
+        <MainMenu />
+      </div>
     </div>
   );
 }
