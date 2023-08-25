@@ -1,12 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
 import './CalMovimientos.css';
 
+
 function CalMovimientos() {
+
   return (
   <>
-    <div className="calendarMovimientosMainContainer">
-        <h1 >Soy el componente</h1>
-    </div>
+
   </> 
   )}
 
