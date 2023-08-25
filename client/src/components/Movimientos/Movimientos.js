@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { CalMovimientos } from '../CalMovimientos/CalMovimientos';
 import './Movimientos.css';
 
 function Movimientos() {
@@ -10,7 +11,7 @@ function Movimientos() {
         </div>
         <div className='bodyContainer'>
             <div className='leftSideContainer'>
-                <h2>Hello World</h2>
+                <CalMovimientos />
             </div>
             <div className='rightSideContainer'>
                 <h2>Hello World</h2>
