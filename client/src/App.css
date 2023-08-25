@@ -2,36 +2,46 @@
     /* Main Colors*/
     --White: #FFFFFF;
     --Black: #000000;
-    --Media-Hit-Blue: #4280f5;
-    --Media-Hit-Pink: #F5427E;
-    --Media-Hit-Grey: #606060;
+    --Blue: #4280f5;
+    --Pink: #F5427E;
+    --Grey: #606060;
 
     /* Secondary Colors*/
-    --Media-Hit-Dark-Blue: #0068CE;
-    --Media-Hit-Light-Blue: #4E9BFB;
-    --Media-Hit-Light-Grey: #EFF2F7;
-    --Media-Hit-Dark-Grey: #4F5050;
+    --DarkBlue: #0068CE;
+    --LightBlue: #4E9BFB;
+    --LightGrey: #EFF2F7;
+    --DarkGrey: #4F5050;
 
     /*Especial Colors*/
-    --Media-Hit-Green: #4EE32D;
-    --Media-Hit-Red: #F53A31;
-    --Media-Hit-Yellow: #FFD926;
+    --Green: #4EE32D;
+    --Red: #F53A31;
+    --Yellow: #FFD926;
 
     /* Interface Colors */
-    --IDA-Body-Grey-Background: #EFF2F7;
-    --IDA-Tittles-Color: #2e3e4e;
-    --IDA-Fondo-Gris: #2e3e4e;
-    --IDA-Texto-Sobre-Fondo: #b6bcc2;
-    --IDA-Muted-Grey: #00000050;
-    --IDA-Border:  #00000020;
+    --GreyBackground: #EFF2F7;
+    --DarkGreyBackground: #2e3e4e;
+    --DarkGreyBackgroundHover: #293947;
+    --Tittles: #2e3e4e;
+    --MutedTittle: #D1D3D9;
+    --TextOverGreyBackground: #b6bcc2;
+    --MutedGrey: #00000050;
+    --DividerBorder:  #b6bcc2;
 }
 
 .mainAppContainer {
     display: grid;
     grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 1000px) {
+    .mainAppContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }    
 }
 
 .inactive {
@@ -82,3 +92,4 @@
 .grey-btn:hover {
     background-color: var(--Media-Hit-Light-Grey);
 }
+

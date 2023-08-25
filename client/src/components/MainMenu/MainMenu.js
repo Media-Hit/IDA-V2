@@ -13,7 +13,7 @@ function MainMenu() {
    
   return (
   <>
-  <div className={`sidebar ${isMobileMenuActive ? 'active' : ''}`}>
+  <div className={`sidebar ${isMobileMenuActive ? 'sidebar--active' : ''}`}>
     <div div className="sidebar__logoContainer">
       <img className="sidebar__logo" src={ require('../../assets/logo-media-hit-white.png') } alt={"Media Hit"} />
     </div>
@@ -147,7 +147,7 @@ function MainMenu() {
     </div>
   </div>
 
-  <nav class="sidebar--mobile">
+  <nav class="topMenu--mobile">
     <img className="mobile-logo" src={ require('../../assets/logo-media-hit-white.png') } alt="Media Hit" />
     <i className={`fi fi-br-menu-burger burger`} id="burger-button" onClick={handleBurgerButtonClick}></i>
   </nav>
