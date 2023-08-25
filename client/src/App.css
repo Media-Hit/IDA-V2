@@ -1,0 +1,95 @@
+:root{
+    /* Main Colors*/
+    --White: #FFFFFF;
+    --Black: #000000;
+    --Blue: #4280f5;
+    --Pink: #F5427E;
+    --Grey: #606060;
+
+    /* Secondary Colors*/
+    --DarkBlue: #0068CE;
+    --LightBlue: #4E9BFB;
+    --LightGrey: #EFF2F7;
+    --DarkGrey: #4F5050;
+
+    /*Especial Colors*/
+    --Green: #4EE32D;
+    --Red: #F53A31;
+    --Yellow: #FFD926;
+
+    /* Interface Colors */
+    --GreyBackground: #EFF2F7;
+    --DarkGreyBackground: #2e3e4e;
+    --DarkGreyBackgroundHover: #293947;
+    --Tittles: #2e3e4e;
+    --MutedTittle: #D1D3D9;
+    --TextOverGreyBackground: #b6bcc2;
+    --MutedGrey: #00000050;
+    --DividerBorder:  #b6bcc2;
+}
+
+.mainAppContainer {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 1000px) {
+    .mainAppContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }    
+}
+
+.inactive {
+    display: none;
+}
+
+.box-shadow {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.box-padding {
+    padding: 30px 30px;
+}
+
+.tittle {
+    font-size: 1.45rem;
+    font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.tittle-light {
+    font-size: 1.45rem;
+    font-weight: 200;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.interface-icon {
+    font-size: 1rem !important;
+    padding: 8px 8px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.interface-icon:hover {
+    background-color: var(--Media-Hit-Light-Grey);
+}
+
+.grey-btn {
+    padding:5px 10px;
+    border-radius: 5px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.grey-btn:hover {
+    background-color: var(--Media-Hit-Light-Grey);
+}
+
