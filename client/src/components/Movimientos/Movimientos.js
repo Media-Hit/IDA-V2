@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { CalMovimientos } from '../CalMovimientos/CalMovimientos';
+import { ListMovimientos } from '../ListMovimientos/ListMovimientos';
 import './Movimientos.css';
 
 function Movimientos() {
@@ -14,7 +15,12 @@ function Movimientos() {
                 <CalMovimientos />
             </div>
             <div className='rightSideContainer'>
-                <h2>Hello World</h2>
+                <div>
+                    <ListMovimientos titulo="Personal"/>
+                </div>
+                <div>
+                    <ListMovimientos titulo="Corporativo"/>
+                </div> 
             </div>
         </div>
 

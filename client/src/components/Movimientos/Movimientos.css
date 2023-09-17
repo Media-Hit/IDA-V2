@@ -40,6 +40,20 @@
 }
 
 
+.rightSideContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+@media screen and (max-width: 1000px) {
+    .rightSideContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+
+
 
 /* Celular */
 @media screen and (max-width: 800px) {
