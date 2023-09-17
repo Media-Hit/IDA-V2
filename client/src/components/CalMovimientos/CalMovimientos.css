@@ -10,6 +10,11 @@
     padding-right: 0 !important;
 }
 
+/* Título Mes y Año */
+.css-cyfsxc-MuiPickersCalendarHeader-labelContainer {
+    font-size: 20px !important;
+}
+
 
 .css-i5q14k-MuiDayCalendar-header {
     justify-content: space-between !important ;
