@@ -11,7 +11,7 @@ function CalMovimientos() {
   return (
   <>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />
+      <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} className="calendar-movimientos" />
     </LocalizationProvider>
   </> 
   )}
