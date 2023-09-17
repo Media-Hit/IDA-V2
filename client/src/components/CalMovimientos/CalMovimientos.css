@@ -14,6 +14,7 @@
 /* Título Mes y Año */
 .css-cyfsxc-MuiPickersCalendarHeader-labelContainer {
     font-size: 20px !important;
+    color: var(--Tittles);
 }
 
 

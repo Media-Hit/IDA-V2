@@ -1,6 +1,48 @@
-.titulo-movimiento {
-    font-size: 20px;
-    font-weight: 500;
-    padding: 4px 0 14px 0;
+.listMov__item-box {
+    display: grid;
+    grid-template-columns: 60px 1.5fr 1fr;
+    padding: 10px 10px;
+    align-items: center;
     border-bottom: 1px solid var(--DividerBorder);
+}
+
+.listMov__item-box:hover {
+    background-color: var(--LightGrey);
+    cursor: pointer;
+}
+
+.listMov__icon {
+    width: 80%;
+    height: auto;
+    fill: var(--DarkGrey);
+}
+
+.listMov__column2 {
+    padding-left: 12px;
+}
+
+.listMov__column2__detalle {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--Tittles);
+    margin-bottom: 4px;
+}
+
+.listMov__column2__categoria {
+    font-size: 12px;
+    color: var(--Grey);
+}
+
+.listMov__column3__price {
+    text-align: end;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--Black);
+    margin-bottom: 4px;
+}
+
+.listMov__column3__date {
+    text-align: end;
+    font-size: 12px;
+    color: var(--Grey);
 }

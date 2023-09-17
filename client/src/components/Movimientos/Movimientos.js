@@ -16,10 +16,16 @@ function Movimientos() {
             </div>
             <div className='rightSideContainer'>
                 <div>
-                    <ListMovimientos titulo="Personal"/>
+                    <h2 className='titulo-movimiento'>Personal</h2>
+                    <ListMovimientos 
+                        icono="AiOutlineCar"
+                    />
                 </div>
                 <div>
-                    <ListMovimientos titulo="Corporativo"/>
+                <h2 className='titulo-movimiento'>Corporativo</h2>
+                    <ListMovimientos 
+                        icono="AiOutlineCar"
+                    />
                 </div> 
             </div>
         </div>
