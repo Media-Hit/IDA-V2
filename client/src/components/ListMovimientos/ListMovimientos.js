@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import iconMapper from "../iconMapper";
+import { format } from "date-fns";
 
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
@@ -37,7 +38,9 @@ function ListMovimientos({ items }) {
                 minimumFractionDigits: 0,
               })}
             </p>
-            <p className="listMov__column3__date">{item.fecha}</p>
+            <p className="listMov__column3__date">
+              {format(new Date(item.fecha), "MMMM dd")}
+            </p>
           </div>
         </div>
       ))}

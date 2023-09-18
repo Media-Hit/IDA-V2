@@ -18,11 +18,11 @@ function Movimientos() {
           <div className="rightSideContainer">
             <div>
               <h2 className="titulo-movimiento">Personal</h2>
-              <ListMovimientos items={movimientos} />
+              <ListMovimientos />
             </div>
             <div>
               <h2 className="titulo-movimiento">Corporativo</h2>
-              <ListMovimientos items={movimientos} />
+              <ListMovimientos />
             </div>
           </div>
         </div>
