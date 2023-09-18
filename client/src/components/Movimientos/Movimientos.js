@@ -1,10 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import { CalMovimientos } from "../CalMovimientos/CalMovimientos";
 import { ListMovimientos } from "../ListMovimientos/ListMovimientos";
 
 import "./Movimientos.css";
 
 function Movimientos() {
+  const [selectedDate, setSelectedDate] = useState(null); // Estado compartido para la fecha seleccionada
+
   return (
     <>
       <div className="movimientosMainContainer">
@@ -13,16 +16,16 @@ function Movimientos() {
         </div>
         <div className="bodyContainer">
           <div className="leftSideContainer">
-            <CalMovimientos />
+            <CalMovimientos setSelectedDate={setSelectedDate} />
           </div>
           <div className="rightSideContainer">
             <div>
               <h2 className="titulo-movimiento">Personal</h2>
-              <ListMovimientos />
+              <ListMovimientos selectedDate={selectedDate} />
             </div>
             <div>
               <h2 className="titulo-movimiento">Corporativo</h2>
-              <ListMovimientos />
+              <ListMovimientos selectedDate={selectedDate} />
             </div>
           </div>
         </div>

@@ -2,13 +2,13 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import iconMapper from "../iconMapper";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 import "./ListMovimientos.css";
 
-function ListMovimientos({ items }) {
+function ListMovimientos({ selectedDate }) {
   const [listOfEgresos, setListOfEgresos] = useState([]);
 
   useEffect(() => {
@@ -17,9 +17,26 @@ function ListMovimientos({ items }) {
     });
   }, []);
 
+  const formatPickerDate = (dateString) => {
+    const parsedDate = new Date(dateString); // Convertir a objeto Date
+    return format(parsedDate, "yyyy-MM-dd"); // Formatear en el formato deseado
+  };
+
+  const formatDataBaseDate = (date) => {
+    const parsedDate = new Date(date); // Convertir a objeto Date
+    return format(parsedDate, "yyyy-MM-dd"); // Formatear en el formato deseado  };
+  };
+
+  const filteredEgresos = selectedDate
+    ? listOfEgresos.filter(
+        (item) =>
+          formatDataBaseDate(item.fecha) === formatPickerDate(selectedDate)
+      )
+    : listOfEgresos;
+
   return (
     <>
-      {listOfEgresos.map((item, index) => (
+      {filteredEgresos.map((item, index) => (
         <div key={index} className="listMov__item-box">
           <span className="listMov__icon material-symbols-outlined">
             {iconMapper[item.categoria]}
