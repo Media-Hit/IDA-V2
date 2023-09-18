@@ -28,6 +28,16 @@
     --DividerBorder:  #b6bcc2;
 }
 
+/* Iconos */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
 .mainAppContainer {
     display: grid;
     grid-template-columns: 200px 1fr;

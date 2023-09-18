@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MainMenu.css';
 
 function MainMenu() {
@@ -24,7 +24,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-today.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-today.png') } alt={"movimientos"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Movimientos</span>
@@ -33,7 +33,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-balance.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-balance.png') } alt={"balance"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Balance</span>
@@ -42,7 +42,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-budget.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-budget.png') } alt={"presupuesto"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Presupuesto</span>
@@ -51,7 +51,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-solvencia.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-solvencia.png') } alt={"solvencia"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Solvencia</span>
@@ -60,7 +60,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-ingreso.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-ingreso.png') } alt={"ingresos"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Ingresos</span>
@@ -69,7 +69,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-egreso.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-egreso.png') } alt={"egresos"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Egresos</span>
@@ -80,7 +80,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-              <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-invoice.png') } />
+              <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-invoice.png') } alt={"facturas"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Facturas</span>
@@ -89,7 +89,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-              <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-client.png') } />
+              <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-client.png') } alt={"clientes"} />
           </i>
         </span>
         <span className="sidebar__itemText">Clientes</span>
@@ -98,7 +98,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-              <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-provider.png') } />
+              <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-provider.png') } alt={"proveedores"} />
           </i>
         </span>
         <span className="sidebar__itemText">Proveedores</span>
@@ -109,7 +109,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
-            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-invoice.png') } />
+            <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-invoice.png') } alt={"cotizaciones"} />
           </i>
         </span>
         <span className="sidebar__itemText">Cotizaciones</span>
@@ -118,7 +118,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
         <i>
-          <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-client.png') } />
+          <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-client.png') } alt={"proyectos"} />
         </i>
         </span>
         <span className="sidebar__itemText">Proyectos</span>
@@ -127,7 +127,7 @@ function MainMenu() {
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
         <i>
-          <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-provider.png') } />
+          <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-provider.png') } alt={"crm"} />
         </i>
         </span>
         <span className="sidebar__itemText">CRM</span>
@@ -137,7 +137,7 @@ function MainMenu() {
     <div className="sidebar__profileContainer">
       <a className="sidebar__profileBox" href="https://google.com">
         <div className="sidebar__profileImgBox">
-          <img className="sidebar__profileImg" src={ require("../../assets/profile-photo.jpg") } />
+          <img className="sidebar__profileImg" src={ require("../../assets/profile-photo.jpg") } alt={"profile"}/>
         </div>
         <div className="sidebar__profileInfo">
           <div className="sidebar__profileName">Felipe Garcia</div>

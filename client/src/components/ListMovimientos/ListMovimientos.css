@@ -12,9 +12,12 @@
 }
 
 .listMov__icon {
-    width: 80%;
+    width: 100%;
     height: auto;
-    fill: var(--Blue);
+    color: var(--Grey);
+    font-size: 40px;
+    text-align: center;
+
 }
 
 .listMov__column2 {
