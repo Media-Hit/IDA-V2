@@ -14,21 +14,21 @@
 .listMov__icon {
     width: 80%;
     height: auto;
-    fill: var(--DarkGrey);
+    fill: var(--Blue);
 }
 
 .listMov__column2 {
     padding-left: 12px;
 }
 
-.listMov__column2__detalle {
+.listMov__column2__agente {
     font-size: 14px;
     font-weight: 500;
     color: var(--Tittles);
     margin-bottom: 4px;
 }
 
-.listMov__column2__categoria {
+.listMov__column2__descripcion {
     font-size: 12px;
     color: var(--Grey);
 }
