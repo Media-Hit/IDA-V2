@@ -9,7 +9,7 @@ function Movimientos() {
         { key: 1, icono: 'restaurantes', agente: 'El Mono Bandido', descripcion: 'Empanada', categoria: 'Alimentacion', precio: 11300, fecha: 'Agosto 30' },
         { key: 2, icono: 'transporte', agente: 'Taxi', descripcion: 'Casa > Oficina', categoria: 'Transporte', precio: 54700, fecha: 'Julio 23' },
         { key: 3, icono: 'hogar', agente: 'Home Center', descripcion: 'Multitoma', categoria: 'Hogar', precio: 120000, fecha: 'Septiembre 3' },
-        { key: 4, icono: 'servicios', agente: 'Enel', descripcion: 'Electricidad', categoria: 'Imprevistos', precio: 76000, fecha: 'Noviembre 14' }
+        { key: 4, icono: 'servicios', agente: 'Enel', descripcion: 'Electricidad', categoria: 'Electricidad', precio: 76000, fecha: 'Noviembre 14' }
     ]
 
   return (
