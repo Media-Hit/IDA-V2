@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './MainMenu.css';
+import { Link } from 'react-router-dom';
 
 function MainMenu() {
   // Estado para controlar si el menú móvil está activo o no
@@ -21,23 +22,23 @@ function MainMenu() {
     <ul className='sidebar__itemsContainer'>
       <li className="sidebar__category">Financiero</li>
             
-      <a className="sidebar_item" href="https://google.com" >
+      <Link to="/"  className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
             <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-today.png') } alt={"movimientos"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Movimientos</span>
-      </a>
+      </Link>
 
-      <a className="sidebar_item" href="https://google.com" >
+      <Link to="/balance" className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
           <i>
             <img className="sidebar__itemIcon" src={ require('../../assets/menu-icons/i-balance.png') } alt={"balance"}/>
           </i>
         </span>
         <span className="sidebar__itemText">Balance</span>
-      </a>
+      </Link>
       
       <a className="sidebar_item" href="https://google.com" >
         <span className="sidebar__iconSpan">
