@@ -1,7 +1,3 @@
-import alimentacion from '../assets/uicons-categorias/alimentacion.svg'
-import { AiOutlineHome } from "react-icons/ai";
-
-
 const iconMapper = {
     Impuestos: 'account_balance',
     IVA: 'account_balance',
