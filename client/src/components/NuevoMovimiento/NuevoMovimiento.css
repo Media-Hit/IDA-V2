@@ -14,4 +14,13 @@
 }
 
 .nuevoMovimiento__titulo {
+  color: var(--DarkGreyBackground);
+  font-size: 28px;
+  margin-bottom: 60px;
+}
+
+.nuevoMovimiento__categoriasBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
 }

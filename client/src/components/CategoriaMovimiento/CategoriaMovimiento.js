@@ -5,11 +5,11 @@ import "./CategoriaMovimiento.css";
 function CategoriaMovimiento({ linkTo, icono, label }) {
   return (
     <Link to={linkTo}>
-      <div className="categoriaMovimiento__boton">
+      <div className="categoriaMovimiento__boton box-shadow">
         <span className="material-symbols-outlined categoriaMovimiento__icono">
           {icono}
         </span>
-        <p>{label}</p>
+        <p className="categoriaMovimiento__label">{label}</p>
       </div>
     </Link>
   );
