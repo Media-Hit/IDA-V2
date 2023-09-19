@@ -1,74 +1,72 @@
 .movimientosMainContainer {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 30px;
-    background-color: var(--White);
-    padding: 30px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: var(--White);
 }
 @media screen and (max-width: 1000px) {
-    .movimientosMainContainer {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-    }
+  .movimientosMainContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
 }
 
-
 .headerContainer {
-    border-width: 0 0 1px 0;
-    border-style: solid;
-    border-color: var(--DividerBorder);
-    padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  background-color: var(--White);
+  padding: 0 30px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
 
 .pageTittle {
-    font-size: 3rem;
-    font-weight: 500;
-    color: var( --MutedTittle);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--Tittles);
 }
-
 
 .bodyContainer {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  padding: 30px;
+  background-color: var(--GreyBackground);
 }
 @media screen and (max-width: 1000px) {
-    .bodyContainer {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
+  .bodyContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
-
 
 .rightSideContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 @media screen and (max-width: 1000px) {
-    .rightSideContainer {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
+  .rightSideContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
 
 .titulo-movimiento {
-    font-size: 20px;
-    font-weight: 500;
-    padding: 4px 0 14px 0;
-    border-bottom: 1px solid var(--DividerBorder);
-    color: var(--Tittles);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 4px 0 14px 0;
+  border-bottom: 1px solid var(--DividerBorder);
+  color: var(--Tittles);
 }
-
-
-
 
 /* Celular */
 @media screen and (max-width: 800px) {
-    .box-padding {
-        padding: 15px;
-    }
+  .box-padding {
+    padding: 15px;
+  }
 }
-
 
 /* Tablet */

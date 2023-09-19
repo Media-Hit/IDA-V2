@@ -1,51 +1,50 @@
 .listMov__item-box {
-    display: grid;
-    grid-template-columns: 60px 1.5fr 1fr;
-    padding: 10px 10px;
-    align-items: center;
-    border-bottom: 1px solid var(--DividerBorder);
+  display: grid;
+  grid-template-columns: 60px 1.5fr 1fr;
+  padding: 10px 10px;
+  align-items: center;
+  border-bottom: 1px solid var(--DividerBorder);
 }
 
 .listMov__item-box:hover {
-    background-color: var(--LightGrey);
-    cursor: pointer;
+  background-color: var(--HoverOverGreyBackground);
+  cursor: pointer;
 }
 
 .listMov__icon {
-    width: 100%;
-    height: auto;
-    color: var(--Grey);
-    font-size: 40px;
-    text-align: center;
-
+  width: 100%;
+  height: auto;
+  color: var(--Grey);
+  font-size: 40px;
+  text-align: center;
 }
 
 .listMov__column2 {
-    padding-left: 12px;
+  padding-left: 12px;
 }
 
 .listMov__column2__agente {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--Tittles);
-    margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--Tittles);
+  margin-bottom: 4px;
 }
 
 .listMov__column2__descripcion {
-    font-size: 12px;
-    color: var(--Grey);
+  font-size: 12px;
+  color: var(--Grey);
 }
 
 .listMov__column3__price {
-    text-align: end;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--Black);
-    margin-bottom: 4px;
+  text-align: end;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--Black);
+  margin-bottom: 4px;
 }
 
 .listMov__column3__date {
-    text-align: end;
-    font-size: 12px;
-    color: var(--Grey);
+  text-align: end;
+  font-size: 12px;
+  color: var(--Grey);
 }

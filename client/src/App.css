@@ -1,104 +1,118 @@
-:root{
-    /* Main Colors*/
-    --White: #FFFFFF;
-    --Black: #000000;
-    --Blue: #4280f5;
-    --Pink: #F5427E;
-    --Grey: #606060;
+:root {
+  /* Main Colors*/
+  --White: #ffffff;
+  --Black: #000000;
+  --Blue: #4280f5;
+  --Pink: #f5427e;
+  --Grey: #606060;
 
-    /* Secondary Colors*/
-    --DarkBlue: #0068CE;
-    --LightBlue: #4E9BFB;
-    --LightGrey: #EFF2F7;
-    --DarkGrey: #4F5050;
+  /* Secondary Colors*/
+  --DarkBlue: #0068ce;
+  --LightBlue: #4e9bfb;
+  --LightGrey: #eff2f7;
+  --DarkGrey: #4f5050;
 
-    /*Especial Colors*/
-    --Green: #4EE32D;
-    --Red: #F53A31;
-    --Yellow: #FFD926;
+  /*Especial Colors*/
+  --Green: #4ee32d;
+  --Red: #f53a31;
+  --Yellow: #ffd926;
 
-    /* Interface Colors */
-    --GreyBackground: #EFF2F7;
-    --DarkGreyBackground: #2e3e4e;
-    --DarkGreyBackgroundHover: #293947;
-    --Tittles: #2e3e4e;
-    --MutedTittle: #D1D3D9;
-    --TextOverGreyBackground: #b6bcc2;
-    --MutedGrey: #00000050;
-    --DividerBorder:  #b6bcc2;
+  /* Interface Colors */
+  --GreyBackground: #eff2f7;
+  --HoverOverGreyBackground: #dee1e6;
+  --DarkGreyBackground: #2e3e4e;
+  --DarkGreyBackgroundHover: #293947;
+  --Tittles: #2e3e4e;
+  --MutedTittle: #d1d3d9;
+  --TextOverGreyBackground: #b6bcc2;
+  --MutedGrey: #00000050;
+  --DividerBorder: #b6bcc2;
 }
 
 /* Iconos */
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
-
 .mainAppContainer {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 1fr;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 @media screen and (max-width: 1000px) {
-    .mainAppContainer {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-    }    
+  .mainAppContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
 }
 
 .inactive {
-    display: none;
+  display: none;
 }
 
 .box-shadow {
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .box-padding {
-    padding: 30px 30px;
+  padding: 30px 30px;
 }
 
 .tittle {
-    font-size: 1.45rem;
-    font-weight: 500;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  font-size: 1.45rem;
+  font-weight: 500;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .tittle-light {
-    font-size: 1.45rem;
-    font-weight: 200;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 0;
+  font-size: 1.45rem;
+  font-weight: 200;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0;
 }
 
 .interface-icon {
-    font-size: 1rem !important;
-    padding: 8px 8px 5px;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 1rem !important;
+  padding: 8px 8px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .interface-icon:hover {
-    background-color: var(--Media-Hit-Light-Grey);
+  background-color: var(--Media-Hit-Light-Grey);
+}
+
+.toolBoxIcon {
+  font-size: 24px;
+  background-color: var(--LightGrey);
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toolBoxIcon:hover {
+  background-color: var(--Tittles);
+  color: var(--White);
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .grey-btn {
-    padding:5px 10px;
-    border-radius: 5px;
-    margin: 0;
-    cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0;
+  cursor: pointer;
 }
 
 .grey-btn:hover {
-    background-color: var(--Media-Hit-Light-Grey);
+  background-color: var(--Media-Hit-Light-Grey);
 }

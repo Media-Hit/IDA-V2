@@ -13,6 +13,12 @@ function Movimientos() {
       <div className="movimientosMainContainer">
         <div className="headerContainer">
           <h1 className="pageTittle">Movimientos</h1>
+          <div className="ToolBox__Container">
+            <span className="material-symbols-outlined toolBoxIcon">
+              filter_list_off
+            </span>
+            <span className="material-symbols-outlined toolBoxIcon">add</span>
+          </div>
         </div>
         <div className="bodyContainer">
           <div className="leftSideContainer">
