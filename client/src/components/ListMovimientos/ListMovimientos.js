@@ -27,6 +27,7 @@ function ListMovimientos({ selectedDate }) {
     return format(parsedDate, "yyyy-MM-dd"); // Formatear en el formato deseado  };
   };
 
+  // Filtrar Egresos a la selección del calendario
   const filteredEgresos = selectedDate
     ? listOfEgresos.filter(
         (item) =>
@@ -34,9 +35,14 @@ function ListMovimientos({ selectedDate }) {
       )
     : listOfEgresos;
 
+  // Ordenar la lista de egresos por fecha en orden descendente
+  const sortedEgresos = [...filteredEgresos].sort(
+    (a, b) => new Date(b.fecha) - new Date(a.fecha)
+  );
+
   return (
     <>
-      {filteredEgresos.map((item, index) => (
+      {sortedEgresos.map((item, index) => (
         <div key={index} className="listMov__item-box">
           <span className="listMov__icon material-symbols-outlined">
             {iconMapper[item.categoria]}
