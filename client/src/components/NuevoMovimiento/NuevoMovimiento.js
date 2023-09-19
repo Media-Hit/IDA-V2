@@ -23,7 +23,7 @@ function NuevoMovimiento() {
         <div className="nuevoMovimiento__bodyContainer">
           <p className="nuevoMovimiento__subtitulo">Paso 1</p>
           <h2 className="nuevoMovimiento__titulo">
-            ¿Qué Movimiento te Gustaría Hacer?
+            ¿Qué Movimiento te Gustaría Registrar?
           </h2>
           <div className="nuevoMovimiento__categoriasBox">
             <CategoriaMovimiento
