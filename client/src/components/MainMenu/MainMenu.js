@@ -26,7 +26,7 @@ function MainMenu() {
         <ul className="sidebar__itemsContainer">
           <li className="sidebar__category">Financiero</li>
 
-          <Link to="/" className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -39,11 +39,7 @@ function MainMenu() {
             <span className="sidebar__itemText">Movimientos</span>
           </Link>
 
-          <Link
-            to="/balance"
-            className="sidebar_item"
-            href="https://google.com"
-          >
+          <Link to="/balance" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -56,7 +52,7 @@ function MainMenu() {
             <span className="sidebar__itemText">Balance</span>
           </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -67,9 +63,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Presupuesto</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -80,9 +76,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Solvencia</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -93,9 +89,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Ingresos</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -106,11 +102,11 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Egresos</span>
-          </a>
+          </Link>
 
           <li className="sidebar__category">Administrativo</li>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -121,9 +117,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Facturas</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -134,9 +130,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Clientes</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -147,11 +143,11 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Proveedores</span>
-          </a>
+          </Link>
 
           <li className="sidebar__category">Comercial</li>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -162,9 +158,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Cotizaciones</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -175,9 +171,9 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">Proyectos</span>
-          </a>
+          </Link>
 
-          <a className="sidebar_item" href="https://google.com">
+          <Link to="/" className="sidebar_item">
             <span className="sidebar__iconSpan">
               <i>
                 <img
@@ -188,11 +184,11 @@ function MainMenu() {
               </i>
             </span>
             <span className="sidebar__itemText">CRM</span>
-          </a>
+          </Link>
         </ul>
 
         <div className="sidebar__profileContainer">
-          <a className="sidebar__profileBox" href="https://google.com">
+          <Link to="/" className="sidebar__profileBox">
             <div className="sidebar__profileImgBox">
               <img
                 className="sidebar__profileImg"
@@ -204,7 +200,7 @@ function MainMenu() {
               <div className="sidebar__profileName">Felipe Garcia</div>
               <div className="sidebar_profileCharge">CEO</div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 

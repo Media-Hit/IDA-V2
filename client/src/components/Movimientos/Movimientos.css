@@ -30,7 +30,7 @@
   color: var(--Tittles);
 }
 
-.bodyContainer {
+.movimientos__bodyContainer {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 30px;
@@ -38,19 +38,19 @@
   background-color: var(--GreyBackground);
 }
 @media screen and (max-width: 1000px) {
-  .bodyContainer {
+  .movimientos__bodyContainer {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }
 }
 
-.rightSideContainer {
+.movimientos__rightSideContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
 @media screen and (max-width: 1000px) {
-  .rightSideContainer {
+  .movimientos__rightSideContainer {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }

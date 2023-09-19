@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { CalMovimientos } from "../CalMovimientos/CalMovimientos";
 import { ListMovimientos } from "../ListMovimientos/ListMovimientos";
+import { Link } from "react-router-dom";
 
 import "./Movimientos.css";
 
@@ -26,19 +27,21 @@ function Movimientos() {
                 filter_list_off
               </button>
             )}
-            <button className="material-symbols-outlined toolBoxIcon">
-              add
-            </button>
+            <Link to="/nuevo-movimiento">
+              <button className="material-symbols-outlined toolBoxIcon">
+                add
+              </button>
+            </Link>
           </div>
         </div>
-        <div className="bodyContainer">
-          <div className="leftSideContainer">
+        <div className="movimientos__bodyContainer">
+          <div className="movimientos__leftSideContainer">
             <CalMovimientos
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
             />
           </div>
-          <div className="rightSideContainer">
+          <div className="movimientos__rightSideContainer">
             <div className="list__container">
               <h2 className="titulo-movimiento">Personal</h2>
               <ListMovimientos selectedDate={selectedDate} />
