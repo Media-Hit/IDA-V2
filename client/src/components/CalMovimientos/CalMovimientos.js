@@ -5,10 +5,15 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
 import "./CalMovimientos.css";
 
-function CalMovimientos({ setSelectedDate }) {
+function CalMovimientos({ selectedDate, setSelectedDate }) {
   const handleDateChange = (newValue) => {
-    setSelectedDate(newValue); // Actualiza la fecha seleccionada en el estado compartido
+    setSelectedDate(newValue);
   };
+
+  const handleClearFilter = () => {
+    setSelectedDate(null);
+  };
+
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -16,8 +21,20 @@ function CalMovimientos({ setSelectedDate }) {
           showDaysOutsideCurrentMonth
           fixedWeekNumber={6}
           onChange={handleDateChange}
+          value={selectedDate}
         />
       </LocalizationProvider>
+
+      {selectedDate !== null && (
+        <div className="movimientosBotonFiltro__Container">
+          <button
+            className="movimientos__botonLimpiarFiltro"
+            onClick={handleClearFilter}
+          >
+            Mostrar Todo
+          </button>
+        </div>
+      )}
     </>
   );
 }

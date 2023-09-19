@@ -16,7 +16,10 @@ function Movimientos() {
         </div>
         <div className="bodyContainer">
           <div className="leftSideContainer">
-            <CalMovimientos setSelectedDate={setSelectedDate} />
+            <CalMovimientos
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+            />
           </div>
           <div className="rightSideContainer">
             <div>

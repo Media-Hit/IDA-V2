@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import iconMapper from "../iconMapper";
-import { format, parse } from "date-fns";
+import { format } from "date-fns";
 
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 

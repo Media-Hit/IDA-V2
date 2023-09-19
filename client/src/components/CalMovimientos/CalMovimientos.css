@@ -1,49 +1,67 @@
-
 .css-cwhad8-MuiDateCalendar-root {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 /* Header Calendario */
 .css-nk89i7-MuiPickersCalendarHeader-root {
-    justify-content: space-between !important;
-    padding-left: 8px !important;
-    padding-right: 0 !important;
-    margin-top: 0px !important;
+  justify-content: space-between !important;
+  padding-left: 8px !important;
+  padding-right: 0 !important;
+  margin-top: 0px !important;
 }
 
 /* Título Mes y Año */
 .css-cyfsxc-MuiPickersCalendarHeader-labelContainer {
-    font-size: 20px !important;
-    color: var(--Tittles);
+  font-size: 20px !important;
+  color: var(--Tittles);
 }
 
-
 .css-i5q14k-MuiDayCalendar-header {
-    justify-content: space-between !important ;
+  justify-content: space-between !important ;
 }
 
 /* Dias de la semana */
 .css-flbe84-MuiDayCalendar-weekContainer {
-    justify-content: space-between !important;
+  justify-content: space-between !important;
 }
-
 
 /* Números más Grandes */
 .css-1u23akw-MuiButtonBase-root-MuiPickersDay-root {
-    font-size: 14px !important;
-    color: #4F5050 !important;
+  font-size: 14px !important;
+  color: #4f5050 !important;
 }
 
 .css-18wn1yb-MuiButtonBase-root-MuiPickersDay-root {
-    font-size: 14px !important;
+  font-size: 14px !important;
 }
 
 /* Selección Azul Media Hit */
-.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
-    background-color: var(--Blue) !important;
-    color: var(--White) !important;
+.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+  background-color: var(--Blue) !important;
+  color: var(--White) !important;
 }
 
 .css-jgls56-MuiButtonBase-root-MuiPickersDay-root.Mui-selected:hover {
-    background-color: var(--Blue) !important;
+  background-color: var(--Blue) !important;
+}
+
+.movimientosBotonFiltro__Container {
+  display: flex;
+  justify-content: center;
+}
+
+.movimientos__botonLimpiarFiltro {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  color: var(--MutedGrey);
+  border: 1px solid var(--MutedGrey);
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+.movimientos__botonLimpiarFiltro:hover {
+  background-color: var(--DarkGreyBackgroundHover);
+  color: var(--White);
+  border: 1px solid var(--DarkGreyBackgroundHover);
+  cursor: pointer;
 }
