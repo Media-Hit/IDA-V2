@@ -61,7 +61,15 @@
   font-weight: 500;
   padding: 4px 0 14px 0;
   border-bottom: 1px solid var(--DividerBorder);
+  background-color: var(--GreyBackground);
   color: var(--Tittles);
+  position: sticky;
+  top: 0;
+}
+
+.list__container {
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 /* Celular */

@@ -10,10 +10,6 @@ function CalMovimientos({ selectedDate, setSelectedDate }) {
     setSelectedDate(newValue);
   };
 
-  const handleClearFilter = () => {
-    setSelectedDate(null);
-  };
-
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>

@@ -39,11 +39,11 @@ function Movimientos() {
             />
           </div>
           <div className="rightSideContainer">
-            <div>
+            <div className="list__container">
               <h2 className="titulo-movimiento">Personal</h2>
               <ListMovimientos selectedDate={selectedDate} />
             </div>
-            <div>
+            <div className="list__container">
               <h2 className="titulo-movimiento">Corporativo</h2>
               <ListMovimientos selectedDate={selectedDate} />
             </div>
