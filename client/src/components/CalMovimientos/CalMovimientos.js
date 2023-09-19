@@ -24,17 +24,6 @@ function CalMovimientos({ selectedDate, setSelectedDate }) {
           value={selectedDate}
         />
       </LocalizationProvider>
-
-      {selectedDate !== null && (
-        <div className="movimientosBotonFiltro__Container">
-          <button
-            className="movimientos__botonLimpiarFiltro"
-            onClick={handleClearFilter}
-          >
-            Mostrar Todo
-          </button>
-        </div>
-      )}
     </>
   );
 }

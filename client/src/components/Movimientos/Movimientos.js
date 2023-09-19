@@ -8,16 +8,27 @@ import "./Movimientos.css";
 function Movimientos() {
   const [selectedDate, setSelectedDate] = useState(null); // Estado compartido para la fecha seleccionada
 
+  const handleClearFilter = () => {
+    setSelectedDate(null);
+  };
+
   return (
     <>
       <div className="movimientosMainContainer">
         <div className="headerContainer">
           <h1 className="pageTittle">Movimientos</h1>
           <div className="ToolBox__Container">
-            <span className="material-symbols-outlined toolBoxIcon">
-              filter_list_off
-            </span>
-            <span className="material-symbols-outlined toolBoxIcon">add</span>
+            {selectedDate !== null && (
+              <button
+                className="material-symbols-outlined toolBoxIcon"
+                onClick={handleClearFilter}
+              >
+                filter_list_off
+              </button>
+            )}
+            <button className="material-symbols-outlined toolBoxIcon">
+              add
+            </button>
           </div>
         </div>
         <div className="bodyContainer">
