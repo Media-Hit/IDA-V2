@@ -77,7 +77,7 @@
 .titulo {
   font-size: 20px;
   font-weight: 500;
-  padding: 4px 0 14px 0;
+  padding: 4px 0 20px 0;
   background-color: var(--GreyBackground);
   color: var(--Tittles);
   position: sticky;
@@ -155,4 +155,13 @@
 
 .interlineado_inferior {
   border-bottom: 1px solid var(--DividerBorder);
+}
+
+.full-width {
+  width: 100%;
+  min-width: 100%;
+}
+
+.margin-bottom {
+  margin-bottom: 16px;
 }

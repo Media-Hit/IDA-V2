@@ -56,7 +56,7 @@ function Movimientos() {
           </div>
           <div className="movimientos__rightSideContainer">
             <div className="list__container">
-              <h2 className="titulo ">Personal</h2>
+              <h2 className="titulo interlineado_inferior">Personal</h2>
               <ListMovimientos selectedDate={selectedDate} />
             </div>
             <div className="list__container">

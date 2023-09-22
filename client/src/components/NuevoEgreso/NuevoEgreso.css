@@ -1,9 +1,35 @@
 .nuevoEgreso__bodyContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
+  max-width: 1000px;
+  /* gap: 50px; */
+}
+
+.nuevoegreso_columna {
+  border-left: 1px solid var(--DividerBorder);
+  padding: 0px 25px;
+}
+
+#nuevoegreso_columna1 {
+  border-left: 0px;
+  padding-left: 0px;
 }
 
 .info-box {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+}
+
+.css-4jnixx-MuiStack-root > .MuiTextField-root {
+  min-width: 100% !important;
+}
+
+/* Color del selector de tipo de egreso */
+.css-d9c359-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
+  color: var(--Blue) !important;
+}
+
+/*  Ancho del selector de tipo de egreso*/
+.css-1gjgmky-MuiToggleButtonGroup-root {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
 }
