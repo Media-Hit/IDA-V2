@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -9,10 +10,23 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 import { format } from "date-fns";
 
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 import "./NuevoEgreso.css";
 
 function NuevoEgreso() {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [listOfCuentas, setListOfCuentas] = useState([]);
+
+  const [cuentaSeleccionada, setCuentaSeleccionada] = useState("");
+
+  const seleccionDeCuenta = (event) => {
+    setCuentaSeleccionada(event.target.value);
+  };
 
   useEffect(() => {
     // Recuperar la fecha seleccionada desde localStorage
@@ -24,9 +38,15 @@ function NuevoEgreso() {
       // Si no hay fecha en localStorage, establece la fecha por defecto como hoy
       setSelectedDate(new Date());
     }
-  }, []);
 
-  console.log(selectedDate); // Agrega esta línea para comprobar el valor de selectedDate
+    axios.get("http://localhost:3001/cuentas/").then((response) => {
+      const cuentasDebito = response.data.filter(
+        (cuenta) => cuenta.tipo_de_cuenta === "debit"
+      );
+      setListOfCuentas(cuentasDebito);
+      console.log(cuentasDebito);
+    });
+  }, []);
 
   return (
     <>
@@ -62,6 +82,28 @@ function NuevoEgreso() {
             </div>
             <div className="info-box">
               <h2 className="box-title titulo ">Cómo</h2>
+
+              {/* Selector de Cuenta */}
+
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Cuenta</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={cuentaSeleccionada}
+                    label="Cuenta"
+                    onChange={seleccionDeCuenta}
+                  >
+                    {/* Mapea los elementos de listOfCuentas para generar el menú */}
+                    {listOfCuentas.map((cuenta, index) => (
+                      <MenuItem key={index} value={cuenta.nombre}>
+                        {cuenta.nombre}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Box>
             </div>
           </div>
           <div className="nuevoegreso_columna2">
