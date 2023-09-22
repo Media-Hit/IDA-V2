@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -8,12 +8,25 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 import { format } from "date-fns";
-import { startOfDay } from "date-fns";
 
 import "./NuevoEgreso.css";
 
 function NuevoEgreso() {
   const [selectedDate, setSelectedDate] = useState(null);
+
+  useEffect(() => {
+    // Recuperar la fecha seleccionada desde localStorage
+    const storedDate = localStorage.getItem("selectedDate");
+
+    if (storedDate) {
+      setSelectedDate(new Date(storedDate));
+    } else {
+      // Si no hay fecha en localStorage, establece la fecha por defecto como hoy
+      setSelectedDate(new Date());
+    }
+  }, []);
+
+  console.log(selectedDate); // Agrega esta línea para comprobar el valor de selectedDate
 
   return (
     <>
@@ -37,8 +50,9 @@ function NuevoEgreso() {
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DemoContainer components={["DatePicker"]}>
                   <DatePicker
-                    label="Basic date picker"
+                    label="Fecha"
                     renderInput={(params) => <TextField {...params} />}
+                    value={selectedDate} // Establece el valor de selectedDate como valor por defecto
                     onChange={(date) => {
                       console.log(format(date, "dd/MM/yyyy"));
                     }}

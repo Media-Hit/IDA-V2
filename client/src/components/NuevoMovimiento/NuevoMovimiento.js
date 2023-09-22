@@ -5,8 +5,6 @@ import "./NuevoMovimiento.css";
 import { CategoriaMovimiento } from "../CategoriaMovimiento/CategoriaMovimiento";
 
 function NuevoMovimiento() {
-  const [selectedDate, setSelectedDate] = useState(null);
-
   return (
     <>
       <div className="movimientosMainContainer">

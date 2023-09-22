@@ -13,6 +13,19 @@ function Movimientos() {
     setSelectedDate(null);
   };
 
+  const handleAddButtonClick = () => {
+    // Guardar la fecha seleccionada en localStorage
+    if (selectedDate) {
+      localStorage.setItem("selectedDate", selectedDate);
+    }
+  };
+
+  // Función para borrar selectedDate del localStorage
+  const clearLocalStorage = () => {
+    localStorage.removeItem("selectedDate");
+  };
+  clearLocalStorage();
+
   return (
     <>
       <div className="movimientosMainContainer">
@@ -27,13 +40,7 @@ function Movimientos() {
                 filter_list_off
               </button>
             )}
-            {/* <Link to="/nuevo-movimiento">
-              <button className="material-symbols-outlined toolBoxIcon">
-                add
-              </button>
-            </Link> */}
-
-            <Link to={`/nuevo-movimiento?selectedDate=${selectedDate}`}>
+            <Link to="/nuevo-movimiento" onClick={handleAddButtonClick}>
               <button className="material-symbols-outlined toolBoxIcon">
                 add
               </button>
