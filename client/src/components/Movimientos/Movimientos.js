@@ -27,14 +27,20 @@ function Movimientos() {
                 filter_list_off
               </button>
             )}
-            <Link to="/nuevo-movimiento">
+            {/* <Link to="/nuevo-movimiento">
+              <button className="material-symbols-outlined toolBoxIcon">
+                add
+              </button>
+            </Link> */}
+
+            <Link to={`/nuevo-movimiento?selectedDate=${selectedDate}`}>
               <button className="material-symbols-outlined toolBoxIcon">
                 add
               </button>
             </Link>
           </div>
         </div>
-        <div className="movimientos__bodyContainer">
+        <div className="movimientos__bodyContainer main-body-background">
           <div className="movimientos__leftSideContainer">
             <CalMovimientos
               selectedDate={selectedDate}
@@ -43,11 +49,11 @@ function Movimientos() {
           </div>
           <div className="movimientos__rightSideContainer">
             <div className="list__container">
-              <h2 className="titulo-movimiento">Personal</h2>
+              <h2 className="titulo ">Personal</h2>
               <ListMovimientos selectedDate={selectedDate} />
             </div>
             <div className="list__container">
-              <h2 className="titulo-movimiento">Corporativo</h2>
+              <h2 className="titulo interlineado_inferior">Corporativo</h2>
               <ListMovimientos selectedDate={selectedDate} />
             </div>
           </div>

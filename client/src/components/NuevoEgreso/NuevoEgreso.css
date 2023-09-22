@@ -1,0 +1,9 @@
+.nuevoEgreso__bodyContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.info-box {
+  margin-bottom: 80px;
+}

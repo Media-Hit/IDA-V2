@@ -20,10 +20,10 @@ function NuevoMovimiento() {
             </Link>
           </div>
         </div>
-        <div className="nuevoMovimiento__bodyContainer">
+        <div className="nuevoMovimiento__bodyContainer main-body-background">
           <p className="nuevoMovimiento__subtitulo">Paso 1</p>
           <h2 className="nuevoMovimiento__titulo">
-            ¿Qué Movimiento te Gustaría Registrar?
+            ¿Qué movimiento te gustaría registrar?
           </h2>
           <div className="nuevoMovimiento__categoriasBox">
             <CategoriaMovimiento
