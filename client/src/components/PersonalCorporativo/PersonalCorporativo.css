@@ -1,0 +1,10 @@
+/* Color del selector de tipo de egreso */
+.css-d9c359-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
+  color: var(--Blue) !important;
+}
+
+/*  Ancho del selector de tipo de egreso*/
+.css-1gjgmky-MuiToggleButtonGroup-root {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+}
