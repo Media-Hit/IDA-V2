@@ -3,14 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import TextField from "@mui/material/TextField";
-import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-
-import { format } from "date-fns";
+import { SelectorDeFecha } from "../SelectorDeFecha/SelectorDeFecha";
 
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -24,7 +17,6 @@ import Select from "@mui/material/Select";
 import "./NuevoEgreso.css";
 
 function NuevoEgreso() {
-  const [selectedDate, setSelectedDate] = useState(null);
   const [listOfCuentas, setListOfCuentas] = useState([]);
 
   const [cuentaSeleccionada, setCuentaSeleccionada] = useState("");
@@ -39,16 +31,6 @@ function NuevoEgreso() {
   };
 
   useEffect(() => {
-    // Recuperar la fecha seleccionada desde localStorage
-    const storedDate = localStorage.getItem("selectedDate");
-
-    if (storedDate) {
-      setSelectedDate(new Date(storedDate));
-    } else {
-      // Si no hay fecha en localStorage, establece la fecha por defecto como hoy
-      setSelectedDate(new Date());
-    }
-
     axios.get("http://localhost:3001/cuentas/").then((response) => {
       const cuentasDebito = response.data.filter(
         (cuenta) => cuenta.tipo_de_cuenta === "debit"
@@ -60,6 +42,7 @@ function NuevoEgreso() {
   return (
     <>
       <div className="movimientosMainContainer">
+        {/* Header */}
         <div className="headerContainer">
           <h1 className="pageTittle">Nuevo Egreso</h1>
           <div className="ToolBox__Container">
@@ -70,24 +53,14 @@ function NuevoEgreso() {
             </Link>
           </div>
         </div>
+
+        {/* Body */}
         <div className="main-body-background">
           <div className="nuevoEgreso__bodyContainer">
             <div className="nuevoegreso_columna" id="nuevoegreso_columna1">
               <div className="info-box">
                 <h2 className="box-title titulo">Cuándo</h2>
-                {/* Selector de Fecha */}
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DemoContainer components={["DatePicker"]}>
-                    <DatePicker
-                      label="Fecha"
-                      renderInput={(params) => <TextField {...params} />}
-                      value={selectedDate}
-                      onChange={(date) => {
-                        console.log(format(date, "dd/MM/yyyy"));
-                      }}
-                    />
-                  </DemoContainer>
-                </LocalizationProvider>
+                <SelectorDeFecha />
               </div>
 
               <div className="info-box">
