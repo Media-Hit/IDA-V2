@@ -83,7 +83,9 @@ function NuevoEgreso() {
               </div>
               <div className="info-box">
                 <h2 className="box-title titulo ">Para Qué</h2>
-                <PersonalCorporativo className="margin-bottom" />
+                <div className="margin-bottom">
+                  <PersonalCorporativo />
+                </div>
                 <CampoDesplegable
                   label="Categoría"
                   values={listOfCuentas}
