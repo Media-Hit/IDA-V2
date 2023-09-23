@@ -7,16 +7,24 @@ import axios from "axios";
 import { SelectorDeFecha } from "../SelectorDeFecha/SelectorDeFecha";
 import { CampoDesplegable } from "../CampoDesplegable/CampoDesplegable";
 import { PersonalCorporativo } from "../PersonalCorporativo/PersonalCorporativo";
+import { CampoDesplegableCreate } from "../CampoDesplegableCreate/CampoDesplegableCreate";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
+  const [listOfProveedores, setListOfProveedores] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/cuentas/").then((response) => {
+    axios.get("http://localhost:3001/cuentas").then((response) => {
       const cuentasDebito = response.data.filter(
         (cuenta) => cuenta.tipo_de_cuenta === "debit"
       );
       setListOfCuentas(cuentasDebito);
+    });
+
+    axios.get("http://localhost:3001/proveedores/listado").then((response) => {
+      setListOfProveedores(response.data);
+      console.log("prueba");
+      console.log(listOfProveedores);
     });
   }, []);
 
@@ -47,6 +55,7 @@ function NuevoEgreso() {
               <div className="info-box">
                 <h2 className="box-title titulo ">Cómo</h2>
                 <CampoDesplegable values={listOfCuentas} label="Cuenta" />
+                <CampoDesplegableCreate values={listOfProveedores} />
               </div>
             </div>
             <div className="nuevoegreso_columna">
