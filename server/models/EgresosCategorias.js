@@ -1,17 +1,17 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   const EgresosCategorias = sequelize.define("Egresos_Categorias", {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     es_padre: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.TINYINT(1),
       allowNull: false,
     },
     es_hijo: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.TINYINT(1),
       allowNull: false,
     },
     padre: {
