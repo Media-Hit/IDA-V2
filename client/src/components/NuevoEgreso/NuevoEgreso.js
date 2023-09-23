@@ -22,11 +22,17 @@ function NuevoEgreso() {
     });
 
     axios.get("http://localhost:3001/proveedores/listado").then((response) => {
-      setListOfProveedores(response.data);
+      setListOfProveedores(response.data.nombre);
       console.log("prueba");
       console.log(listOfProveedores);
     });
   }, []);
+
+  const pruebatecnica = [
+    { title: "The Shawshank Redemption", year: 1994 },
+    { title: "The Godfather", year: 1972 },
+    { title: "The Godfather: Part II", year: 1974 },
+  ];
 
   return (
     <>
@@ -54,8 +60,15 @@ function NuevoEgreso() {
 
               <div className="info-box">
                 <h2 className="box-title titulo ">Cómo</h2>
-                <CampoDesplegable values={listOfCuentas} label="Cuenta" />
-                <CampoDesplegableCreate values={listOfProveedores} />
+                <CampoDesplegable
+                  label="Cuenta"
+                  values={listOfCuentas}
+                  filter="nombre"
+                />
+                <CampoDesplegableCreate
+                  label="Proveedor"
+                  values={pruebatecnica}
+                />
               </div>
             </div>
             <div className="nuevoegreso_columna">
