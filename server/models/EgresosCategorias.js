@@ -6,13 +6,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    es_padre: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     es_hijo: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
     padre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   });
 
