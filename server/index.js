@@ -12,6 +12,9 @@ const db = require("./models");
 const egresosRouter = require("./routes/Egresos");
 app.use("/egresos", egresosRouter);
 
+const egresosCategoriasRouter = require("./routes/EgresosCategorias");
+app.use("/egresos-categorias", egresosCategoriasRouter);
+
 const cuentasRouter = require("./routes/Cuentas");
 app.use("/cuentas", cuentasRouter);
 

@@ -12,6 +12,7 @@ import { CampoDesplegableCreate } from "../CampoDesplegableCreate/CampoDesplegab
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
   const [listOfProveedores, setListOfProveedores] = useState([]);
+  const [loadingProveedores, setLoadingProveedores] = useState(true);
 
   useEffect(() => {
     axios.get("http://localhost:3001/cuentas").then((response) => {
@@ -21,18 +22,23 @@ function NuevoEgreso() {
       setListOfCuentas(cuentasDebito);
     });
 
-    axios.get("http://localhost:3001/proveedores/listado").then((response) => {
-      setListOfProveedores(response.data.nombre);
-      console.log("prueba");
-      console.log(listOfProveedores);
-    });
+    axios
+      .get("http://localhost:3001/proveedores/listado")
+      .then((response) => {
+        setListOfProveedores(response.data);
+        setLoadingProveedores(false);
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos de proveedores:", error);
+        setLoadingProveedores(false);
+      });
   }, []);
 
   const pruebatecnica = [
-    { nombre: "The Shawshank Redemption", year: 1994 },
-    { nombre: "The Godfather", year: 1972 },
-    { nombre: "The Godfather: Part II", year: 1974 },
-    { nombre: "The Shawshank Redemption", year: 1994 },
+    { nombre: "Carulla" },
+    { nombre: "Nicolás Benavides" },
+    { nombre: "Google" },
+    { nombre: "Alkosto" },
   ];
 
   return (
@@ -66,9 +72,21 @@ function NuevoEgreso() {
                   values={listOfCuentas}
                   columName="nombre"
                 />
-                <CampoDesplegableCreate
-                  label="Proveedor"
-                  values={pruebatecnica}
+
+                {!loadingProveedores && (
+                  <CampoDesplegableCreate
+                    label="Proveedor"
+                    values={listOfProveedores}
+                    columName="nombre"
+                  />
+                )}
+              </div>
+              <div className="info-box">
+                <h2 className="box-title titulo ">Para Qué</h2>
+                <PersonalCorporativo className="margin-bottom" />
+                <CampoDesplegable
+                  label="Categoría"
+                  values={listOfCuentas}
                   columName="nombre"
                 />
               </div>
@@ -76,10 +94,6 @@ function NuevoEgreso() {
             <div className="nuevoegreso_columna">
               <div className="info-box">
                 <h2 className="box-title titulo ">Por qué</h2>
-              </div>
-              <div className="info-box">
-                <h2 className="box-title titulo ">Para Qué</h2>
-                <PersonalCorporativo />
               </div>
             </div>
             <div className="nuevoegreso_columna">
