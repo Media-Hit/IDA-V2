@@ -29,9 +29,10 @@ function NuevoEgreso() {
   }, []);
 
   const pruebatecnica = [
-    { title: "The Shawshank Redemption", year: 1994 },
-    { title: "The Godfather", year: 1972 },
-    { title: "The Godfather: Part II", year: 1974 },
+    { nombre: "The Shawshank Redemption", year: 1994 },
+    { nombre: "The Godfather", year: 1972 },
+    { nombre: "The Godfather: Part II", year: 1974 },
+    { nombre: "The Shawshank Redemption", year: 1994 },
   ];
 
   return (
@@ -63,11 +64,12 @@ function NuevoEgreso() {
                 <CampoDesplegable
                   label="Cuenta"
                   values={listOfCuentas}
-                  filter="nombre"
+                  columName="nombre"
                 />
                 <CampoDesplegableCreate
                   label="Proveedor"
                   values={pruebatecnica}
+                  columName="nombre"
                 />
               </div>
             </div>

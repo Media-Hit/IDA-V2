@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function CampoDesplegable({ values, label, filter }) {
+function CampoDesplegable({ values, label, columName }) {
   const [itemSeleccionado, setItemSeleccionado] = useState("");
 
   const seleccionDeCuenta = (event) => {
@@ -31,8 +31,8 @@ function CampoDesplegable({ values, label, filter }) {
             .slice()
             .sort((a, b) => a.nombre.localeCompare(b.nombre))
             .map((item, index) => (
-              <MenuItem key={index} value={item[filter]}>
-                {item[filter]}
+              <MenuItem key={index} value={item[columName]}>
+                {item[columName]}
               </MenuItem>
             ))}
         </Select>

@@ -6,7 +6,7 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 const filter = createFilterOptions();
 
-function CampoDesplegableCreate({ values, label, filter }) {
+function CampoDesplegableCreate({ values, label, columName }) {
   const [value, setValue] = useState(null);
 
   return (
@@ -16,12 +16,12 @@ function CampoDesplegableCreate({ values, label, filter }) {
         onChange={(event, newValue) => {
           if (typeof newValue === "string") {
             setValue({
-              title: newValue,
+              [columName]: newValue,
             });
           } else if (newValue && newValue.inputValue) {
             // Create a new value from the user input
             setValue({
-              title: newValue.inputValue,
+              [columName]: newValue.inputValue,
             });
           } else {
             setValue(newValue);
@@ -33,12 +33,12 @@ function CampoDesplegableCreate({ values, label, filter }) {
           const { inputValue } = params;
           // Suggest the creation of a new value
           const isExisting = options.some(
-            (option) => inputValue === option.title
+            (option) => inputValue === option[columName]
           );
           if (inputValue !== "" && !isExisting) {
             filtered.push({
               inputValue,
-              title: `Añadir "${inputValue}"`,
+              [columName]: `Añadir "${inputValue}"`,
             });
           }
 
@@ -47,7 +47,6 @@ function CampoDesplegableCreate({ values, label, filter }) {
         selectOnFocus
         clearOnBlur
         handleHomeEndKeys
-        autoHighlight
         options={values}
         getOptionLabel={(option) => {
           // Value selected with enter, right from the input
@@ -59,10 +58,13 @@ function CampoDesplegableCreate({ values, label, filter }) {
             return option.inputValue;
           }
           // Regular option
-          return option.title;
+          return option[columName];
         }}
-        renderOption={(props, option) => <li {...props}>{option.title}</li>}
+        renderOption={(props, option) => (
+          <li {...props}>{option[columName]}</li>
+        )}
         fullWidth
+        autoHighlight
         freeSolo
         renderInput={(params) => <TextField {...params} label={label} />}
       />
