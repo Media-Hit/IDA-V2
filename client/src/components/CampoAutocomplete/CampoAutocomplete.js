@@ -19,15 +19,17 @@ function CampoAutocomplete({ etiqueta, values, columName, onSelect }) {
   );
 
   return (
-    <Autocomplete
-      disablePortal
-      options={sortedValues}
-      fullWidth
-      getOptionLabel={(option) => option[columName]}
-      renderInput={(params) => <TextField {...params} label={etiqueta} />}
-      value={selectedValue}
-      onChange={handleSelect}
-    />
+    <div className="margin-bottom">
+      <Autocomplete
+        disablePortal
+        options={sortedValues}
+        fullWidth
+        getOptionLabel={(option) => option[columName]}
+        renderInput={(params) => <TextField {...params} label={etiqueta} />}
+        value={selectedValue}
+        onChange={handleSelect}
+      />
+    </div>
   );
 }
 

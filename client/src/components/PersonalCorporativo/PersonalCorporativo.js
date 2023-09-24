@@ -12,21 +12,23 @@ function PersonalCorporativo({ setMostrarProyectos }) {
   };
 
   return (
-    <ToggleButtonGroup
-      color="primary"
-      value={tipoDeTransaccion}
-      exclusive
-      onChange={handleTipoDeTransaccion}
-      aria-label="Tipo de Transacción"
-      className="full-width"
-    >
-      <ToggleButton value="personal" aria-label="">
-        Personal
-      </ToggleButton>
-      <ToggleButton value="corporativo" aria-label="">
-        Corporativo
-      </ToggleButton>
-    </ToggleButtonGroup>
+    <div className="margin-bottom">
+      <ToggleButtonGroup
+        color="primary"
+        value={tipoDeTransaccion}
+        exclusive
+        onChange={handleTipoDeTransaccion}
+        aria-label="Tipo de Transacción"
+        className="full-width"
+      >
+        <ToggleButton value="personal" aria-label="">
+          Personal
+        </ToggleButton>
+        <ToggleButton value="corporativo" aria-label="">
+          Corporativo
+        </ToggleButton>
+      </ToggleButtonGroup>
+    </div>
   );
 }
 

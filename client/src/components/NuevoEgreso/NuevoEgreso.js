@@ -11,6 +11,7 @@ import { CampoDesplegable } from "../CampoDesplegable/CampoDesplegable";
 import { PersonalCorporativo } from "../PersonalCorporativo/PersonalCorporativo";
 import { CampoDesplegableCreate } from "../CampoDesplegableCreate/CampoDesplegableCreate";
 import { CampoAutocomplete } from "../CampoAutocomplete/CampoAutocomplete";
+import { CampoDinero } from "../CampoDinero/CampoDinero";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
@@ -152,42 +153,36 @@ function NuevoEgreso() {
               </div>
               <div className="info-box">
                 <h2 className="box-title titulo ">Para Qué</h2>
-                <div className="margin-bottom">
-                  <PersonalCorporativo
-                    setMostrarProyectos={setMostrarProyectos}
-                  />
-                </div>
+                <PersonalCorporativo
+                  setMostrarProyectos={setMostrarProyectos}
+                />
 
                 {!loadingCategorias && (
-                  <div className="margin-bottom">
-                    <CampoAutocomplete
-                      etiqueta="Categoría"
-                      values={listOfCategorias}
-                      columName="nombre"
-                      onSelect={handleCategoriaSelect}
-                    />
-                  </div>
+                  <CampoAutocomplete
+                    etiqueta="Categoría"
+                    values={listOfCategorias}
+                    columName="nombre"
+                    onSelect={handleCategoriaSelect}
+                  />
                 )}
 
                 {subCategoriaExiste && (
-                  <div className="margin-bottom">
-                    <CampoAutocomplete
-                      etiqueta="Sub Categoría"
-                      values={subCategorias}
-                      columName="nombre"
-                      onSelect={handleSubcategoriaSelect}
-                    />
-                  </div>
+                  <CampoAutocomplete
+                    etiqueta="Sub Categoría"
+                    values={subCategorias}
+                    columName="nombre"
+                    onSelect={handleSubcategoriaSelect}
+                  />
                 )}
+
                 {mostrarProyectos && (
-                  <div className="margin-bottom">
-                    <CampoDesplegableCreate
-                      etiqueta="Proyecto"
-                      values={listOfProyectos}
-                      columName="nombre"
-                    />
-                  </div>
+                  <CampoDesplegableCreate
+                    etiqueta="Proyecto"
+                    values={listOfProyectos}
+                    columName="nombre"
+                  />
                 )}
+
                 <Box component="form" noValidate autoComplete="off">
                   <TextField
                     label="Descripción"
@@ -201,12 +196,13 @@ function NuevoEgreso() {
             </div>
             <div className="nuevoegreso_columna">
               <div className="info-box">
-                <h2 className="box-title titulo ">Por qué</h2>
+                <h2 className="box-title titulo ">Cuánto</h2>
+                <CampoDinero valorInicial={"0"} etiqueta={"Monto Pagado"} />
               </div>
             </div>
             <div className="nuevoegreso_columna">
               <div className="info-box ">
-                <h2 className="box-title titulo">Impuestos</h2>
+                <h2 className="box-title titulo">Columna 3</h2>
               </div>
             </div>
           </div>

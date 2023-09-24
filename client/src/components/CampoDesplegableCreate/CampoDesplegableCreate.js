@@ -10,7 +10,7 @@ function CampoDesplegableCreate({ values, etiqueta, columName }) {
   const [value, setValue] = useState(null);
 
   return (
-    <>
+    <div className="margin-bottom">
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {
@@ -68,7 +68,7 @@ function CampoDesplegableCreate({ values, etiqueta, columName }) {
         freeSolo
         renderInput={(params) => <TextField {...params} label={etiqueta} />}
       />
-    </>
+    </div>
   );
 }
 
