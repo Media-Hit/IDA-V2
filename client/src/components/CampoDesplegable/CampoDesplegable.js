@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function CampoDesplegable({ values, label, columName }) {
+function CampoDesplegable({ values, etiqueta, columName }) {
   const [itemSeleccionado, setItemSeleccionado] = useState("");
 
   const seleccionDeCuenta = (event) => {
@@ -17,11 +17,11 @@ function CampoDesplegable({ values, label, columName }) {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth className="margin-bottom">
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel>{etiqueta}</InputLabel>
         <Select
           className="margin-bottom"
           id="demo-simple-lselect"
-          label={label}
+          label={etiqueta}
           labelId="demo-simple-select-label"
           onChange={seleccionDeCuenta}
           value={itemSeleccionado}

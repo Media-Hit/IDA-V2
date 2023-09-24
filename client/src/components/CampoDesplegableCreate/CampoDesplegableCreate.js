@@ -6,7 +6,7 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 const filter = createFilterOptions();
 
-function CampoDesplegableCreate({ values, label, columName }) {
+function CampoDesplegableCreate({ values, etiqueta, columName }) {
   const [value, setValue] = useState(null);
 
   return (
@@ -66,7 +66,7 @@ function CampoDesplegableCreate({ values, label, columName }) {
         fullWidth
         autoHighlight
         freeSolo
-        renderInput={(params) => <TextField {...params} label={label} />}
+        renderInput={(params) => <TextField {...params} label={etiqueta} />}
       />
     </>
   );

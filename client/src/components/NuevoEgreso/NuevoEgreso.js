@@ -8,11 +8,14 @@ import { SelectorDeFecha } from "../SelectorDeFecha/SelectorDeFecha";
 import { CampoDesplegable } from "../CampoDesplegable/CampoDesplegable";
 import { PersonalCorporativo } from "../PersonalCorporativo/PersonalCorporativo";
 import { CampoDesplegableCreate } from "../CampoDesplegableCreate/CampoDesplegableCreate";
+import { CampoAutocomplete } from "../CampoAutocomplete/CampoAutocomplete";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
+  const [listOfCategorias, setListOfCategorias] = useState([]);
+  const [loadingCategorias, setLoadingCategorias] = useState(true);
 
   useEffect(() => {
     axios.get("http://localhost:3001/cuentas").then((response) => {
@@ -31,6 +34,17 @@ function NuevoEgreso() {
       .catch((error) => {
         console.error("Error al obtener datos de proveedores:", error);
         setLoadingProveedores(false);
+      });
+
+    axios
+      .get("http://localhost:3001/categoriasEgresos")
+      .then((response) => {
+        setListOfCategorias(response.data);
+        setLoadingCategorias(false);
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos de proveedores:", error);
+        setLoadingCategorias(false);
       });
   }, []);
 
@@ -68,14 +82,14 @@ function NuevoEgreso() {
               <div className="info-box">
                 <h2 className="box-title titulo ">Cómo</h2>
                 <CampoDesplegable
-                  label="Cuenta"
+                  etiqueta="Cuenta"
                   values={listOfCuentas}
                   columName="nombre"
                 />
 
                 {!loadingProveedores && (
                   <CampoDesplegableCreate
-                    label="Proveedor"
+                    etiqueta="Proveedor"
                     values={listOfProveedores}
                     columName="nombre"
                   />
@@ -86,11 +100,14 @@ function NuevoEgreso() {
                 <div className="margin-bottom">
                   <PersonalCorporativo />
                 </div>
-                <CampoDesplegable
-                  label="Categoría"
-                  values={listOfCuentas}
-                  columName="nombre"
-                />
+
+                {!loadingCategorias && (
+                  <CampoAutocomplete
+                    etiqueta="Categoría"
+                    values={listOfCategorias}
+                    columName="nombre"
+                  />
+                )}
               </div>
             </div>
             <div className="nuevoegreso_columna">
