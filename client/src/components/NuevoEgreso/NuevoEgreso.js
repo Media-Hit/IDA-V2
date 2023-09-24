@@ -121,9 +121,6 @@ function NuevoEgreso() {
                     onSelect={handleCategoriaSelect}
                   />
                 )}
-                {selectedCategoria && (
-                  <p>Selected Categoria: {selectedCategoria}</p>
-                )}
               </div>
             </div>
             <div className="nuevoegreso_columna">

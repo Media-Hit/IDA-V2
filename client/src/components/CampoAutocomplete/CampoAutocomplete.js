@@ -12,7 +12,6 @@ function CampoAutocomplete({ etiqueta, values, columName, onSelect }) {
   const handleSelect = (event, newValue) => {
     setSelectedValue(newValue);
     onSelect(newValue); // Llama a la función onSelect y pasa el valor seleccionado
-    console.log(newValue);
   };
 
   const sortedValues = [...values].sort((a, b) =>
