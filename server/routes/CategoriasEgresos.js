@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { EgresosCategorias } = require("../models");
+const { CategoriasEgresos } = require("../models");
 
 router.get("/", async (req, res) => {
-  const listOfCategorias = await EgresosCategorias.findAll();
+  const listOfCategorias = await CategoriasEgresos.findAll();
   res.json(listOfCategorias);
 });
 

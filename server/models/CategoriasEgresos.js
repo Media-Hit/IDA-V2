@@ -1,17 +1,17 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const EgresosCategorias = sequelize.define("Egresos_Categorias", {
+  const CategoriasEgresos = sequelize.define("CategoriasEgresos", {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     es_padre: {
-      type: DataTypes.TINYINT(1),
+      type: DataTypes.BOOLEAN,
       allowNull: false,
     },
     es_hijo: {
-      type: DataTypes.TINYINT(1),
+      type: DataTypes.BOOLEAN,
       allowNull: false,
     },
     padre: {
@@ -20,5 +20,5 @@ module.exports = (sequelize) => {
     },
   });
 
-  return EgresosCategorias;
+  return CategoriasEgresos;
 };
