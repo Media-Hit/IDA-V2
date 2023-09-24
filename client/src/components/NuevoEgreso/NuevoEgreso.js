@@ -24,6 +24,7 @@ function NuevoEgreso() {
   const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
   const [subCategorias, setSubCategorias] = useState([]);
   const [listOfProyectos, setListOfProyectos] = useState([]);
+  const [mostrarProyectos, setMostrarProyectos] = useState(false);
 
   const [selectedCategoria, setSelectedCategoria] = useState(null);
 
@@ -152,7 +153,9 @@ function NuevoEgreso() {
               <div className="info-box">
                 <h2 className="box-title titulo ">Para Qué</h2>
                 <div className="margin-bottom">
-                  <PersonalCorporativo />
+                  <PersonalCorporativo
+                    setMostrarProyectos={setMostrarProyectos}
+                  />
                 </div>
 
                 {!loadingCategorias && (
@@ -176,22 +179,24 @@ function NuevoEgreso() {
                     />
                   </div>
                 )}
-                <div className="margin-bottom">
-                  <Box component="form" noValidate autoComplete="off">
-                    <TextField
-                      label="Descripción"
-                      variant="outlined"
-                      multiline
-                      fullWidth
-                      maxRows={4}
+                {mostrarProyectos && (
+                  <div className="margin-bottom">
+                    <CampoDesplegableCreate
+                      etiqueta="Proyecto"
+                      values={listOfProyectos}
+                      columName="nombre"
                     />
-                  </Box>
-                </div>
-                <CampoDesplegableCreate
-                  etiqueta="Proyecto"
-                  values={listOfProyectos}
-                  columName="nombre"
-                />
+                  </div>
+                )}
+                <Box component="form" noValidate autoComplete="off">
+                  <TextField
+                    label="Descripción"
+                    variant="outlined"
+                    multiline
+                    fullWidth
+                    maxRows={4}
+                  />
+                </Box>
               </div>
             </div>
             <div className="nuevoegreso_columna">

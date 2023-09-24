@@ -4,11 +4,11 @@ import "./PersonalCorporativo.css";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-function PersonalCorporativo() {
+function PersonalCorporativo({ setMostrarProyectos }) {
   const [tipoDeTransaccion, setTipoDeTransaccion] = useState("");
   const handleTipoDeTransaccion = (event) => {
     setTipoDeTransaccion(event.target.value);
-    console.log(event.target.value);
+    setMostrarProyectos(event.target.value === "corporativo");
   };
 
   return (
