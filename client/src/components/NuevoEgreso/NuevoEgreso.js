@@ -23,12 +23,14 @@ function NuevoEgreso() {
   const [listOfAllCategorias, setListOfAllCategorias] = useState([]);
   const [listOfCategorias, setListOfCategorias] = useState([]);
   const [loadingCategorias, setLoadingCategorias] = useState(true);
+  const [selectedCategoria, setSelectedCategoria] = useState(null);
   const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
   const [subCategorias, setSubCategorias] = useState([]);
   const [listOfProyectos, setListOfProyectos] = useState([]);
   const [mostrarProyectos, setMostrarProyectos] = useState(false);
 
-  const [selectedCategoria, setSelectedCategoria] = useState(null);
+  const [montoPagado, setMontoPagado] = useState(0); // Estado para el valor de CampoDinero
+  const [cifraCalculada, setCifraCalculada] = useState(0); // Estado para el cálculo
 
   //Se activa cuando se escoge un categoria
   const handleCategoriaSelect = (categoria) => {
@@ -103,6 +105,12 @@ function NuevoEgreso() {
         //  setLoadingProveedores(false);
       });
   }, []);
+
+  useEffect(() => {
+    // Calcula el 0.04% del valor de montoPagado y actualiza cifraCalculada
+    const calculo = (montoPagado * 0.04) / 100;
+    setCifraCalculada(calculo);
+  }, [montoPagado]);
 
   const pruebatecnica = [
     { nombre: "Carulla" },
@@ -199,8 +207,12 @@ function NuevoEgreso() {
             <div className="nuevoegreso_columna">
               <div className="info-box">
                 <h2 className="box-title titulo ">Cuánto</h2>
-                <CampoDinero valorInicial={"0"} etiqueta={"Monto Pagado"} />
-                <SwitchConCifra />
+                <CampoDinero
+                  valorInicial={montoPagado}
+                  etiqueta={"Monto Pagado"}
+                  onChange={(valor) => setMontoPagado(valor)}
+                />
+                <SwitchConCifra cifraCalculada={cifraCalculada} />
               </div>
             </div>
             <div className="nuevoegreso_columna">
