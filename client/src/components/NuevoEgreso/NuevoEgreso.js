@@ -17,6 +17,12 @@ function NuevoEgreso() {
   const [listOfCategorias, setListOfCategorias] = useState([]);
   const [loadingCategorias, setLoadingCategorias] = useState(true);
 
+  const [selectedCategoria, setSelectedCategoria] = useState(null);
+  const handleCategoriaSelect = (categoria) => {
+    setSelectedCategoria(categoria);
+    console.log("Categoria seleccionada:", categoria);
+  };
+
   useEffect(() => {
     axios.get("http://localhost:3001/cuentas").then((response) => {
       const cuentasDebito = response.data.filter(
@@ -112,7 +118,11 @@ function NuevoEgreso() {
                     etiqueta="Categoría"
                     values={listOfCategorias}
                     columName="nombre"
+                    onSelect={handleCategoriaSelect}
                   />
+                )}
+                {selectedCategoria && (
+                  <p>Selected Categoria: {selectedCategoria}</p>
                 )}
               </div>
             </div>
