@@ -12,6 +12,7 @@ import { PersonalCorporativo } from "../PersonalCorporativo/PersonalCorporativo"
 import { CampoDesplegableCreate } from "../CampoDesplegableCreate/CampoDesplegableCreate";
 import { CampoAutocomplete } from "../CampoAutocomplete/CampoAutocomplete";
 import { CampoDinero } from "../CampoDinero/CampoDinero";
+import { SwitchConCifra } from "../SwitchConCifra/SwitchConCifra";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
@@ -199,6 +200,7 @@ function NuevoEgreso() {
               <div className="info-box">
                 <h2 className="box-title titulo ">Cuánto</h2>
                 <CampoDinero valorInicial={"0"} etiqueta={"Monto Pagado"} />
+                <SwitchConCifra />
               </div>
             </div>
             <div className="nuevoegreso_columna">
