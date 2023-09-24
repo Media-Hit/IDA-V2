@@ -21,6 +21,9 @@ app.use("/cuentas", cuentasRouter);
 const proveedoresRouter = require("./routes/Proveedores");
 app.use("/proveedores", proveedoresRouter);
 
+const proyectosRouter = require("./routes/Proyectos");
+app.use("/proyectos", proyectosRouter);
+
 //Definir puerto
 //Antes de iniciar la app, sincronizar la base de datos (con las tablas de la carpeta models)
 db.sequelize.sync().then(() => {

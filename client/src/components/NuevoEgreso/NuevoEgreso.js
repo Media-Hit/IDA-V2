@@ -23,6 +23,7 @@ function NuevoEgreso() {
   const [loadingCategorias, setLoadingCategorias] = useState(true);
   const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
   const [subCategorias, setSubCategorias] = useState([]);
+  const [listOfProyectos, setListOfProyectos] = useState([]);
 
   const [selectedCategoria, setSelectedCategoria] = useState(null);
 
@@ -85,6 +86,17 @@ function NuevoEgreso() {
       .catch((error) => {
         console.error("Error al obtener datos de proveedores:", error);
         setLoadingCategorias(false);
+      });
+
+    axios
+      .get("http://localhost:3001/proyectos/listado")
+      .then((response) => {
+        setListOfProyectos(response.data);
+        //  setLoadingProveedores(false);
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos de proveedores:", error);
+        //  setLoadingProveedores(false);
       });
   }, []);
 
@@ -175,11 +187,11 @@ function NuevoEgreso() {
                     />
                   </Box>
                 </div>
-                {/* <CampoDesplegableCreate
+                <CampoDesplegableCreate
                   etiqueta="Proyecto"
                   values={listOfProyectos}
                   columName="nombre"
-                /> */}
+                />
               </div>
             </div>
             <div className="nuevoegreso_columna">
