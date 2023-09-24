@@ -12,15 +12,38 @@ import { CampoAutocomplete } from "../CampoAutocomplete/CampoAutocomplete";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
+  const [loadingCuentas, setLoadingCuentas] = useState(true);
+
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
+  const [listOfAllCategorias, setListOfAllCategorias] = useState([]);
   const [listOfCategorias, setListOfCategorias] = useState([]);
   const [loadingCategorias, setLoadingCategorias] = useState(true);
+  const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
+  const [subCategorias, setSubCategorias] = useState([]);
 
   const [selectedCategoria, setSelectedCategoria] = useState(null);
+
+  //Se activa cuando se escoge un categoria
   const handleCategoriaSelect = (categoria) => {
     setSelectedCategoria(categoria);
     console.log("Categoria seleccionada:", categoria);
+
+    if (categoria === null || !categoria.es_padre) {
+      setSubCategoriaExiste(false);
+      setSubCategorias([]);
+    } else {
+      const subCategoriasFiltradas = listOfAllCategorias.filter(
+        (subCategoria) => subCategoria.padre === categoria.nombre
+      );
+      setSubCategorias(subCategoriasFiltradas);
+      setSubCategoriaExiste(true);
+    }
+  };
+
+  const handleSubcategoriaSelect = (subcategoria) => {
+    console.log("SubcategoriaEscogida");
+    console.log(subcategoria);
   };
 
   useEffect(() => {
@@ -45,13 +68,16 @@ function NuevoEgreso() {
     axios
       .get("http://localhost:3001/categoriasEgresos")
       .then((response) => {
-        const categoriasFiltradas = response.data.filter((categoria) => {
+        const allCategorias = response.data;
+        setListOfAllCategorias(allCategorias);
+
+        const categoriasPrincipales = response.data.filter((categoria) => {
           return (
             categoria.es_padre === true ||
             (categoria.es_padre === false && categoria.es_hijo === false)
           );
         });
-        setListOfCategorias(categoriasFiltradas);
+        setListOfCategorias(categoriasPrincipales);
         setLoadingCategorias(false);
       })
       .catch((error) => {
@@ -93,11 +119,13 @@ function NuevoEgreso() {
 
               <div className="info-box">
                 <h2 className="box-title titulo ">Cómo</h2>
-                <CampoDesplegable
-                  etiqueta="Cuenta"
-                  values={listOfCuentas}
-                  columName="nombre"
-                />
+                {!loadingCuentas && (
+                  <CampoDesplegable
+                    etiqueta="Cuenta"
+                    values={listOfCuentas}
+                    columName="nombre"
+                  />
+                )}
 
                 {!loadingProveedores && (
                   <CampoDesplegableCreate
@@ -114,11 +142,22 @@ function NuevoEgreso() {
                 </div>
 
                 {!loadingCategorias && (
+                  <div className="margin-bottom">
+                    <CampoAutocomplete
+                      etiqueta="Categoría"
+                      values={listOfCategorias}
+                      columName="nombre"
+                      onSelect={handleCategoriaSelect}
+                    />
+                  </div>
+                )}
+
+                {subCategoriaExiste && (
                   <CampoAutocomplete
-                    etiqueta="Categoría"
-                    values={listOfCategorias}
+                    etiqueta="Sub Categoría"
+                    values={subCategorias}
                     columName="nombre"
-                    onSelect={handleCategoriaSelect}
+                    onSelect={handleSubcategoriaSelect}
                   />
                 )}
               </div>
