@@ -3,6 +3,8 @@ import "./NuevoEgreso.css";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 import { SelectorDeFecha } from "../SelectorDeFecha/SelectorDeFecha";
 import { CampoDesplegable } from "../CampoDesplegable/CampoDesplegable";
@@ -153,13 +155,31 @@ function NuevoEgreso() {
                 )}
 
                 {subCategoriaExiste && (
-                  <CampoAutocomplete
-                    etiqueta="Sub Categoría"
-                    values={subCategorias}
-                    columName="nombre"
-                    onSelect={handleSubcategoriaSelect}
-                  />
+                  <div className="margin-bottom">
+                    <CampoAutocomplete
+                      etiqueta="Sub Categoría"
+                      values={subCategorias}
+                      columName="nombre"
+                      onSelect={handleSubcategoriaSelect}
+                    />
+                  </div>
                 )}
+                <div className="margin-bottom">
+                  <Box component="form" noValidate autoComplete="off">
+                    <TextField
+                      label="Descripción"
+                      variant="outlined"
+                      multiline
+                      fullWidth
+                      maxRows={4}
+                    />
+                  </Box>
+                </div>
+                {/* <CampoDesplegableCreate
+                  etiqueta="Proyecto"
+                  values={listOfProyectos}
+                  columName="nombre"
+                /> */}
               </div>
             </div>
             <div className="nuevoegreso_columna">
