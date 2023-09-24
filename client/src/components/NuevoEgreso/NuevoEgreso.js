@@ -39,7 +39,13 @@ function NuevoEgreso() {
     axios
       .get("http://localhost:3001/categoriasEgresos")
       .then((response) => {
-        setListOfCategorias(response.data);
+        const categoriasFiltradas = response.data.filter((categoria) => {
+          return (
+            categoria.es_padre === true ||
+            (categoria.es_padre === false && categoria.es_hijo === false)
+          );
+        });
+        setListOfCategorias(categoriasFiltradas);
         setLoadingCategorias(false);
       })
       .catch((error) => {
