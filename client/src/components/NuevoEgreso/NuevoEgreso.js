@@ -57,6 +57,7 @@ function NuevoEgreso() {
         (cuenta) => cuenta.tipo_de_cuenta === "debit"
       );
       setListOfCuentas(cuentasDebito);
+      setLoadingCuentas(false);
     });
 
     axios
