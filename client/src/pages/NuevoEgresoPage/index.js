@@ -1,6 +1,6 @@
 import React from "react";
-import { MainMenu } from "../components/MainMenu/MainMenu";
-import { NuevoEgreso } from "../components/NuevoEgreso/NuevoEgreso";
+import { MainMenu } from "../../components/MainMenu/MainMenu";
+import { NuevoEgreso } from "./NuevoEgreso";
 
 function NuevoEgresoPage() {
   return (

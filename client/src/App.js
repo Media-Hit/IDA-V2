@@ -9,8 +9,8 @@ import "./assets/uicons-bold-rounded/css/uicons-bold-rounded.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MovimientosPage } from "./pages/MovimientosPage";
 import { BalancePage } from "./pages/BalancePage";
-import { NuevoMovimientoPage } from "./pages/nuevoMovimiento-page";
-import { NuevoEgresoPage } from "./pages/nuevoEgreso-page";
+import { NuevoMovimientoPage } from "./pages/NuevoMovimientoPage";
+import { NuevoEgresoPage } from "./pages/NuevoEgresoPage";
 
 // import {useEffect, useState} from "react"
 
