@@ -28,10 +28,8 @@ function NuevoEgreso() {
   const [subCategorias, setSubCategorias] = useState([]);
   const [listOfProyectos, setListOfProyectos] = useState([]);
   const [mostrarProyectos, setMostrarProyectos] = useState(false);
-  const [switchState, setSwitchState] = useState(false);
 
   const [montoPagado, setMontoPagado] = useState(0); // Estado para el valor de CampoDinero
-  const [cifraCalculada, setCifraCalculada] = useState(0); // Estado para el cálculo
 
   //Se activa cuando se escoge un categoria
   const handleCategoriaSelect = (categoria) => {
@@ -106,27 +104,6 @@ function NuevoEgreso() {
         //  setLoadingProveedores(false);
       });
   }, []);
-
-  useEffect(() => {
-    // Update the switchState when cifraCalculada changes
-    console.log("cifraCalculada changed:", cifraCalculada);
-
-    const calculo = (cifraCalculada * 0.04) / 100;
-    console.log("calculo:", calculo);
-
-    setSwitchState(cifraCalculada !== 0);
-  }, [cifraCalculada]);
-
-  const toggleSwitch = () => {
-    setSwitchState(!switchState);
-  };
-
-  const pruebatecnica = [
-    { nombre: "Carulla" },
-    { nombre: "Nicolás Benavides" },
-    { nombre: "Google" },
-    { nombre: "Alkosto" },
-  ];
 
   return (
     <>
@@ -221,7 +198,8 @@ function NuevoEgreso() {
                   etiqueta={"Monto Pagado"}
                   onChange={(valor) => setMontoPagado(valor)}
                 />
-                <SwitchConCifra cifraCalculada={cifraCalculada} />
+                <p>Monto Pagado ${montoPagado}</p>
+                <SwitchConCifra etiqueta="4x1000" cifraCalculada={4000} />
               </div>
             </div>
             <div className="nuevoegreso_columna">

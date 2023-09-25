@@ -5,7 +5,7 @@ import Switch from "@mui/material/Switch";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-function SwitchConCifra(cifraCalculada) {
+function SwitchConCifra({ etiqueta, cifraCalculada }) {
   const [switchState, setSwitchState] = useState(false);
 
   const toggleSwitch = () => {
@@ -14,7 +14,7 @@ function SwitchConCifra(cifraCalculada) {
 
   useEffect(() => {
     // Update the switchState when cifraCalculada changes
-    setSwitchState(cifraCalculada !== 0);
+    setSwitchState(cifraCalculada == 0);
   }, [cifraCalculada]);
 
   return (
@@ -26,10 +26,10 @@ function SwitchConCifra(cifraCalculada) {
           )}
 
           {switchState ? (
-            <p className="descripcionSwitch parentheses">4x1000</p>
+            <p className="descripcionSwitch parentheses">${etiqueta}</p>
           ) : (
             <>
-              <p className="descripcionSwitchInactive ">4x1000</p>
+              <p className="descripcionSwitchInactive ">${etiqueta}</p>
             </>
           )}
         </div>
