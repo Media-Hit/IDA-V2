@@ -1,9 +1,9 @@
 import React from "react";
+import "./CalMovimientos.css";
+
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-
-import "./CalMovimientos.css";
 
 function CalMovimientos({ selectedDate, setSelectedDate }) {
   const handleDateChange = (newValue) => {

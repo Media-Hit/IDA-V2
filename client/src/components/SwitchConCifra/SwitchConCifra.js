@@ -22,9 +22,7 @@ function SwitchConCifra(cifraCalculada) {
       <div className="switchBox">
         <div className="switch__leftColumn">
           {switchState && (
-            <p className="cifraSwitch">
-              ${cifraCalculada.cifraCalculada.toString()}
-            </p>
+            <p className="cifraSwitch">${cifraCalculada.cifraCalculada}</p>
           )}
 
           {switchState ? (

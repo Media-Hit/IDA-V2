@@ -1,12 +1,9 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import iconMapper from "../iconMapper";
-import { format } from "date-fns";
-
-// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-
+import React, { useEffect, useState } from "react";
 import "./ListMovimientos.css";
+
+import axios from "axios";
+import iconMapper from "../../components/iconMapper";
+import { format } from "date-fns";
 
 function ListMovimientos({ selectedDate }) {
   const [listOfEgresos, setListOfEgresos] = useState([]);

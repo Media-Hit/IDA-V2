@@ -1,10 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import { CalMovimientos } from "../CalMovimientos/CalMovimientos";
-import { ListMovimientos } from "../ListMovimientos/ListMovimientos";
-import { Link } from "react-router-dom";
-
 import "./Movimientos.css";
+
+import { useState } from "react";
+import { CalMovimientos } from "./CalMovimientos";
+import { ListMovimientos } from "./ListMovimientos";
+import { Link } from "react-router-dom";
 
 function Movimientos() {
   const [selectedDate, setSelectedDate] = useState(null); // Estado compartido para la fecha seleccionada
