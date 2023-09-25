@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import "./CampoDinero.css";
 
 import PropTypes from "prop-types";
@@ -36,17 +36,19 @@ NumericFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-function CampoDinero({ valorInicial, etiqueta }) {
+function CampoDinero({ etiqueta, onChange }) {
   const [values, setValues] = React.useState({
     textmask: "(100) 000-0000",
-    numberformat: valorInicial,
+    // numberformat: "0", //numero inicial
   });
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
+  const [monto, setMonto] = useState(0);
+  const handleInputChange = (event) => {
+    const newValue = parseInt(event.target.value);
+    setMonto(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
   };
 
   return (
@@ -56,7 +58,7 @@ function CampoDinero({ valorInicial, etiqueta }) {
           variant="outlined"
           label={etiqueta}
           value={values.numberformat}
-          onChange={handleChange}
+          onChange={handleInputChange}
           name="numberformat"
           fullWidth
           InputProps={{

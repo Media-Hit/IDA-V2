@@ -29,7 +29,10 @@ function NuevoEgreso() {
   const [listOfProyectos, setListOfProyectos] = useState([]);
   const [mostrarProyectos, setMostrarProyectos] = useState(false);
 
-  const [montoPagado, setMontoPagado] = useState(0); // Estado para el valor de CampoDinero
+  const [montoPagado, setMontoPagado] = useState(0);
+  const [calculo4x1000, setcalculo4x1000] = useState(0);
+  const [costoTransferencia, setCostoTransferencia] = useState(1000);
+  const [consolidadoDeEgresos, setConsolidadoDeEgresos] = useState(0);
 
   //Se activa cuando se escoge un categoria
   const handleCategoriaSelect = (categoria) => {
@@ -52,6 +55,19 @@ function NuevoEgreso() {
     console.log("SubcategoriaEscogida");
     console.log(subcategoria);
   };
+
+  const handleMontoPagadoChange = (valor) => {
+    const monto = parseFloat(valor);
+    if (!isNaN(monto)) {
+      setMontoPagado(monto);
+    } else {
+      setMontoPagado(0);
+    }
+  };
+  useEffect(() => {
+    setConsolidadoDeEgresos(montoPagado + costoTransferencia);
+    setcalculo4x1000((montoPagado + costoTransferencia) * 0.004);
+  }, [montoPagado, costoTransferencia]);
 
   useEffect(() => {
     axios.get("http://localhost:3001/cuentas").then((response) => {
@@ -194,12 +210,20 @@ function NuevoEgreso() {
               <div className="info-box">
                 <h2 className="box-title titulo ">Cuánto</h2>
                 <CampoDinero
-                  valorInicial={montoPagado}
                   etiqueta={"Monto Pagado"}
-                  onChange={(valor) => setMontoPagado(valor)}
+                  onChange={handleMontoPagadoChange}
                 />
-                <p>Monto Pagado ${montoPagado}</p>
-                <SwitchConCifra etiqueta="4x1000" cifraCalculada={4000} />
+                <p>Monto Pagado: {montoPagado}</p>
+                <p>Costo Transferencia: {costoTransferencia}</p>
+
+                <p>Total: {consolidadoDeEgresos}</p>
+
+                <p>Monto 4x1000: {calculo4x1000}</p>
+
+                {/* <SwitchConCifra
+                  etiqueta="4x1000"
+                  cifraCalculada={cifraCalculada}
+                /> */}
               </div>
             </div>
             <div className="nuevoegreso_columna">
