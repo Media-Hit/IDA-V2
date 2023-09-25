@@ -213,17 +213,23 @@ function NuevoEgreso() {
                   etiqueta={"Monto Pagado"}
                   onChange={handleMontoPagadoChange}
                 />
+
+                <p>Módulo Aporta a cuentas por pagar Switch</p>
+                <br />
+
+                <SwitchConCifra
+                  etiqueta="4x1000"
+                  cifraCalculada={calculo4x1000}
+                />
+
+                <p>Módulo Total Egresado: $$$$$ </p>
+                <br />
+
+                <p>Variables Útiles (NO UX)</p>
                 <p>Monto Pagado: {montoPagado}</p>
                 <p>Costo Transferencia: {costoTransferencia}</p>
-
                 <p>Total: {consolidadoDeEgresos}</p>
-
                 <p>Monto 4x1000: {calculo4x1000}</p>
-
-                {/* <SwitchConCifra
-                  etiqueta="4x1000"
-                  cifraCalculada={cifraCalculada}
-                /> */}
               </div>
             </div>
             <div className="nuevoegreso_columna">

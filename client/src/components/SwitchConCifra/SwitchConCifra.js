@@ -12,24 +12,32 @@ function SwitchConCifra({ etiqueta, cifraCalculada }) {
     setSwitchState(!switchState);
   };
 
+  // Formatear cifraCalculada como número con separador de miles y símbolo "$"
+  const formattedCifraCalculada = cifraCalculada.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0, // Evita los decimales
+    maximumFractionDigits: 0, // Evita los decimales
+  });
+
   useEffect(() => {
     // Update the switchState when cifraCalculada changes
     setSwitchState(cifraCalculada == 0);
   }, [cifraCalculada]);
 
   return (
-    <div className="switchContainer">
+    <div className="switchContainer margin-bottom">
       <div className="switchBox">
         <div className="switch__leftColumn">
           {switchState && (
-            <p className="cifraSwitch">${cifraCalculada.cifraCalculada}</p>
+            <p className="cifraSwitch">{formattedCifraCalculada}</p>
           )}
 
           {switchState ? (
-            <p className="descripcionSwitch parentheses">${etiqueta}</p>
+            <p className="descripcionSwitch parentheses">{etiqueta}</p>
           ) : (
             <>
-              <p className="descripcionSwitchInactive ">${etiqueta}</p>
+              <p className="descripcionSwitchInactive ">{etiqueta}</p>
             </>
           )}
         </div>
