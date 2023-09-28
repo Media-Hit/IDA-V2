@@ -3,7 +3,7 @@ import "./Movimientos.css";
 
 import { useState } from "react";
 import { CalMovimientos } from "./CalMovimientos";
-import { ListMovimientos } from "./ListMovimientos";
+import { ListMovimientos } from "../ListMovimientos";
 import { Link } from "react-router-dom";
 
 function Movimientos() {
