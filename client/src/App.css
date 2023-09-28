@@ -141,7 +141,7 @@
   justify-content: space-between;
   height: 60px;
   background-color: var(--White);
-  padding: 5px 30px;
+  padding: 4px 30px;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   z-index: 100;
   position: sticky;
@@ -149,7 +149,7 @@
 }
 
 .pageTittle {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
   color: var(--Tittles);
 }
