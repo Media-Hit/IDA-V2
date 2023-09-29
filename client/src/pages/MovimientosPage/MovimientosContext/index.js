@@ -31,7 +31,6 @@ function MovimientosProvider({ children }) {
         setSelectedDate,
         handleClearFilter,
         handleAddButtonClick,
-        handleAddButtonClick,
         clearLocalStorage,
       }}
     >

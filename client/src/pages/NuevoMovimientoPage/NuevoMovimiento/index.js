@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NuevoMovimiento.css";
+
+import { Link } from "react-router-dom";
 import { CategoriaMovimiento } from "../CategoriaMovimiento/CategoriaMovimiento";
 
 function NuevoMovimiento() {
