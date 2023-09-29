@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ListMovimientos.css";
 
 import axios from "axios";
-import iconMapper from "../../../components/iconMapper";
+import iconMapper from "../../components/iconMapper";
 import { format } from "date-fns";
 
 function ListMovimientos({ selectedDate }) {

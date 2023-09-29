@@ -1,10 +1,10 @@
 import React from "react";
 import "./Movimientos.css";
 
-import { CalMovimientos } from "../CalMovimientos";
-import { ListMovimientos } from "../ListMovimientos";
+import { CalMovimientos } from "./CalMovimientos";
+import { ListMovimientos } from "./ListMovimientos";
 import { Link } from "react-router-dom";
-import { MovimientosContext } from "../MovimientosContext";
+import { MovimientosContext } from "./MovimientosContext";
 
 function Movimientos() {
   return (

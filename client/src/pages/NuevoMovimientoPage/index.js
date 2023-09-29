@@ -1,6 +1,6 @@
 import React from "react";
 import { MainMenu } from "../../components/MainMenu/MainMenu";
-import { NuevoMovimiento } from "../../components/NuevoMovimiento/NuevoMovimiento";
+import { NuevoMovimiento } from "./NuevoMovimiento/NuevoMovimiento";
 import { MovimientosProvider } from "../MovimientosPage/MovimientosContext";
 
 function NuevoMovimientoPage() {

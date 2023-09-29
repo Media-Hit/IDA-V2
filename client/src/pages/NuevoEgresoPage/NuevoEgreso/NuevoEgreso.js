@@ -6,13 +6,13 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-import { SelectorDeFecha } from "../../components/SelectorDeFecha/SelectorDeFecha";
-import { CampoDesplegable } from "../../components/CampoDesplegable/CampoDesplegable";
-import { PersonalCorporativo } from "../../components/PersonalCorporativo/PersonalCorporativo";
-import { CampoDesplegableCreate } from "../../components/CampoDesplegableCreate/CampoDesplegableCreate";
-import { CampoAutocomplete } from "../../components/CampoAutocomplete/CampoAutocomplete";
-import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
-import { SwitchConCifra } from "../../components/SwitchConCifra/SwitchConCifra";
+import { SelectorDeFecha } from "../../../components/SelectorDeFecha/SelectorDeFecha";
+import { CampoDesplegable } from "../../../components/CampoDesplegable";
+import { PersonalCorporativo } from "../../../components/PersonalCorporativo/PersonalCorporativo";
+import { CampoDesplegableCreate } from "../../../components/CampoDesplegableCreate/CampoDesplegableCreate";
+import { CampoAutocomplete } from "../../../components/CampoAutocomplete/CampoAutocomplete";
+import { CampoDinero } from "../../../components/CampoDinero/CampoDinero";
+import { SwitchConCifra } from "../../../components/SwitchConCifra/SwitchConCifra";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);

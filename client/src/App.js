@@ -10,9 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MovimientosPage } from "./pages/MovimientosPage";
 import { BalancePage } from "./pages/BalancePage";
 import { NuevoMovimientoPage } from "./pages/NuevoMovimientoPage";
-import { NuevoEgresoPage } from "./pages/NuevoEgresoPage";
-
-// import {useEffect, useState} from "react"
+import { NuevoEgresoPage } from "./pages/NuevoEgresoPage/";
 
 function App() {
   //App
