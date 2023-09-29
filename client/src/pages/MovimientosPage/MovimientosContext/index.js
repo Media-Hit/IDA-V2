@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 const MovimientosContext = createContext();
 
 function MovimientosProvider({ children }) {
-  //Página de Movimientos
+  //Página de Movimientoss
 
   const [selectedDate, setSelectedDate] = useState(null); // Estado compartido para la fecha seleccionada
 

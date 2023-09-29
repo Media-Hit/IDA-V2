@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CampoDinero.css";
 
 import PropTypes from "prop-types";
@@ -37,15 +37,13 @@ NumericFormatCustom.propTypes = {
 };
 
 function CampoDinero({ etiqueta, onChange }) {
-  const [values, setValues] = React.useState({
+  const [values] = React.useState({
     textmask: "(100) 000-0000",
     // numberformat: "0", //numero inicial
   });
 
-  const [monto, setMonto] = useState(0);
   const handleInputChange = (event) => {
     const newValue = parseInt(event.target.value);
-    setMonto(newValue);
     if (onChange) {
       onChange(newValue);
     }

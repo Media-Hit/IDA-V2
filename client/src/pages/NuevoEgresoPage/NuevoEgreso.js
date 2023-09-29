@@ -37,7 +37,7 @@ function NuevoEgreso() {
   //Se activa cuando se escoge un categoria
   const handleCategoriaSelect = (categoria) => {
     setSelectedCategoria(categoria);
-    console.log("Categoria seleccionada:", categoria);
+    console.log("Categoria seleccionada:", selectedCategoria);
 
     if (categoria === null || !categoria.es_padre) {
       setSubCategoriaExiste(false);

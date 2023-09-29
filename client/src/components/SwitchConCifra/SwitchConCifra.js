@@ -22,7 +22,7 @@ function SwitchConCifra({ etiqueta, cifraCalculada }) {
 
   useEffect(() => {
     // Update the switchState when cifraCalculada changes
-    setSwitchState(cifraCalculada == 0);
+    setSwitchState(cifraCalculada === 0);
   }, [cifraCalculada]);
 
   return (
