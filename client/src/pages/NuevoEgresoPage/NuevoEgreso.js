@@ -13,6 +13,7 @@ import { CampoDesplegableCreate } from "../../components/CampoDesplegableCreate/
 import { CampoAutocomplete } from "../../components/CampoAutocomplete/CampoAutocomplete";
 import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
 import { SwitchConCifra } from "../../components/SwitchConCifra/SwitchConCifra";
+import { CostoTransferencia } from "./CostoTransferencia";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
@@ -64,6 +65,7 @@ function NuevoEgreso() {
       setMontoPagado(0);
     }
   };
+
   useEffect(() => {
     setConsolidadoDeEgresos(montoPagado + costoTransferencia);
     setcalculo4x1000((montoPagado + costoTransferencia) * 0.004);
@@ -213,6 +215,8 @@ function NuevoEgreso() {
                   etiqueta={"Monto Pagado"}
                   onChange={handleMontoPagadoChange}
                 />
+
+                <CostoTransferencia />
 
                 <p>Módulo Aporta a cuentas por pagar Switch</p>
                 <br />

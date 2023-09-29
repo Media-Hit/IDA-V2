@@ -26,7 +26,7 @@ function SwitchConCifra({ etiqueta, cifraCalculada }) {
   }, [cifraCalculada]);
 
   return (
-    <div className="switchContainer margin-bottom">
+    <div className="switchContainer box-border margin-bottom">
       <div className="switchBox">
         <div className="switch__leftColumn">
           {switchState && (
@@ -37,7 +37,7 @@ function SwitchConCifra({ etiqueta, cifraCalculada }) {
             <p className="descripcionSwitch parentheses">{etiqueta}</p>
           ) : (
             <>
-              <p className="descripcionSwitchInactive ">{etiqueta}</p>
+              <p className="inactiveFieldText ">{etiqueta}</p>
             </>
           )}
         </div>

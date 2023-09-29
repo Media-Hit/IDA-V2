@@ -166,3 +166,14 @@
 .margin-bottom {
   margin-bottom: 22px;
 }
+
+.box-border {
+  border: 1px solid #babbbf;
+  border-radius: 4px;
+}
+
+.inactiveFieldText {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--InactiveField);
+}
