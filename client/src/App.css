@@ -177,3 +177,11 @@
   font-weight: 400;
   color: var(--InactiveField);
 }
+
+.subtittle-box {
+  color: var(--InactiveField);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4375em;
+  margin-bottom: 8px;
+}

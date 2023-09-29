@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CostoTransferencia.css";
 
 import Switch from "@mui/material/Switch";
@@ -10,20 +10,34 @@ import FormLabel from "@mui/material/FormLabel";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-const ivaSelectStyle = {
-  fontSize: 30,
-  fontWeight: "medium",
-};
-
 function CostoTransferencia() {
+  const [switchTransferenciaActive, setSwitchTransferenciaActive] =
+    useState(false);
+
+  const handleSwitchChange = () => {
+    setSwitchTransferenciaActive(!switchTransferenciaActive);
+  };
+
+  const fila1ClassName = switchTransferenciaActive
+    ? "transferencia__fila1 transferencia__fila1--active"
+    : "transferencia__fila1";
+
+  const fila2ClassName = switchTransferenciaActive
+    ? "transferencia__fila2--active"
+    : "transferencia__fila2--inactive";
+
   return (
     <div className="transferenciaContainer box-border margin-bottom">
-      <div className="transferencia__fila1 transferencia__fila1--active">
+      <div className={fila1ClassName}>
         <div className="transferencia_label inactiveFieldText">Transacción</div>
-        <Switch {...label} />
+        <Switch
+          {...label}
+          onChange={handleSwitchChange}
+          checked={switchTransferenciaActive}
+        />
       </div>
 
-      <div className="transferencia__fila2">
+      <div className={fila2ClassName}>
         <div className="trasnferencia__fila2__columna1">
           <FormControl>
             <FormLabel sx={{ fontSize: 14, fontWeight: "medium" }}>
@@ -56,9 +70,10 @@ function CostoTransferencia() {
           </FormControl>
         </div>
         <div className="transferencia__fila2__columna2">
-          <span>Subtotal: $1000</span>
-          <span>IVA: $190</span>
-          <span>Total: $1000</span>
+          <span className="subtittle-box">Resumen:</span>
+          <span className="resumen-transaccion-body">Subtotal: $1000</span>
+          <span className="resumen-transaccion-body">IVA: $190</span>
+          <span className="resumen-transaccion-body">Total: $1000</span>
         </div>
       </div>
     </div>
