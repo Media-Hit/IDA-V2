@@ -7,6 +7,10 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import Box from "@mui/material/Box";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -30,6 +34,17 @@ function CostoTransferencia() {
     <div className="transferenciaContainer box-border margin-bottom">
       <div className={fila1ClassName}>
         <div className="transferencia_label inactiveFieldText">Transacción</div>
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+            <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+            <Input
+              id="standard-adornment-amount"
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
+            />
+          </FormControl>
+        </Box>
         <Switch
           {...label}
           onChange={handleSwitchChange}
