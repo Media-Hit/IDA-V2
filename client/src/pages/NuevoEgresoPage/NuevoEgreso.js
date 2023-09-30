@@ -214,6 +214,9 @@ function NuevoEgreso() {
                 <CampoDinero
                   etiqueta={"Monto Pagado"}
                   onChange={handleMontoPagadoChange}
+                  variante="outlined"
+                  autofocus={false}
+                  disableBottomLine={false}
                 />
 
                 <CostoTransferencia />

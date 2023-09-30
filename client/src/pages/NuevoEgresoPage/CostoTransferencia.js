@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./CostoTransferencia.css";
 
 import Switch from "@mui/material/Switch";
@@ -7,19 +7,22 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import Box from "@mui/material/Box";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
+import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
+
+// import Input from "@mui/material/Input";
+// import InputLabel from "@mui/material/InputLabel";
+// import InputAdornment from "@mui/material/InputAdornment";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
 function CostoTransferencia() {
+  //Activar y Desactivar Switch (estilos)
   const [switchTransferenciaActive, setSwitchTransferenciaActive] =
     useState(false);
 
   const handleSwitchChange = () => {
     setSwitchTransferenciaActive(!switchTransferenciaActive);
+    setCostoTransaccion(0);
   };
 
   const fila1ClassName = switchTransferenciaActive
@@ -30,23 +33,63 @@ function CostoTransferencia() {
     ? "transferencia__fila2--active"
     : "transferencia__fila2--inactive";
 
+  //Radio Group del IVA
+  const [modalidadIvaTransferencia, setModalidadIvaTransferencia] =
+    useState("noiva");
+
+  const handleIvaChange = (event) => {
+    setModalidadIvaTransferencia(event.target.value);
+  };
+
+  //Calcular Transacción
+  const [costoTransaccion, setCostoTransaccion] = useState(0);
+  const [subtotalTransaccion, setSubtotalTransaccion] = useState(0);
+  const [ivaTransaccion, setIvaTransaccion] = useState(0);
+  const [totalTransaccion, setTotalTransaccion] = useState(0);
+
+  const handleTransaccionChange = (valor) => {
+    const monto = parseFloat(valor);
+    if (!isNaN(monto)) {
+      setCostoTransaccion(monto);
+    } else {
+      setCostoTransaccion(0);
+    }
+  };
+
+  useEffect(() => {
+    const iva = costoTransaccion * 0.19;
+
+    if (modalidadIvaTransferencia === "masiva") {
+      setSubtotalTransaccion(costoTransaccion);
+      setIvaTransaccion(iva);
+      setTotalTransaccion(costoTransaccion + iva);
+    } else if (modalidadIvaTransferencia === "coniva") {
+      const subtotal = costoTransaccion / (1 + 0.19);
+      setSubtotalTransaccion(subtotal);
+
+      const tax = subtotal * 0.19;
+      setIvaTransaccion(tax);
+
+      setTotalTransaccion(subtotal + tax);
+    } else if (modalidadIvaTransferencia === "noiva") {
+      setSubtotalTransaccion(costoTransaccion);
+      setIvaTransaccion(0);
+      setTotalTransaccion(costoTransaccion);
+    } else {
+    }
+  }, [costoTransaccion, modalidadIvaTransferencia]);
+
   return (
     <div className="transferenciaContainer box-border margin-bottom">
       <div className={fila1ClassName}>
         {switchTransferenciaActive ? (
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <InputLabel htmlFor="standard-adornment-amount">
-                Transacción
-              </InputLabel>
-              <Input
-                disableUnderline
-                startAdornment={
-                  <InputAdornment position="start">$</InputAdornment>
-                }
-              />
-            </FormControl>
-          </Box>
+          <CampoDinero
+            etiqueta={"Costo Transacción"}
+            onChange={handleTransaccionChange}
+            variante="standard"
+            autofocus={true}
+            disableBottomLine={false}
+          />
         ) : (
           <div className="transferencia_label inactiveFieldText">
             Transacción
@@ -60,15 +103,16 @@ function CostoTransferencia() {
       </div>
 
       <div className={fila2ClassName}>
-        <div className="trasnferencia__fila2__columna1">
+        <div className="transferencia__fila2__columna1">
           <FormControl>
             <FormLabel sx={{ fontSize: 14, fontWeight: "medium" }}>
               IVA:
             </FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="masiva"
+              defaultValue="noiva"
               name="radio-buttons-group"
+              onChange={handleIvaChange}
             >
               <FormControlLabel
                 className="iva-selector"
@@ -93,9 +137,15 @@ function CostoTransferencia() {
         </div>
         <div className="transferencia__fila2__columna2">
           <span className="subtittle-box">Resumen:</span>
-          <span className="resumen-transaccion-body">Subtotal: $1000</span>
-          <span className="resumen-transaccion-body">IVA: $190</span>
-          <span className="resumen-transaccion-body">Total: $1000</span>
+          <span className="resumen-transaccion-body">
+            Subtotal: ${subtotalTransaccion}
+          </span>
+          <span className="resumen-transaccion-body">
+            IVA: ${ivaTransaccion}
+          </span>
+          <span className="resumen-transaccion-body">
+            Total: ${totalTransaccion}
+          </span>
         </div>
       </div>
     </div>

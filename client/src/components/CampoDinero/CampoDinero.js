@@ -36,7 +36,13 @@ NumericFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-function CampoDinero({ etiqueta, onChange }) {
+function CampoDinero({
+  etiqueta,
+  onChange,
+  variante,
+  autofocus,
+  disableBottomLine,
+}) {
   const [values] = React.useState({
     textmask: "(100) 000-0000",
     // numberformat: "0", //numero inicial
@@ -53,15 +59,17 @@ function CampoDinero({ etiqueta, onChange }) {
     <div className="campoDineroBox margin-bottom">
       <Box>
         <TextField
-          variant="outlined"
+          variant={variante}
           label={etiqueta}
           value={values.numberformat}
           onChange={handleInputChange}
           name="numberformat"
+          autoFocus={autofocus}
           fullWidth
           InputProps={{
             inputComponent: NumericFormatCustom,
             style: { textAlign: "right" },
+            disableUnderline: { disableBottomLine },
           }}
         />
       </Box>
