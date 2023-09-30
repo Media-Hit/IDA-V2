@@ -66,6 +66,10 @@ function NuevoEgreso() {
     }
   };
 
+  function handleTotalTransaccionChange(total) {
+    setCostoTransferencia(total);
+  }
+
   useEffect(() => {
     setConsolidadoDeEgresos(montoPagado + costoTransferencia);
     setcalculo4x1000((montoPagado + costoTransferencia) * 0.004);
@@ -219,7 +223,9 @@ function NuevoEgreso() {
                   disableBottomLine={false}
                 />
 
-                <CostoTransferencia />
+                <CostoTransferencia
+                  onTotalTransaccionChange={handleTotalTransaccionChange}
+                />
 
                 <p>Módulo Aporta a cuentas por pagar Switch</p>
                 <br />

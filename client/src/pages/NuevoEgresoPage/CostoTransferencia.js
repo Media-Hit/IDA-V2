@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./CostoTransferencia.css";
 
 import Switch from "@mui/material/Switch";
@@ -15,7 +15,7 @@ import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-function CostoTransferencia() {
+function CostoTransferencia(props) {
   //Activar y Desactivar Switch (estilos)
   const [switchTransferenciaActive, setSwitchTransferenciaActive] =
     useState(false);
@@ -76,7 +76,12 @@ function CostoTransferencia() {
       setIvaTransaccion(0);
       setTotalTransaccion(costoTransaccion);
     } else {
+      setSubtotalTransaccion(0);
+      setIvaTransaccion(0);
+      setTotalTransaccion(0);
     }
+
+    props.onTotalTransaccionChange(totalTransaccion);
   }, [costoTransaccion, modalidadIvaTransferencia]);
 
   return (
@@ -138,13 +143,22 @@ function CostoTransferencia() {
         <div className="transferencia__fila2__columna2">
           <span className="subtittle-box">Resumen:</span>
           <span className="resumen-transaccion-body">
-            Subtotal: ${subtotalTransaccion}
+            Subtotal: $
+            {Math.round(subtotalTransaccion).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}
           </span>
           <span className="resumen-transaccion-body">
-            IVA: ${ivaTransaccion}
+            IVA: $
+            {Math.round(ivaTransaccion).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}
           </span>
           <span className="resumen-transaccion-body">
-            Total: ${totalTransaccion}
+            Total: $
+            {totalTransaccion.toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}
           </span>
         </div>
       </div>
