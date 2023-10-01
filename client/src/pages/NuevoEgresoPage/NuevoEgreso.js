@@ -35,6 +35,8 @@ function NuevoEgreso() {
   const [costoTransferencia, setCostoTransferencia] = useState(0);
   const [consolidadoDeEgresos, setConsolidadoDeEgresos] = useState(0);
 
+  const [cuatroPorMilActivo, setcuatroPorMilActivo] = useState(false);
+
   //Se activa cuando se escoge un categoria
   const handleCategoriaSelect = (categoria) => {
     setSelectedCategoria(categoria);
@@ -71,10 +73,14 @@ function NuevoEgreso() {
   }
 
   useEffect(() => {
-    const cuatroxmil = Math.round((montoPagado + costoTransferencia) * 0.004);
+    let cuatroxmil = 0;
+    if (cuatroPorMilActivo) {
+      cuatroxmil = Math.round((montoPagado + costoTransferencia) * 0.004);
+    }
+
     setCalculo4x1000(cuatroxmil);
     setConsolidadoDeEgresos(montoPagado + costoTransferencia + cuatroxmil);
-  }, [montoPagado, costoTransferencia]);
+  }, [montoPagado, costoTransferencia, cuatroPorMilActivo]);
 
   //Axios
   useEffect(() => {
@@ -235,6 +241,7 @@ function NuevoEgreso() {
                 <SwitchConCifra
                   etiqueta="4x1000"
                   cifraCalculada={calculo4x1000}
+                  onOrOff={setcuatroPorMilActivo}
                 />
 
                 <p>Total: </p>

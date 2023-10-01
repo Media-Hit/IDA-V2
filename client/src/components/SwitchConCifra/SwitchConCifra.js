@@ -5,11 +5,13 @@ import Switch from "@mui/material/Switch";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-function SwitchConCifra({ etiqueta, cifraCalculada }) {
+function SwitchConCifra({ etiqueta, cifraCalculada, onOrOff }) {
   const [switchState, setSwitchState] = useState(false);
 
   const toggleSwitch = () => {
-    setSwitchState(!switchState);
+    const newSwitchState = !switchState;
+    setSwitchState(newSwitchState);
+    onOrOff(newSwitchState);
   };
 
   // Formatear cifraCalculada como número con separador de miles y símbolo "$"
@@ -19,11 +21,6 @@ function SwitchConCifra({ etiqueta, cifraCalculada }) {
     minimumFractionDigits: 0, // Evita los decimales
     maximumFractionDigits: 0, // Evita los decimales
   });
-
-  useEffect(() => {
-    // Update the switchState when cifraCalculada changes
-    setSwitchState(cifraCalculada === 0);
-  }, [cifraCalculada]);
 
   return (
     <div className="switchContainer box-border margin-bottom">
