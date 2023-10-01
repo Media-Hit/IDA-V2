@@ -57,20 +57,20 @@ function CostoTransferencia(props) {
   };
 
   useEffect(() => {
-    const iva = montoInsertado * 0.19;
+    const iva = Math.round(montoInsertado * 0.19);
 
     if (modalidadIvaTransferencia === "masiva") {
       setSubtotalTransaccion(montoInsertado);
       setIvaTransaccion(iva);
       setTotalTransaccion(montoInsertado + iva);
     } else if (modalidadIvaTransferencia === "coniva") {
-      const subtotal = montoInsertado / (1 + 0.19);
+      const subtotal = Math.round(montoInsertado / (1 + 0.19));
       setSubtotalTransaccion(subtotal);
 
-      const tax = subtotal * 0.19;
-      setIvaTransaccion(tax);
+      const ivaIncluido = Math.round(subtotal * 0.19);
+      setIvaTransaccion(ivaIncluido);
 
-      setTotalTransaccion(subtotal + tax);
+      setTotalTransaccion(subtotal + ivaIncluido);
     } else if (modalidadIvaTransferencia === "noiva") {
       setSubtotalTransaccion(montoInsertado);
       setIvaTransaccion(0);
@@ -80,9 +80,11 @@ function CostoTransferencia(props) {
       setIvaTransaccion(0);
       setTotalTransaccion(0);
     }
-
-    props.onTotalTransaccionChange(totalTransaccion);
   }, [montoInsertado, modalidadIvaTransferencia]);
+
+  useEffect(() => {
+    props.onTotalTransaccionChange(totalTransaccion);
+  }, [totalTransaccion]);
 
   return (
     <div className="transferenciaContainer box-border margin-bottom">

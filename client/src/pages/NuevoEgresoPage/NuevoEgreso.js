@@ -71,7 +71,7 @@ function NuevoEgreso() {
   }
 
   useEffect(() => {
-    const cuatroxmil = (montoPagado + costoTransferencia) * 0.004;
+    const cuatroxmil = Math.round((montoPagado + costoTransferencia) * 0.004);
     setCalculo4x1000(cuatroxmil);
     setConsolidadoDeEgresos(montoPagado + costoTransferencia + cuatroxmil);
   }, [montoPagado, costoTransferencia]);
