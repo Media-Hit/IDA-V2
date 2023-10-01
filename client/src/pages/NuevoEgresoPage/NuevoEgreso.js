@@ -235,9 +235,6 @@ function NuevoEgreso() {
                   onTotalTransaccionChange={handleTotalTransaccionChange}
                 />
 
-                <p>Módulo Aporta a cuentas por pagar Switch</p>
-                <br />
-
                 <SwitchConCifra
                   etiqueta="4x1000"
                   cifraCalculada={calculo4x1000}
