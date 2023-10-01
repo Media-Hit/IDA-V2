@@ -22,7 +22,7 @@ function CostoTransferencia(props) {
 
   const handleSwitchChange = () => {
     setSwitchTransferenciaActive(!switchTransferenciaActive);
-    setCostoTransaccion(0);
+    setMontoInsertado(0);
   };
 
   const fila1ClassName = switchTransferenciaActive
@@ -42,7 +42,7 @@ function CostoTransferencia(props) {
   };
 
   //Calcular Transacción
-  const [costoTransaccion, setCostoTransaccion] = useState(0);
+  const [montoInsertado, setMontoInsertado] = useState(0);
   const [subtotalTransaccion, setSubtotalTransaccion] = useState(0);
   const [ivaTransaccion, setIvaTransaccion] = useState(0);
   const [totalTransaccion, setTotalTransaccion] = useState(0);
@@ -50,21 +50,21 @@ function CostoTransferencia(props) {
   const handleTransaccionChange = (valor) => {
     const monto = parseFloat(valor);
     if (!isNaN(monto)) {
-      setCostoTransaccion(monto);
+      setMontoInsertado(monto);
     } else {
-      setCostoTransaccion(0);
+      setMontoInsertado(0);
     }
   };
 
   useEffect(() => {
-    const iva = costoTransaccion * 0.19;
+    const iva = montoInsertado * 0.19;
 
     if (modalidadIvaTransferencia === "masiva") {
-      setSubtotalTransaccion(costoTransaccion);
+      setSubtotalTransaccion(montoInsertado);
       setIvaTransaccion(iva);
-      setTotalTransaccion(costoTransaccion + iva);
+      setTotalTransaccion(montoInsertado + iva);
     } else if (modalidadIvaTransferencia === "coniva") {
-      const subtotal = costoTransaccion / (1 + 0.19);
+      const subtotal = montoInsertado / (1 + 0.19);
       setSubtotalTransaccion(subtotal);
 
       const tax = subtotal * 0.19;
@@ -72,9 +72,9 @@ function CostoTransferencia(props) {
 
       setTotalTransaccion(subtotal + tax);
     } else if (modalidadIvaTransferencia === "noiva") {
-      setSubtotalTransaccion(costoTransaccion);
+      setSubtotalTransaccion(montoInsertado);
       setIvaTransaccion(0);
-      setTotalTransaccion(costoTransaccion);
+      setTotalTransaccion(montoInsertado);
     } else {
       setSubtotalTransaccion(0);
       setIvaTransaccion(0);
@@ -82,7 +82,7 @@ function CostoTransferencia(props) {
     }
 
     props.onTotalTransaccionChange(totalTransaccion);
-  }, [costoTransaccion, modalidadIvaTransferencia]);
+  }, [montoInsertado, modalidadIvaTransferencia]);
 
   return (
     <div className="transferenciaContainer box-border margin-bottom">

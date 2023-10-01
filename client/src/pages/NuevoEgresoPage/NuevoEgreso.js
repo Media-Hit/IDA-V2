@@ -31,8 +31,8 @@ function NuevoEgreso() {
   const [mostrarProyectos, setMostrarProyectos] = useState(false);
 
   const [montoPagado, setMontoPagado] = useState(0);
-  const [calculo4x1000, setcalculo4x1000] = useState(0);
-  const [costoTransferencia, setCostoTransferencia] = useState(1000);
+  const [calculo4x1000, setCalculo4x1000] = useState(0);
+  const [costoTransferencia, setCostoTransferencia] = useState(0);
   const [consolidadoDeEgresos, setConsolidadoDeEgresos] = useState(0);
 
   //Se activa cuando se escoge un categoria
@@ -71,10 +71,12 @@ function NuevoEgreso() {
   }
 
   useEffect(() => {
-    setConsolidadoDeEgresos(montoPagado + costoTransferencia);
-    setcalculo4x1000((montoPagado + costoTransferencia) * 0.004);
+    const cuatroxmil = (montoPagado + costoTransferencia) * 0.004;
+    setCalculo4x1000(cuatroxmil);
+    setConsolidadoDeEgresos(montoPagado + costoTransferencia + cuatroxmil);
   }, [montoPagado, costoTransferencia]);
 
+  //Axios
   useEffect(() => {
     axios.get("http://localhost:3001/cuentas").then((response) => {
       const cuentasDebito = response.data.filter(
@@ -235,14 +237,13 @@ function NuevoEgreso() {
                   cifraCalculada={calculo4x1000}
                 />
 
-                <p>Módulo Total Egresado: $$$$$ </p>
+                <p>Total: </p>
                 <br />
 
-                <p>Variables Útiles (NO UX)</p>
                 <p>Monto Pagado: {montoPagado}</p>
                 <p>Costo Transferencia: {costoTransferencia}</p>
+                <p>4x1000: {calculo4x1000}</p>
                 <p>Total: {consolidadoDeEgresos}</p>
-                <p>Monto 4x1000: {calculo4x1000}</p>
               </div>
             </div>
             <div className="nuevoegreso_columna">
