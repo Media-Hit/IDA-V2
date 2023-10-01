@@ -18,3 +18,29 @@
 .info-box {
   margin-bottom: 30px;
 }
+
+.totalResumeBox {
+  padding-left: 16px;
+}
+
+.inner-single-text {
+  font-size: 14px;
+  color: var(--MutedGrey);
+  margin-bottom: 2px;
+}
+
+.bold-text {
+  font-weight: 500;
+}
+
+.light-text {
+  font-weight: 300;
+}
+
+#total-egreso {
+  margin-top: 8px;
+  padding-top: 4px;
+  border-top: 1px solid var(--DividerBorder);
+  max-width: 150px;
+  color: var(--Grey);
+}

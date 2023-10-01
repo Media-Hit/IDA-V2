@@ -243,14 +243,23 @@ function NuevoEgreso() {
                   cifraCalculada={calculo4x1000}
                   onOrOff={setcuatroPorMilActivo}
                 />
-
-                <p>Total: </p>
-                <br />
-
-                <p>Monto Pagado: {montoPagado}</p>
-                <p>Costo Transferencia: {costoTransferencia}</p>
-                <p>4x1000: {calculo4x1000}</p>
-                <p>Total: {consolidadoDeEgresos}</p>
+                <div className="totalResumeBox">
+                  <p className="inner-single-text">
+                    <span className="bold-text">Pagado: </span>
+                    <span className="light-text">{montoPagado}</span>
+                  </p>
+                  <p className="inner-single-text">
+                    <span className="bold-text">Transacción: </span>
+                    <span className="light-text">{costoTransferencia}</span>
+                  </p>
+                  <p className="inner-single-text">
+                    <span className="bold-text">4x1000: </span>
+                    <span className="light-text">{calculo4x1000}</span>
+                  </p>
+                  <p className="inner-single-text bold-text" id="total-egreso">
+                    <span className="">Total: {consolidadoDeEgresos}</span>
+                  </p>
+                </div>
               </div>
             </div>
             <div className="nuevoegreso_columna">
