@@ -1,7 +1,7 @@
 .nuevoEgreso__bodyContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1000px;
+  grid-template-columns: 1fr 1fr;
+  max-width: 660px;
   /* gap: 50px; */
 }
 

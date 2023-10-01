@@ -104,6 +104,41 @@
   background-color: var(--Media-Hit-Light-Grey);
 }
 
+.toolBox__Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.toolBoxButtom__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--LightGrey);
+  padding: 0px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  height: 34px;
+}
+
+.toolBoxButtom__container:hover {
+  background-color: var(--Tittles);
+  color: var(--White);
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toolBox__ButtomText {
+  font-size: 14px;
+}
+
+.toolBox__ButtomIcon {
+  margin-right: 5px;
+}
+
 .toolBoxIcon {
   font-size: 24px;
   background-color: var(--LightGrey);
@@ -117,7 +152,6 @@
 .toolBoxIcon:hover {
   background-color: var(--Tittles);
   color: var(--White);
-  padding: 5px;
   margin-left: 10px;
   border-radius: 5px;
   cursor: pointer;

@@ -141,7 +141,15 @@ function NuevoEgreso() {
         {/* Header */}
         <div className="headerContainer">
           <h1 className="pageTittle">Nuevo Egreso</h1>
-          <div className="ToolBox__Container">
+
+          <div className="toolBox__Container">
+            <div className="toolBoxButtom__container">
+              <span className="material-symbols-outlined toolBox__ButtomIcon">
+                <span class="material-symbols-outlined">done</span>
+              </span>
+              <span className="toolBox__ButtomText">Guardar</span>
+            </div>
+
             <Link to="/">
               <button className="material-symbols-outlined toolBoxIcon">
                 close
@@ -243,25 +251,49 @@ function NuevoEgreso() {
                 <div className="totalResumeBox">
                   <p className="inner-single-text">
                     <span className="bold-text">Pagado: </span>
-                    <span className="light-text">{montoPagado}</span>
+                    <span className="light-text">
+                      {montoPagado.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        minimumFractionDigits: 0, // Evita los decimales
+                        maximumFractionDigits: 0, // Evita los decimales
+                      })}
+                    </span>
                   </p>
                   <p className="inner-single-text">
                     <span className="bold-text">Transacción: </span>
-                    <span className="light-text">{costoTransferencia}</span>
+                    <span className="light-text">
+                      {costoTransferencia.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        minimumFractionDigits: 0, // Evita los decimales
+                        maximumFractionDigits: 0, // Evita los decimales
+                      })}
+                    </span>
                   </p>
                   <p className="inner-single-text">
                     <span className="bold-text">4x1000: </span>
-                    <span className="light-text">{calculo4x1000}</span>
+                    <span className="light-text">
+                      {calculo4x1000.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        minimumFractionDigits: 0, // Evita los decimales
+                        maximumFractionDigits: 0, // Evita los decimales
+                      })}
+                    </span>
                   </p>
                   <p className="inner-single-text bold-text" id="total-egreso">
-                    <span className="">Total: {consolidadoDeEgresos}</span>
+                    <span className="">
+                      Total:{" "}
+                      {consolidadoDeEgresos.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        minimumFractionDigits: 0, // Evita los decimales
+                        maximumFractionDigits: 0, // Evita los decimales
+                      })}
+                    </span>
                   </p>
                 </div>
-              </div>
-            </div>
-            <div className="nuevoegreso_columna">
-              <div className="info-box ">
-                <h2 className="box-title titulo">Columna 3</h2>
               </div>
             </div>
           </div>
