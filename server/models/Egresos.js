@@ -4,6 +4,16 @@ module.exports = (sequelize, DataTypes) => {
   const Egresos = sequelize.define(
     "Egresos",
     {
+      id_egreso: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      id_movimiento: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       fecha: {
         type: DataTypes.DATE,
         allowNull: true,

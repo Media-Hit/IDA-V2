@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   const Movimientos = sequelize.define(
     "Movimientos",
     {
-      id_del_movimiento: {
+      id_movimiento: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
       },
       fecha: {
