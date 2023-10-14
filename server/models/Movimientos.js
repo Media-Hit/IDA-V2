@@ -18,34 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      // Configuración adicional del modelo
-      timestamps: true, // Habilita la generación automática de 'createdAt' y 'updatedAt'
-
-      // Define el valor predeterminado de 'createdAt' utilizando Sequelize.literal
-      defaultScope: {
-        attributes: {
-          include: [
-            [
-              sequelize.literal("CURRENT_TIMESTAMP"), // Utiliza la función SQL para obtener la fecha y hora actual
-              "createdAt",
-            ],
-          ],
-        },
-      },
-
-      // Define el valor predeterminado de 'updatedAt' utilizando Sequelize.fn
-      hooks: {
-        beforeValidate: (instance, options) => {
-          instance.updatedAt = sequelize.fn("NOW");
-        },
-      },
+      freezeTableName: true,
     }
   );
-
-  // Movimientos.hasMany(sequelize.models.Egresos, {
-  //   foreignKey: "movimientoId", // Nombre de la clave externa en la tabla Egresos
-  //   as: "egresos", // Nombre del atributo para acceder a los egresos desde un objeto Movimientos
-  // });
 
   return Movimientos;
 };
