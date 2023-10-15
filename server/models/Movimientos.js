@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  const Egresos = require("./Egresos");
-  Movimientos.hasMany(Egresos, {
-    foreignKey: "id_movimiento",
-  });
-  Egresos.belongsTo(Movimientos);
+  // const Egresos = require("./Egresos");
+  // Movimientos.hasMany(Egresos, {
+  //   foreignKey: "id_movimiento",
+  // });
+  // Egresos.belongsTo(Movimientos);
 
   return Movimientos;
 };
