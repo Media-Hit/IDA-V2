@@ -1,5 +1,4 @@
 const { Sequelize } = require("sequelize");
-const { Egresos } = require("./Egresos");
 
 module.exports = (sequelize, DataTypes) => {
   const Movimientos = sequelize.define(
@@ -25,11 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  // const Egresos = require("./Egresos");
-  // Movimientos.hasMany(Egresos, {
-  //   foreignKey: "id_movimiento",
-  // });
-  // Egresos.belongsTo(Movimientos);
+  Movimientos.hasMany(sequelize.models.Egresos, {
+    foreignKey: "id_movimiento",
+  });
 
   return Movimientos;
 };
