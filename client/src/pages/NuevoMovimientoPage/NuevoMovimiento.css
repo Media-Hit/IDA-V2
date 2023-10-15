@@ -1,0 +1,26 @@
+.nuevoMovimiento__bodyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: var(--GreyBackground);
+}
+
+.nuevoMovimiento__subtitulo {
+  color: var(--TextOverGreyBackground);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.nuevoMovimiento__titulo {
+  color: var(--DarkGreyBackground);
+  font-size: 28px;
+  margin-bottom: 60px;
+}
+
+.nuevoMovimiento__categoriasBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}

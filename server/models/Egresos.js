@@ -1,65 +1,44 @@
-const { Sequelize } = require("sequelize")
+const { Sequelize } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
- 
-    const Egresos = sequelize.define("Egresos", {
-    fecha: {
+  const Egresos = sequelize.define(
+    "Egresos",
+    {
+      id_egreso: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      fecha: {
         type: DataTypes.DATE,
         allowNull: true,
-    },
-    estado: {
+      },
+      estado: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    proveedor: {
+      },
+      proveedor: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    proyecto: {
+      },
+      categoria: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    tipo_de_gasto: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    categoria: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    descripcion: {
+      },
+      descripcion: {
         type: DataTypes.STRING,
         allowNull: true,
-    },
-    subtotal: {
+      },
+      subtotal: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
     },
-    iva: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
-    impoconsumo: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
-    retefuente: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
-    reteica: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
-    costo_transaccion: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
-    cuatro_x_mil: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
- })
+    {
+      freezeTableName: true,
+    }
+  );
 
- return Egresos
-}
+  return Egresos;
+};

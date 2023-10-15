@@ -1,19 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { Egresos } = require("../models")
+const { Egresos } = require("../models");
 
-router.get("/movimientos", async (req, res) => {
-    const listOfMovements = await Egresos.findAll()
-    res.json(listOfMovements);
+router.get("/egresos", async (req, res) => {
+  const listOfEgresos = await Egresos.findAll();
+  res.json(listOfEgresos);
 });
 
 router.post("/nuevo-egreso", async (req, res) => {
-    const egreso = req.body;
-    await Egresos.create(egreso);
-    res.json(egreso);
+  const egreso = req.body;
+  await Egresos.create(egreso);
+  res.json(egreso);
 });
-
-
-
 
 module.exports = router;

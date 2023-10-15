@@ -1,0 +1,52 @@
+.transferenciaContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+}
+
+.transferencia__fila1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transferencia__fila1--active {
+  border-bottom: 1px solid #babbbf;
+  margin-bottom: 16px;
+}
+
+.transferencia__fila2--inactive {
+  display: none;
+}
+
+.transferencia__fila2--active {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 8px;
+}
+
+.transferencia__fila2__columna1 {
+  display: flex;
+  flex-direction: column;
+}
+.transferencia__fila2__columna2 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.iva-selector {
+  margin-bottom: -12px;
+}
+
+.css-ahj2mt-MuiTypography-root {
+  font-size: 14px !important;
+  color: var(--InactiveField);
+}
+
+.resumen-transaccion-body {
+  font-size: 14px !important;
+  color: var(--InactiveField);
+  margin-bottom: 8px;
+}
