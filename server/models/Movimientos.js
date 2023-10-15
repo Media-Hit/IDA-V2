@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+const { Egresos } = require("./Egresos");
 
 module.exports = (sequelize, DataTypes) => {
   const Movimientos = sequelize.define(
@@ -23,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
+
+  const Egresos = require("./Egresos");
+  Movimientos.hasMany(Egresos, {
+    foreignKey: "id_movimiento",
+  });
+  Egresos.belongsTo(Movimientos);
 
   return Movimientos;
 };

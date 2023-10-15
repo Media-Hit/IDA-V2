@@ -10,10 +10,6 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      id_movimiento: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       fecha: {
         type: DataTypes.DATE,
         allowNull: true,
