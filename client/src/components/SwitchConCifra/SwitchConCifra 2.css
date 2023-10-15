@@ -1,0 +1,43 @@
+.switchContainer {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  height: 56px;
+  width: 100%;
+}
+
+.switchBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 4px 15px;
+}
+
+.switch__leftColumn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cifraSwitch {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.descripcionSwitch {
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 10px;
+  color: var(--MutedGrey);
+}
+
+.parentheses::before,
+.parentheses::after {
+  content: "(";
+}
+
+.parentheses::after {
+  content: ")";
+}
