@@ -1,4 +1,4 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, Model, DataTypes } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   const Movimientos = sequelize.define(
@@ -24,9 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Movimientos.hasMany(sequelize.models.Egresos, {
-    foreignKey: "id_movimiento",
-  });
+  Movimientos.associate = (models) => {
+    Movimientos.hasMany(sequelize.models.Egresos, {
+      foreignKey: "id_movimiento",
+    });
+  };
 
   return Movimientos;
 };
