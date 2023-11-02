@@ -31,6 +31,7 @@ function NuevoEgreso() {
   const [mostrarProyectos, setMostrarProyectos] = useState(false);
 
   const [montoPagado, setMontoPagado] = useState(0);
+  const [montoDelIva, setMontoDelIva] = useState(0);
   const [calculo4x1000, setCalculo4x1000] = useState(0);
   const [costoTransferencia, setCostoTransferencia] = useState(0);
   const [consolidadoDeEgresos, setConsolidadoDeEgresos] = useState(0);
@@ -65,6 +66,15 @@ function NuevoEgreso() {
       setMontoPagado(monto);
     } else {
       setMontoPagado(0);
+    }
+  };
+
+  const handleMontoDelIVAChange = (valor) => {
+    const monto = parseFloat(valor);
+    if (!isNaN(monto)) {
+      setMontoDelIva(monto);
+    } else {
+      setMontoDelIva(0);
     }
   };
 
@@ -234,6 +244,14 @@ function NuevoEgreso() {
                 <CampoDinero
                   etiqueta={"Monto Pagado"}
                   onChange={handleMontoPagadoChange}
+                  variante="outlined"
+                  autofocus={false}
+                  disableBottomLine={false}
+                />
+
+                <CampoDinero
+                  etiqueta={"IVA"}
+                  onChange={handleMontoDelIVAChange}
                   variante="outlined"
                   autofocus={false}
                   disableBottomLine={false}

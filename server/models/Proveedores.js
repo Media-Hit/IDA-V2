@@ -4,6 +4,12 @@ module.exports = (sequelize, DataTypes) => {
   const Proveedores = sequelize.define(
     "Proveedores",
     {
+      id_proveedor: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -65,6 +71,12 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
+
+  Proveedores.associate = (models) => {
+    Proveedores.hasMany(sequelize.models.Egresos, {
+      foreignKey: "id_proveedor",
+    });
+  };
 
   return Proveedores;
 };
