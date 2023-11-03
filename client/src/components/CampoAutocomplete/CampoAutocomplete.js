@@ -6,9 +6,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 function CampoAutocomplete({ etiqueta, values, columName, onSelect }) {
   const hint = React.useRef("");
-  const [inputValue, setInputValue] = React.useState("");
 
-  const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState();
   const handleSelect = (event, newValue) => {
     setSelectedValue(newValue);
     onSelect(newValue); // Llama a la función onSelect y pasa el valor seleccionado
