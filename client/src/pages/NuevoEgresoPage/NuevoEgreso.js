@@ -15,10 +15,12 @@ import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
 import { SwitchConCifra } from "../../components/SwitchConCifra/SwitchConCifra";
 import { CostoTransferencia } from "./CostoTransferencia";
 import { MovimientosContext } from "../MovimientosPage/MovimientosContext";
+import { format, parse } from "date-fns";
 
 function NuevoEgreso() {
   const [listOfCuentas, setListOfCuentas] = useState([]);
   const [loadingCuentas, setLoadingCuentas] = useState(true);
+  const [selectedOutcomeDate, setSelectedOutcomeDate] = useState(null);
 
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
@@ -43,13 +45,45 @@ function NuevoEgreso() {
   const [selectedAccount, setSelectedAccount] = useState();
   const handleAccountSelect = (cuenta) => {
     setSelectedAccount(cuenta);
-    console.log("Cuenta Seleccionada:");
-    console.log(cuenta.props.value);
   };
 
   //Se activa cuando se escoge un categoria
   const handleSave = () => {
-    console.log("Guardando");
+    // Fecha
+
+    // Busca el ID correspondiente en la lista de cuentas
+
+    if (typeof selectedAccount === "undefined") {
+      alert("Por favor, llena el campo de Cuenta.");
+      return;
+    }
+    const selectedAccountId = listOfCuentas.find(
+      (cuenta) => cuenta.nombre === selectedAccount.props.value
+    );
+    if (!selectedAccountId) {
+      console.log(
+        `La cuenta "${selectedAccount}" no se encontró en la lista de cuentas.`
+      );
+      return;
+    }
+
+    const nuevoMovimiento = {
+      fecha: format(selectedOutcomeDate, "yyyy-MM-dd HH:mm:ss"),
+      tipo_de_movimiento: "Corporativo",
+      descripcion: "Arepa",
+      id_cuenta: selectedAccountId.id_cuenta,
+    };
+    axios
+      .post(
+        "http://localhost:3001/movimientos/nuevo-movimiento",
+        nuevoMovimiento
+      )
+      .then((response) => {
+        console.log("Registro guardado exitosamente:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error al guardar el registro:", error);
+      });
   };
 
   const handleCategoriaSelect = (categoria) => {
@@ -114,6 +148,7 @@ function NuevoEgreso() {
         );
         setListOfCuentas(cuentasDebito);
         setLoadingCuentas(false);
+        console.log(cuentasDebito);
       })
       .catch((error) => {
         console.error("Error al obtener datos de cuentas:", error);
@@ -195,7 +230,7 @@ function NuevoEgreso() {
                 <div className="nuevoegreso_columna" id="nuevoegreso_columna1">
                   <div className="info-box">
                     <h2 className="box-title titulo">Cuándo</h2>
-                    <SelectorDeFecha />
+                    <SelectorDeFecha onSelect={setSelectedOutcomeDate} />
                   </div>
 
                   <div className="info-box">
