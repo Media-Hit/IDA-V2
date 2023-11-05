@@ -7,23 +7,18 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 import { format } from "date-fns";
 
-function SelectorDeFecha() {
+function SelectorDeFecha({ fieldValue }) {
   const [selectedDate, setSelectedDate] = useState(null);
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    onSelect(date); // Llama a la función onSelect y pasa la fecha seleccionada
-  };
 
   useEffect(() => {
     // Recuperar la fecha seleccionada desde localStorage
     const storedDate = localStorage.getItem("selectedDate");
 
     if (storedDate) {
-      handleDateChange(new Date(storedDate));
+      setSelectedDate(new Date(storedDate));
     } else {
       // Si no hay fecha en localStorage, establece la fecha por defecto como hoy
-      handleDateChange(new Date());
+      setSelectedDate(new Date());
     }
   }, []);
 
@@ -35,7 +30,9 @@ function SelectorDeFecha() {
           label="Fecha"
           renderInput={(params) => <TextField {...params} />}
           value={selectedDate}
-          onChange={handleDateChange}
+          onChange={(date) => {
+            console.log(format(date, "dd/MM/yyyy"));
+          }}
         />
       </DemoContainer>
     </LocalizationProvider>

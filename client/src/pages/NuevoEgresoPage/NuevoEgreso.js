@@ -15,7 +15,6 @@ import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
 import { SwitchConCifra } from "../../components/SwitchConCifra/SwitchConCifra";
 import { CostoTransferencia } from "./CostoTransferencia";
 import { MovimientosContext } from "../MovimientosPage/MovimientosContext";
-import { format, parse } from "date-fns";
 
 function NuevoEgreso() {
   const [formValues, setFormValues] = useState({
@@ -30,7 +29,6 @@ function NuevoEgreso() {
 
   const [listOfCuentas, setListOfCuentas] = useState([]);
   const [loadingCuentas, setLoadingCuentas] = useState(true);
-  const [selectedOutcomeDate, setSelectedOutcomeDate] = useState(null);
 
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
@@ -55,11 +53,8 @@ function NuevoEgreso() {
   const [selectedAccount, setSelectedAccount] = useState();
   const handleAccountSelect = (cuenta) => {
     setSelectedAccount(cuenta);
-  };
-
-  //Se activa cuando se escoge un categoria
-  const handleSave = () => {
-    console.log("Guardando");
+    console.log("Cuenta Seleccionada:");
+    console.log(cuenta.props.value);
   };
 
   const handleCategoriaSelect = (categoria) => {
@@ -124,7 +119,6 @@ function NuevoEgreso() {
         );
         setListOfCuentas(cuentasDebito);
         setLoadingCuentas(false);
-        console.log(cuentasDebito);
       })
       .catch((error) => {
         console.error("Error al obtener datos de cuentas:", error);
