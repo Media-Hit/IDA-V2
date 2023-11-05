@@ -18,6 +18,16 @@ import { MovimientosContext } from "../MovimientosPage/MovimientosContext";
 import { format, parse } from "date-fns";
 
 function NuevoEgreso() {
+  const [formValues, setFormValues] = useState({
+    fecha: "",
+    cuenta: "TestCuenta",
+  });
+
+  const handleSave = () => {
+    console.log(`Fecha: ${formValues.fecha}`);
+    console.log(`Cuenta: ${formValues.cuenta}`);
+  };
+
   const [listOfCuentas, setListOfCuentas] = useState([]);
   const [loadingCuentas, setLoadingCuentas] = useState(true);
   const [selectedOutcomeDate, setSelectedOutcomeDate] = useState(null);
@@ -49,41 +59,7 @@ function NuevoEgreso() {
 
   //Se activa cuando se escoge un categoria
   const handleSave = () => {
-    // Fecha
-
-    // Busca el ID correspondiente en la lista de cuentas
-
-    if (typeof selectedAccount === "undefined") {
-      alert("Por favor, llena el campo de Cuenta.");
-      return;
-    }
-    const selectedAccountId = listOfCuentas.find(
-      (cuenta) => cuenta.nombre === selectedAccount.props.value
-    );
-    if (!selectedAccountId) {
-      console.log(
-        `La cuenta "${selectedAccount}" no se encontró en la lista de cuentas.`
-      );
-      return;
-    }
-
-    const nuevoMovimiento = {
-      fecha: format(selectedOutcomeDate, "yyyy-MM-dd HH:mm:ss"),
-      tipo_de_movimiento: "Corporativo",
-      descripcion: "Arepa",
-      id_cuenta: selectedAccountId.id_cuenta,
-    };
-    axios
-      .post(
-        "http://localhost:3001/movimientos/nuevo-movimiento",
-        nuevoMovimiento
-      )
-      .then((response) => {
-        console.log("Registro guardado exitosamente:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error al guardar el registro:", error);
-      });
+    console.log("Guardando");
   };
 
   const handleCategoriaSelect = (categoria) => {
@@ -200,185 +176,183 @@ function NuevoEgreso() {
 
   return (
     <>
-      <MovimientosContext.Consumer>
-        {({ selectedDate, setSelectedDate }) => (
-          <div className="movimientosMainContainer">
-            {/* Header */}
-            <div className="headerContainer">
-              <h1 className="pageTittle">Nuevo Egreso</h1>
+      <form>
+        <div className="movimientosMainContainer">
+          {/* Header */}
+          <div className="headerContainer">
+            <h1 className="pageTittle">Nuevo Egreso</h1>
 
-              <div className="toolBox__Container">
-                <div className="toolBoxButtom__container" onClick={handleSave}>
-                  <span className="material-symbols-outlined toolBox__ButtomIcon">
-                    <span class="material-symbols-outlined">done</span>
-                  </span>
-                  <span className="toolBox__ButtomText">Guardar</span>
-                </div>
-
-                <Link to="/">
-                  <button className="material-symbols-outlined toolBoxIcon">
-                    close
-                  </button>
-                </Link>
+            <div className="toolBox__Container">
+              <div className="toolBoxButtom__container" onClick={handleSave}>
+                <span className="material-symbols-outlined toolBox__ButtomIcon">
+                  <span class="material-symbols-outlined">done</span>
+                </span>
+                <span className="toolBox__ButtomText">Guardar</span>
               </div>
+
+              <Link to="/">
+                <button className="material-symbols-outlined toolBoxIcon">
+                  close
+                </button>
+              </Link>
             </div>
+          </div>
 
-            {/* Body */}
+          {/* Body */}
 
-            <div className="main-body-background">
-              <div className="nuevoEgreso__bodyContainer">
-                <div className="nuevoegreso_columna" id="nuevoegreso_columna1">
-                  <div className="info-box">
-                    <h2 className="box-title titulo">Cuándo</h2>
-                    <SelectorDeFecha onSelect={setSelectedOutcomeDate} />
-                  </div>
-
-                  <div className="info-box">
-                    <h2 className="box-title titulo ">Cómo</h2>
-                    {!loadingCuentas && (
-                      <CampoDesplegable
-                        etiqueta="Cuenta"
-                        values={listOfCuentas}
-                        columName="nombre"
-                        onSelect={handleAccountSelect}
-                      />
-                    )}
-
-                    {!loadingProveedores && (
-                      <CampoDesplegableCreate
-                        etiqueta="Proveedor"
-                        values={listOfProveedores}
-                        columName="nombre"
-                      />
-                    )}
-                  </div>
-                  <div className="info-box">
-                    <h2 className="box-title titulo ">Para Qué</h2>
-                    <PersonalCorporativo
-                      setMostrarProyectos={setMostrarProyectos}
-                    />
-
-                    {!loadingCategorias && (
-                      <CampoAutocomplete
-                        etiqueta="Categoría"
-                        values={listOfCategorias}
-                        columName="nombre"
-                        onSelect={handleCategoriaSelect}
-                      />
-                    )}
-
-                    {subCategoriaExiste && (
-                      <CampoAutocomplete
-                        etiqueta="Sub Categoría"
-                        values={subCategorias}
-                        columName="nombre"
-                        onSelect={handleSubcategoriaSelect}
-                      />
-                    )}
-
-                    {mostrarProyectos && (
-                      <CampoDesplegableCreate
-                        etiqueta="Proyecto"
-                        values={listOfProyectos}
-                        columName="nombre"
-                      />
-                    )}
-
-                    <Box component="form" noValidate autoComplete="off">
-                      <TextField
-                        label="Descripción"
-                        variant="outlined"
-                        multiline
-                        fullWidth
-                        maxRows={4}
-                      />
-                    </Box>
-                  </div>
+          <div className="main-body-background">
+            <div className="nuevoEgreso__bodyContainer">
+              <div className="nuevoegreso_columna" id="nuevoegreso_columna1">
+                <div className="info-box">
+                  <h2 className="box-title titulo">Cuándo</h2>
+                  <SelectorDeFecha />
                 </div>
-                <div className="nuevoegreso_columna">
-                  <div className="info-box">
-                    <h2 className="box-title titulo ">Cuánto</h2>
-                    <CampoDinero
-                      etiqueta={"Monto Pagado"}
-                      onChange={handleMontoPagadoChange}
-                      variante="outlined"
-                      autofocus={false}
-                      disableBottomLine={false}
-                    />
 
-                    <CampoDinero
-                      etiqueta={"IVA"}
-                      onChange={handleMontoDelIVAChange}
-                      variante="outlined"
-                      autofocus={false}
-                      disableBottomLine={false}
+                <div className="info-box">
+                  <h2 className="box-title titulo ">Cómo</h2>
+                  {!loadingCuentas && (
+                    <CampoDesplegable
+                      etiqueta="Cuenta"
+                      values={listOfCuentas}
+                      columName="nombre"
+                      onSelect={handleAccountSelect}
                     />
+                  )}
 
-                    <CostoTransferencia
-                      onTotalTransaccionChange={handleTotalTransaccionChange}
+                  {!loadingProveedores && (
+                    <CampoDesplegableCreate
+                      etiqueta="Proveedor"
+                      values={listOfProveedores}
+                      columName="nombre"
                     />
+                  )}
+                </div>
+                <div className="info-box">
+                  <h2 className="box-title titulo ">Para Qué</h2>
+                  <PersonalCorporativo
+                    setMostrarProyectos={setMostrarProyectos}
+                  />
 
-                    <SwitchConCifra
-                      etiqueta="4x1000"
-                      cifraCalculada={calculo4x1000}
-                      onOrOff={setcuatroPorMilActivo}
+                  {!loadingCategorias && (
+                    <CampoAutocomplete
+                      etiqueta="Categoría"
+                      values={listOfCategorias}
+                      columName="nombre"
+                      onSelect={handleCategoriaSelect}
                     />
-                    <div className="totalResumeBox">
-                      <p className="inner-single-text">
-                        <span className="bold-text">Pagado: </span>
-                        <span className="light-text">
-                          {montoPagado.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            minimumFractionDigits: 0, // Evita los decimales
-                            maximumFractionDigits: 0, // Evita los decimales
-                          })}
-                        </span>
-                      </p>
-                      <p className="inner-single-text">
-                        <span className="bold-text">Transacción: </span>
-                        <span className="light-text">
-                          {costoTransferencia.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            minimumFractionDigits: 0, // Evita los decimales
-                            maximumFractionDigits: 0, // Evita los decimales
-                          })}
-                        </span>
-                      </p>
-                      <p className="inner-single-text">
-                        <span className="bold-text">4x1000: </span>
-                        <span className="light-text">
-                          {calculo4x1000.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            minimumFractionDigits: 0, // Evita los decimales
-                            maximumFractionDigits: 0, // Evita los decimales
-                          })}
-                        </span>
-                      </p>
-                      <p
-                        className="inner-single-text bold-text"
-                        id="total-egreso"
-                      >
-                        <span className="">
-                          Total:{" "}
-                          {consolidadoDeEgresos.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            minimumFractionDigits: 0, // Evita los decimales
-                            maximumFractionDigits: 0, // Evita los decimales
-                          })}
-                        </span>
-                      </p>
-                    </div>
+                  )}
+
+                  {subCategoriaExiste && (
+                    <CampoAutocomplete
+                      etiqueta="Sub Categoría"
+                      values={subCategorias}
+                      columName="nombre"
+                      onSelect={handleSubcategoriaSelect}
+                    />
+                  )}
+
+                  {mostrarProyectos && (
+                    <CampoDesplegableCreate
+                      etiqueta="Proyecto"
+                      values={listOfProyectos}
+                      columName="nombre"
+                    />
+                  )}
+
+                  <Box component="form" noValidate autoComplete="off">
+                    <TextField
+                      label="Descripción"
+                      variant="outlined"
+                      multiline
+                      fullWidth
+                      maxRows={4}
+                    />
+                  </Box>
+                </div>
+              </div>
+              <div className="nuevoegreso_columna">
+                <div className="info-box">
+                  <h2 className="box-title titulo ">Cuánto</h2>
+                  <CampoDinero
+                    etiqueta={"Monto Pagado"}
+                    onChange={handleMontoPagadoChange}
+                    variante="outlined"
+                    autofocus={false}
+                    disableBottomLine={false}
+                  />
+
+                  <CampoDinero
+                    etiqueta={"IVA"}
+                    onChange={handleMontoDelIVAChange}
+                    variante="outlined"
+                    autofocus={false}
+                    disableBottomLine={false}
+                  />
+
+                  <CostoTransferencia
+                    onTotalTransaccionChange={handleTotalTransaccionChange}
+                  />
+
+                  <SwitchConCifra
+                    etiqueta="4x1000"
+                    cifraCalculada={calculo4x1000}
+                    onOrOff={setcuatroPorMilActivo}
+                  />
+                  <div className="totalResumeBox">
+                    <p className="inner-single-text">
+                      <span className="bold-text">Pagado: </span>
+                      <span className="light-text">
+                        {montoPagado.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 0, // Evita los decimales
+                          maximumFractionDigits: 0, // Evita los decimales
+                        })}
+                      </span>
+                    </p>
+                    <p className="inner-single-text">
+                      <span className="bold-text">Transacción: </span>
+                      <span className="light-text">
+                        {costoTransferencia.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 0, // Evita los decimales
+                          maximumFractionDigits: 0, // Evita los decimales
+                        })}
+                      </span>
+                    </p>
+                    <p className="inner-single-text">
+                      <span className="bold-text">4x1000: </span>
+                      <span className="light-text">
+                        {calculo4x1000.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 0, // Evita los decimales
+                          maximumFractionDigits: 0, // Evita los decimales
+                        })}
+                      </span>
+                    </p>
+                    <p
+                      className="inner-single-text bold-text"
+                      id="total-egreso"
+                    >
+                      <span className="">
+                        Total:{" "}
+                        {consolidadoDeEgresos.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 0, // Evita los decimales
+                          maximumFractionDigits: 0, // Evita los decimales
+                        })}
+                      </span>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        )}
-      </MovimientosContext.Consumer>
+        </div>
+      </form>
     </>
   );
 }
