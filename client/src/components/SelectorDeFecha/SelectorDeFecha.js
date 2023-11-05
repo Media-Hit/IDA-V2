@@ -7,7 +7,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 import { format } from "date-fns";
 
-function SelectorDeFecha() {
+function SelectorDeFecha({ fieldValue }) {
   const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ function SelectorDeFecha() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DemoContainer components={["DatePicker"]}>
         <DatePicker
+          name={fieldValue}
           label="Fecha"
           renderInput={(params) => <TextField {...params} />}
           value={selectedDate}
