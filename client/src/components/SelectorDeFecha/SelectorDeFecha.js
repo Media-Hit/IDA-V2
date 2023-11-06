@@ -7,7 +7,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 import { format } from "date-fns";
 
-function SelectorDeFecha({ fieldName, fieldValue, onUpdateFecha }) {
+function SelectorDeFecha({ fieldName, fieldValue, onSelect }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DemoContainer components={["DatePicker"]}>
@@ -17,7 +17,7 @@ function SelectorDeFecha({ fieldName, fieldValue, onUpdateFecha }) {
           renderInput={(params) => <TextField {...params} />}
           value={fieldValue}
           onChange={(date) => {
-            onUpdateFecha(date); // Llama a la función onUpdateFecha con la nueva fecha
+            onSelect(date); // Llama a la función onUpdateFecha con la nueva fecha
           }}
         />
       </DemoContainer>

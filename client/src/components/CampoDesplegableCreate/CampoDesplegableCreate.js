@@ -6,12 +6,13 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 const filter = createFilterOptions();
 
-function CampoDesplegableCreate({ values, etiqueta, columName }) {
+function CampoDesplegableCreate({ values, etiqueta, columName, fieldName }) {
   const [value, setValue] = useState(null);
 
   return (
     <div className="margin-bottom">
       <Autocomplete
+        name={fieldName}
         value={value}
         onChange={(event, newValue) => {
           if (typeof newValue === "string") {

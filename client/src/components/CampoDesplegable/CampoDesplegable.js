@@ -7,7 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function CampoDesplegable({ values, etiqueta, columName, onSelect }) {
+function CampoDesplegable({
+  values,
+  etiqueta,
+  columName,
+  onSelect,
+  fieldName,
+}) {
   const [selectedValue, setSelectedValue] = useState();
   const handleSelect = (event, newValue) => {
     setSelectedValue(newValue);
@@ -19,6 +25,7 @@ function CampoDesplegable({ values, etiqueta, columName, onSelect }) {
       <FormControl fullWidth className="margin-bottom">
         <InputLabel>{etiqueta}</InputLabel>
         <Select
+          name={fieldName}
           className="margin-bottom"
           id="demo-simple-lselect"
           label={etiqueta}

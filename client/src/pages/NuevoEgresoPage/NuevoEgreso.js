@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 import { SelectorDeFecha } from "../../components/SelectorDeFecha/SelectorDeFecha";
-import { CampoDesplegable } from "../../components/CampoDesplegable";
+import { CampoDesplegable } from "../../components/CampoDesplegable/CampoDesplegable";
 import { PersonalCorporativo } from "../../components/PersonalCorporativo/PersonalCorporativo";
 import { CampoDesplegableCreate } from "../../components/CampoDesplegableCreate/CampoDesplegableCreate";
 import { CampoAutocomplete } from "../../components/CampoAutocomplete/CampoAutocomplete";
@@ -66,14 +66,6 @@ function NuevoEgreso() {
   const [cuatroPorMilActivo, setcuatroPorMilActivo] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  //Datos formulario
-  const [selectedAccount, setSelectedAccount] = useState();
-  const handleAccountSelect = (cuenta) => {
-    setSelectedAccount(cuenta);
-    console.log("Cuenta Seleccionada:");
-    console.log(cuenta.props.value);
-  };
-
   const handleCategoriaSelect = (categoria) => {
     setSelectedCategoria(categoria);
 
@@ -116,6 +108,7 @@ function NuevoEgreso() {
     setCostoTransferencia(total);
   }
 
+  //Calculo del 4x1000
   useEffect(() => {
     let cuatroxmil = 0;
     if (cuatroPorMilActivo) {
@@ -219,7 +212,7 @@ function NuevoEgreso() {
                   <SelectorDeFecha
                     fieldValue={formValues.fecha}
                     fieldName="fecha"
-                    onUpdateFecha={(date) => {
+                    onSelect={(date) => {
                       setFormValues({
                         ...formValues,
                         fecha: date, // Actualiza la fecha en formValues
@@ -230,17 +223,27 @@ function NuevoEgreso() {
 
                 <div className="info-box">
                   <h2 className="box-title titulo ">Cómo</h2>
+
+                  {/* Selector de Cuenta */}
                   {!loadingCuentas && (
                     <CampoDesplegable
+                      fieldName="cuenta"
                       etiqueta="Cuenta"
                       values={listOfCuentas}
                       columName="nombre"
-                      onSelect={handleAccountSelect}
+                      onSelect={(data) => {
+                        setFormValues({
+                          ...formValues,
+                          cuenta: data.props.value, // Actualiza la fecha en formValues
+                        });
+                      }}
                     />
                   )}
 
+                  {/* Selector de Proveedor */}
                   {!loadingProveedores && (
                     <CampoDesplegableCreate
+                      fieldName="proveedor"
                       etiqueta="Proveedor"
                       values={listOfProveedores}
                       columName="nombre"
