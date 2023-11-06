@@ -17,6 +17,8 @@ import { CostoTransferencia } from "./CostoTransferencia";
 import { MovimientosContext } from "../MovimientosPage/MovimientosContext";
 
 function NuevoEgreso() {
+  // Recuperar la fecha seleccionada
+
   const [formValues, setFormValues] = useState({
     fecha: "",
     cuenta: "TestCuenta",
@@ -24,12 +26,28 @@ function NuevoEgreso() {
 
   const handleSave = () => {
     console.log(`Fecha: ${formValues.fecha}`);
-    console.log(`Cuentaa: ${formValues.cuenta}`);
+    console.log(`Cuenta: ${formValues.cuenta}`);
   };
+
+  useEffect(() => {
+    const storedDate = localStorage.getItem("selectedDate");
+
+    if (storedDate) {
+      setFormValues({
+        ...formValues,
+        fecha: new Date(),
+      });
+    } else {
+      // Si no hay fecha en localStorage, establece la fecha por defecto como hoy
+      setFormValues({
+        ...formValues,
+        fecha: new Date(),
+      });
+    }
+  }, []);
 
   const [listOfCuentas, setListOfCuentas] = useState([]);
   const [loadingCuentas, setLoadingCuentas] = useState(true);
-
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
   const [listOfAllCategorias, setListOfAllCategorias] = useState([]);
@@ -40,14 +58,13 @@ function NuevoEgreso() {
   const [subCategorias, setSubCategorias] = useState([]);
   const [listOfProyectos, setListOfProyectos] = useState([]);
   const [mostrarProyectos, setMostrarProyectos] = useState(false);
-
   const [montoPagado, setMontoPagado] = useState(0);
   const [montoDelIva, setMontoDelIva] = useState(0);
   const [calculo4x1000, setCalculo4x1000] = useState(0);
   const [costoTransferencia, setCostoTransferencia] = useState(0);
   const [consolidadoDeEgresos, setConsolidadoDeEgresos] = useState(0);
-
   const [cuatroPorMilActivo, setcuatroPorMilActivo] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   //Datos formulario
   const [selectedAccount, setSelectedAccount] = useState();
@@ -199,7 +216,16 @@ function NuevoEgreso() {
               <div className="nuevoegreso_columna" id="nuevoegreso_columna1">
                 <div className="info-box">
                   <h2 className="box-title titulo">Cuándo</h2>
-                  <SelectorDeFecha />
+                  <SelectorDeFecha
+                    fieldValue={formValues.fecha}
+                    fieldName="fecha"
+                    onUpdateFecha={(date) => {
+                      setFormValues({
+                        ...formValues,
+                        fecha: date, // Actualiza la fecha en formValues
+                      });
+                    }}
+                  />
                 </div>
 
                 <div className="info-box">
