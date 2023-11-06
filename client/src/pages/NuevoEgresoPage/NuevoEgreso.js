@@ -24,7 +24,7 @@ function NuevoEgreso() {
 
   const handleSave = () => {
     console.log(`Fecha: ${formValues.fecha}`);
-    console.log(`Cuenta: ${formValues.cuenta}`);
+    console.log(`Cuentaa: ${formValues.cuenta}`);
   };
 
   const [listOfCuentas, setListOfCuentas] = useState([]);
