@@ -33,7 +33,7 @@
 .transferencia__fila2__columna2 {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .iva-selector {
