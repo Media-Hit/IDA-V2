@@ -3,28 +3,11 @@ import "./CampoDesplegableCreate.css";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import axios from "axios";
 
 const filter = createFilterOptions();
 
 function CampoDesplegableCreate({ values, etiqueta, columName, fieldName }) {
   const [value, setValue] = useState(null);
-
-  const handleAddValue = async (newValue) => {
-    const inputValue = newValue.inputValue;
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/proveedores/listado",
-        {
-          nombre: inputValue,
-        }
-      );
-      console.log(response.data);
-      setValue(null);
-    } catch (error) {
-      console.error("Error al agregar el nuevo proveedor:", error);
-    }
-  };
 
   return (
     <div className="margin-bottom">
@@ -37,8 +20,10 @@ function CampoDesplegableCreate({ values, etiqueta, columName, fieldName }) {
               [columName]: newValue,
             });
           } else if (newValue && newValue.inputValue) {
-            // Si se selecciona "Añadir", llama a la función para agregar el valor
-            handleAddValue(newValue);
+            // Create a new value from the user input
+            setValue({
+              [columName]: newValue.inputValue,
+            });
           } else {
             setValue(newValue);
           }
@@ -65,12 +50,15 @@ function CampoDesplegableCreate({ values, etiqueta, columName, fieldName }) {
         handleHomeEndKeys
         options={values}
         getOptionLabel={(option) => {
+          // Value selected with enter, right from the input
           if (typeof option === "string") {
             return option;
           }
+          // Add "xxx" option created dynamically
           if (option.inputValue) {
             return option.inputValue;
           }
+          // Regular option
           return option[columName];
         }}
         renderOption={(props, option) => (

@@ -9,4 +9,10 @@ router.get("/listado", async (req, res) => {
   res.json(listOfProveedores);
 });
 
+router.post("/nuevo-proveedor", async (req, res) => {
+  const proveedor = req.body;
+  await Proveedores.create(proveedor);
+  res.json(proveedor);
+});
+
 module.exports = router;

@@ -209,6 +209,7 @@ function NuevoEgreso() {
               <div className="nuevoegreso_columna" id="nuevoegreso_columna1">
                 <div className="info-box">
                   <h2 className="box-title titulo">Cuándo</h2>
+                  {/* Selector de Fecha */}
                   <SelectorDeFecha
                     fieldValue={formValues.fecha}
                     fieldName="fecha"
