@@ -18,12 +18,12 @@ import { MovimientosContext } from "../MovimientosPage/MovimientosContext";
 
 function NuevoEgreso() {
   const [formValues, setFormValues] = useState({
-    fecha: "",
-    cuenta: "",
-    proveedor: "",
-    indole: "",
-    categoria: "",
-    subcategoria: "",
+    fecha: null,
+    cuenta: null,
+    proveedor: null,
+    indole: null,
+    categoria: null,
+    subcategoria: null,
   });
 
   const handleSave = () => {
@@ -76,10 +76,10 @@ function NuevoEgreso() {
 
   const handleCategoriaSelect = (selection) => {
     if (selection) {
-      setSubCategorias([]);
       setFormValues({
         ...formValues,
         categoria: selection,
+        subcategoria: null,
       });
 
       const categoriaSeleccionada = allCategorias.find(
@@ -96,16 +96,13 @@ function NuevoEgreso() {
       } else {
         setSubCategorias([]);
         setSubCategoriaExiste(false);
-        setFormValues({
-          ...formValues,
-          subcategoria: null,
-        });
       }
     } else {
       setSubCategorias([]);
       setSubCategoriaExiste(false);
       setFormValues({
         ...formValues,
+        categoria: null,
         subcategoria: null,
       });
     }
