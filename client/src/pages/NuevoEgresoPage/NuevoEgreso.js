@@ -31,6 +31,8 @@ function NuevoEgreso() {
     console.log(`Cuenta: ${formValues.cuenta}`);
     console.log(`Proveedor: ${formValues.proveedor}`);
     console.log(`Indole: ${formValues.indole}`);
+    console.log(`Categoria: ${formValues.categoria}`);
+    console.log(`Subcategoria: ${formValues.subcategoria}`);
   };
 
   // Recuperar la fecha seleccionada
@@ -55,8 +57,9 @@ function NuevoEgreso() {
   const [loadingCuentas, setLoadingCuentas] = useState(true);
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
+
+  const [allCategorias, setAllCategorias] = useState([]);
   const [listOfCategorias, setListOfCategorias] = useState([]);
-  const [listOfSubCategorias, setListOfASubCategorias] = useState([]);
   const [loadingCategorias, setLoadingCategorias] = useState(true);
   const [selectedCategoria, setSelectedCategoria] = useState(null);
   const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
@@ -71,24 +74,55 @@ function NuevoEgreso() {
   const [cuatroPorMilActivo, setcuatroPorMilActivo] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleCategoriaSelect = (categoria) => {
-    setSelectedCategoria(categoria);
+  const handleCategoriaSelect = (selection) => {
+    if (selection) {
+      setSubCategorias([]);
+      setFormValues({
+        ...formValues,
+        categoria: selection,
+      });
 
-    // if (categoria === null || !categoria.es_padre) {
-    //   setSubCategoriaExiste(false);
-    //   setSubCategorias([]);
-    // } else {
-    //   const subCategoriasFiltradas = listOfAllCategorias.filter(
-    //     (subCategoria) => subCategoria.padre === categoria.nombre
-    //   );
-    //   setSubCategorias(subCategoriasFiltradas);
-    //   setSubCategoriaExiste(true);
-    // }
+      const categoriaSeleccionada = allCategorias.find(
+        (item) => item.categoria === selection
+      );
+
+      if (categoriaSeleccionada.son_varios) {
+        const subcategoriasFiltradas = allCategorias
+          .filter((item) => item.categoria === selection)
+          .map((item) => item.subcategoria);
+
+        setSubCategorias(subcategoriasFiltradas);
+        setSubCategoriaExiste(true);
+      } else {
+        setSubCategorias([]);
+        setSubCategoriaExiste(false);
+        setFormValues({
+          ...formValues,
+          subcategoria: null,
+        });
+      }
+    } else {
+      setSubCategorias([]);
+      setSubCategoriaExiste(false);
+      setFormValues({
+        ...formValues,
+        subcategoria: null,
+      });
+    }
   };
 
-  const handleSubcategoriaSelect = (subcategoria) => {
-    console.log("SubcategoriaEscogida");
-    console.log(subcategoria);
+  const handleSubcategoriaSelect = (selection) => {
+    if (selection) {
+      setFormValues({
+        ...formValues,
+        subcategoria: selection,
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        subcategoria: null,
+      });
+    }
   };
 
   const handleMontoPagadoChange = (valor) => {
@@ -178,10 +212,10 @@ function NuevoEgreso() {
     axios
       .get("http://localhost:3001/categoriasegresos")
       .then((response) => {
-        const allCategorias = response.data;
+        setAllCategorias(response.data);
 
         const categorias = [
-          ...new Set(allCategorias.map((item) => item.categoria)),
+          ...new Set(response.data.map((item) => item.categoria)),
         ];
         setListOfCategorias(categorias);
 
@@ -198,11 +232,9 @@ function NuevoEgreso() {
       .get("http://localhost:3001/proyectos/listado")
       .then((response) => {
         setListOfProyectos(response.data);
-        //  setLoadingProveedores(false);
       })
       .catch((error) => {
         console.error("Error al obtener datos de proyectos:", error);
-        //  setLoadingProveedores(false);
       });
   }, []);
 
@@ -305,12 +337,11 @@ function NuevoEgreso() {
                     <CampoAutocomplete
                       etiqueta="Categoría"
                       values={listOfCategorias}
-                      columName="categoria"
                       onSelect={handleCategoriaSelect}
                     />
                   )}
 
-                  {/* {subCategoriaExiste && (
+                  {subCategoriaExiste && (
                     <CampoAutocomplete
                       etiqueta="Sub Categoría"
                       values={subCategorias}
@@ -319,7 +350,7 @@ function NuevoEgreso() {
                     />
                   )}
 
-                  {mostrarProyectos && (
+                  {/* {mostrarProyectos && (
                     <CampoDesplegableCreate
                       etiqueta="Proyecto"
                       values={listOfProyectos}

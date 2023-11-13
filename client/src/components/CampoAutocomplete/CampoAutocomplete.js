@@ -4,7 +4,7 @@ import "./CampoAutocomplete.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-function CampoAutocomplete({ etiqueta, values, columName, onSelect }) {
+function CampoAutocomplete({ etiqueta, values, onSelect }) {
   const hint = React.useRef("");
 
   const [selectedValue, setSelectedValue] = useState();
@@ -13,17 +13,15 @@ function CampoAutocomplete({ etiqueta, values, columName, onSelect }) {
     onSelect(newValue); // Llama a la función onSelect y pasa el valor seleccionado
   };
 
-  const sortedValues = [...values].sort((a, b) =>
-    a[columName].localeCompare(b[columName])
-  );
+  const sortedValues = [...values].sort((a, b) => a.localeCompare(b));
 
   return (
     <div className="margin-bottom">
       <Autocomplete
         disablePortal
-        options={values}
+        options={sortedValues}
         fullWidth
-        getOptionLabel={(option) => option[columName]}
+        getOptionLabel={(option) => option}
         renderInput={(params) => <TextField {...params} label={etiqueta} />}
         value={selectedValue}
         onChange={handleSelect}
