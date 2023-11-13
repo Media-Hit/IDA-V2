@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      indole: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       descripcion: {
         type: DataTypes.STRING,
         allowNull: true,
