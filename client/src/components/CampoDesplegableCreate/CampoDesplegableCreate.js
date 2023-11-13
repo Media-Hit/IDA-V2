@@ -7,24 +7,15 @@ import axios from "axios";
 
 const filter = createFilterOptions();
 
-function CampoDesplegableCreate({ values, etiqueta, columName, fieldName }) {
+function CampoDesplegableCreate({
+  values,
+  etiqueta,
+  columName,
+  fieldName,
+  handleAddValue,
+  handleChangeValue,
+}) {
   const [value, setValue] = useState(null);
-
-  const handleAddValue = async (newValue) => {
-    const inputValue = newValue.inputValue;
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/proveedores/listado",
-        {
-          nombre: inputValue,
-        }
-      );
-      console.log(response.data);
-      setValue(null);
-    } catch (error) {
-      console.error("Error al agregar el nuevo proveedor:", error);
-    }
-  };
 
   return (
     <div className="margin-bottom">
@@ -37,10 +28,12 @@ function CampoDesplegableCreate({ values, etiqueta, columName, fieldName }) {
               [columName]: newValue,
             });
           } else if (newValue && newValue.inputValue) {
-            // Si se selecciona "Añadir", llama a la función para agregar el valor
+            // Si se selecciona "Añadir"
             handleAddValue(newValue);
+            setValue(newValue);
           } else {
             setValue(newValue);
+            handleChangeValue(newValue);
           }
         }}
         filterOptions={(options, params) => {

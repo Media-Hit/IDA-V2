@@ -17,18 +17,21 @@ import { CostoTransferencia } from "./CostoTransferencia";
 import { MovimientosContext } from "../MovimientosPage/MovimientosContext";
 
 function NuevoEgreso() {
-  // Recuperar la fecha seleccionada
-
   const [formValues, setFormValues] = useState({
     fecha: "",
-    cuenta: "TestCuenta",
+    cuenta: "",
+    proveedor: "",
+    indole: "",
   });
 
   const handleSave = () => {
     console.log(`Fecha: ${formValues.fecha}`);
     console.log(`Cuenta: ${formValues.cuenta}`);
+    console.log(`Proveedor: ${formValues.proveedor}`);
+    console.log(`Indole: ${formValues.indole}`);
   };
 
+  // Recuperar la fecha seleccionada
   useEffect(() => {
     const storedDate = localStorage.getItem("selectedDate");
 
@@ -119,6 +122,39 @@ function NuevoEgreso() {
     setConsolidadoDeEgresos(montoPagado + costoTransferencia + cuatroxmil);
   }, [montoPagado, costoTransferencia, cuatroPorMilActivo]);
 
+  //Proveedores
+  const obtenerDatosProveedores = () => {
+    axios
+      .get("http://localhost:3001/proveedores/listado")
+      .then((response) => {
+        setListOfProveedores(response.data);
+        setLoadingProveedores(false);
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos de proveedores:", error);
+        setLoadingProveedores(false);
+      });
+  };
+
+  const handleNuevoProveedor = async (newValue) => {
+    const inputValue = newValue.inputValue;
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/proveedores/nuevo",
+        {
+          nombre: inputValue,
+        }
+      );
+      obtenerDatosProveedores();
+      setFormValues({
+        ...formValues,
+        proveedor: inputValue,
+      });
+    } catch (error) {
+      console.error("Error al agregar el nuevo proveedor:", error);
+    }
+  };
+
   //Axios
   useEffect(() => {
     axios
@@ -135,16 +171,7 @@ function NuevoEgreso() {
         setLoadingProveedores(false);
       });
 
-    axios
-      .get("http://localhost:3001/proveedores/listado")
-      .then((response) => {
-        setListOfProveedores(response.data);
-        setLoadingProveedores(false);
-      })
-      .catch((error) => {
-        console.error("Error al obtener datos de proveedores:", error);
-        setLoadingProveedores(false);
-      });
+    obtenerDatosProveedores();
 
     axios
       .get("http://localhost:3001/categoriasEgresos")
@@ -248,13 +275,27 @@ function NuevoEgreso() {
                       etiqueta="Proveedor"
                       values={listOfProveedores}
                       columName="nombre"
+                      handleAddValue={handleNuevoProveedor}
+                      handleChangeValue={(newValue) => {
+                        setFormValues({
+                          ...formValues,
+                          proveedor: newValue.nombre,
+                        });
+                      }}
                     />
                   )}
                 </div>
+
                 <div className="info-box">
                   <h2 className="box-title titulo ">Para Qué</h2>
                   <PersonalCorporativo
-                    setMostrarProyectos={setMostrarProyectos}
+                    setValue={(event) => {
+                      setFormValues({
+                        ...formValues,
+                        indole: event.target.value,
+                      });
+                      setMostrarProyectos(event.target.value === "corporativo");
+                    }}
                   />
 
                   {!loadingCategorias && (

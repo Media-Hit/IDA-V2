@@ -5,6 +5,7 @@ const { Proveedores } = require("../models");
 router.get("/listado", async (req, res) => {
   const listOfProveedores = await Proveedores.findAll({
     attributes: ["nombre"],
+    order: [["nombre", "ASC"]],
   });
   res.json(listOfProveedores);
 });

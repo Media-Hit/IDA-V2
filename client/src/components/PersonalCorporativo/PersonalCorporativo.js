@@ -4,11 +4,12 @@ import "./PersonalCorporativo.css";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-function PersonalCorporativo({ setMostrarProyectos }) {
+function PersonalCorporativo({ setValue }) {
   const [tipoDeTransaccion, setTipoDeTransaccion] = useState("");
-  const handleTipoDeTransaccion = (event) => {
+
+  const handleOnChange = (event) => {
     setTipoDeTransaccion(event.target.value);
-    setMostrarProyectos(event.target.value === "corporativo");
+    setValue(event);
   };
 
   return (
@@ -17,7 +18,7 @@ function PersonalCorporativo({ setMostrarProyectos }) {
         color="primary"
         value={tipoDeTransaccion}
         exclusive
-        onChange={handleTipoDeTransaccion}
+        onChange={handleOnChange}
         aria-label="Tipo de Transacción"
         className="full-width"
       >
