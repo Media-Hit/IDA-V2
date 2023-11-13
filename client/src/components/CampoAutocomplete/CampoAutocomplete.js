@@ -21,7 +21,7 @@ function CampoAutocomplete({ etiqueta, values, columName, onSelect }) {
     <div className="margin-bottom">
       <Autocomplete
         disablePortal
-        options={sortedValues}
+        options={values}
         fullWidth
         getOptionLabel={(option) => option[columName]}
         renderInput={(params) => <TextField {...params} label={etiqueta} />}

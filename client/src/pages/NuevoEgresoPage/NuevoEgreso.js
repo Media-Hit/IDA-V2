@@ -22,6 +22,8 @@ function NuevoEgreso() {
     cuenta: "",
     proveedor: "",
     indole: "",
+    categoria: "",
+    subcategoria: "",
   });
 
   const handleSave = () => {
@@ -53,8 +55,8 @@ function NuevoEgreso() {
   const [loadingCuentas, setLoadingCuentas] = useState(true);
   const [listOfProveedores, setListOfProveedores] = useState([]);
   const [loadingProveedores, setLoadingProveedores] = useState(true);
-  const [listOfAllCategorias, setListOfAllCategorias] = useState([]);
   const [listOfCategorias, setListOfCategorias] = useState([]);
+  const [listOfSubCategorias, setListOfASubCategorias] = useState([]);
   const [loadingCategorias, setLoadingCategorias] = useState(true);
   const [selectedCategoria, setSelectedCategoria] = useState(null);
   const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
@@ -72,16 +74,16 @@ function NuevoEgreso() {
   const handleCategoriaSelect = (categoria) => {
     setSelectedCategoria(categoria);
 
-    if (categoria === null || !categoria.es_padre) {
-      setSubCategoriaExiste(false);
-      setSubCategorias([]);
-    } else {
-      const subCategoriasFiltradas = listOfAllCategorias.filter(
-        (subCategoria) => subCategoria.padre === categoria.nombre
-      );
-      setSubCategorias(subCategoriasFiltradas);
-      setSubCategoriaExiste(true);
-    }
+    // if (categoria === null || !categoria.es_padre) {
+    //   setSubCategoriaExiste(false);
+    //   setSubCategorias([]);
+    // } else {
+    //   const subCategoriasFiltradas = listOfAllCategorias.filter(
+    //     (subCategoria) => subCategoria.padre === categoria.nombre
+    //   );
+    //   setSubCategorias(subCategoriasFiltradas);
+    //   setSubCategoriaExiste(true);
+    // }
   };
 
   const handleSubcategoriaSelect = (subcategoria) => {
@@ -174,19 +176,18 @@ function NuevoEgreso() {
     obtenerDatosProveedores();
 
     axios
-      .get("http://localhost:3001/categoriasEgresos")
+      .get("http://localhost:3001/categoriasegresos")
       .then((response) => {
         const allCategorias = response.data;
-        setListOfAllCategorias(allCategorias);
 
-        const categoriasPrincipales = response.data.filter((categoria) => {
-          return (
-            categoria.es_padre === true ||
-            (categoria.es_padre === false && categoria.es_hijo === false)
-          );
-        });
-        setListOfCategorias(categoriasPrincipales);
+        const categorias = [
+          ...new Set(allCategorias.map((item) => item.categoria)),
+        ];
+        setListOfCategorias(categorias);
+
         setLoadingCategorias(false);
+
+        console.log(categorias);
       })
       .catch((error) => {
         console.error("Error al obtener datos de gresos:", error);
@@ -287,6 +288,7 @@ function NuevoEgreso() {
                 </div>
 
                 <div className="info-box">
+                  {/* Indole Personal o Corporataivo */}
                   <h2 className="box-title titulo ">Para Qué</h2>
                   <PersonalCorporativo
                     setValue={(event) => {
@@ -298,16 +300,17 @@ function NuevoEgreso() {
                     }}
                   />
 
+                  {/* Categoría */}
                   {!loadingCategorias && (
                     <CampoAutocomplete
                       etiqueta="Categoría"
                       values={listOfCategorias}
-                      columName="nombre"
+                      columName="categoria"
                       onSelect={handleCategoriaSelect}
                     />
                   )}
 
-                  {subCategoriaExiste && (
+                  {/* {subCategoriaExiste && (
                     <CampoAutocomplete
                       etiqueta="Sub Categoría"
                       values={subCategorias}
@@ -322,7 +325,7 @@ function NuevoEgreso() {
                       values={listOfProyectos}
                       columName="nombre"
                     />
-                  )}
+                  )} */}
 
                   <Box component="form" noValidate autoComplete="off">
                     <TextField

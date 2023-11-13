@@ -13,7 +13,7 @@ const egresosRouter = require("./routes/Egresos");
 app.use("/egresos", egresosRouter);
 
 const categoriasEgresosRouter = require("./routes/CategoriasEgresos");
-app.use("/categoriasEgresos", categoriasEgresosRouter);
+app.use("/categoriasegresos", categoriasEgresosRouter);
 
 const cuentasRouter = require("./routes/Cuentas");
 app.use("/cuentas", cuentasRouter);

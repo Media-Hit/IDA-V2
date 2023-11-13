@@ -10,21 +10,17 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         allowNull: false,
       },
-      nombre: {
+      categoria: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      es_padre: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      es_hijo: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      padre: {
+      subcategoria: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
+      },
+      son_varios: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
       },
     },
     {
