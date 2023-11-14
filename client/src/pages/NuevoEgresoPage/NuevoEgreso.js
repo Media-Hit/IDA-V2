@@ -36,6 +36,7 @@ function NuevoEgreso() {
     console.log(`Categoria: ${formValues.categoria}`);
     console.log(`Subcategoria: ${formValues.subcategoria}`);
     console.log(`Proyecto: ${formValues.proyecto}`);
+    console.log(`Descripción: ${formValues.descripcion}`);
   };
 
   // Recuperar la fecha seleccionada
@@ -418,6 +419,25 @@ function NuevoEgreso() {
                       multiline
                       fullWidth
                       maxRows={4}
+                      // value={formValues.descripcion}
+                      onChange={(e) => {
+                        if (e.target.value.length === 0) {
+                          setFormValues({
+                            ...formValues,
+                            descripcion: null,
+                          });
+                        } else if (e) {
+                          setFormValues({
+                            ...formValues,
+                            descripcion: e.target.value,
+                          });
+                        } else {
+                          setFormValues({
+                            ...formValues,
+                            descripcion: null,
+                          });
+                        }
+                      }}
                     />
                   </Box>
                 </div>
