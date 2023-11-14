@@ -41,5 +41,11 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  Clientes.associate = (models) => {
+    Clientes.hasMany(sequelize.models.Proyectos, {
+      foreignKey: "id_cliente",
+    });
+  };
+
   return Clientes;
 };
