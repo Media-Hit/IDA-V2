@@ -14,13 +14,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      estado: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      activo: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
       },
     },
     {
       freezeTableName: true,
+      timestamps: true,
     }
   );
 

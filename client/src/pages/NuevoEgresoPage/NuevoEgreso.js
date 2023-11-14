@@ -24,6 +24,7 @@ function NuevoEgreso() {
     indole: null,
     categoria: null,
     subcategoria: null,
+    proyecto: null,
     descripcion: null,
   });
 
@@ -34,6 +35,7 @@ function NuevoEgreso() {
     console.log(`Indole: ${formValues.indole}`);
     console.log(`Categoria: ${formValues.categoria}`);
     console.log(`Subcategoria: ${formValues.subcategoria}`);
+    console.log(`Proyecto: ${formValues.proyecto}`);
   };
 
   // Recuperar la fecha seleccionada
@@ -62,7 +64,6 @@ function NuevoEgreso() {
   const [allCategorias, setAllCategorias] = useState([]);
   const [listOfCategorias, setListOfCategorias] = useState([]);
   const [loadingCategorias, setLoadingCategorias] = useState(true);
-  const [selectedCategoria, setSelectedCategoria] = useState(null);
   const [subCategoriaExiste, setSubCategoriaExiste] = useState(false);
   const [subCategorias, setSubCategorias] = useState([]);
   const [listOfProyectos, setListOfProyectos] = useState([]);
@@ -189,6 +190,44 @@ function NuevoEgreso() {
     }
   };
 
+  //Proyectos
+  const obtenerDatosProyectos = () => {
+    axios
+      .get("http://localhost:3001/proyectos/list")
+      .then((response) => {
+        const proyectos = response.data;
+
+        proyectos.sort((a, b) => {
+          return a.nombre.localeCompare(b.nombre);
+        });
+
+        setListOfProyectos(proyectos);
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos de proyectos:", error);
+      });
+  };
+
+  const handleNuevoProyecto = async (newValue) => {
+    const inputValue = newValue.inputValue;
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/proyectos/nuevo",
+        {
+          nombre: inputValue,
+          activo: true,
+        }
+      );
+      obtenerDatosProyectos();
+      setFormValues({
+        ...formValues,
+        proyecto: inputValue,
+      });
+    } catch (error) {
+      console.error("Error al agregar el nuevo proyecto:", error);
+    }
+  };
+
   //Axios
   useEffect(() => {
     axios
@@ -204,8 +243,6 @@ function NuevoEgreso() {
         console.error("Error al obtener datos de cuentas:", error);
         setLoadingProveedores(false);
       });
-
-    obtenerDatosProveedores();
 
     axios
       .get("http://localhost:3001/categoriasegresos")
@@ -226,14 +263,8 @@ function NuevoEgreso() {
         setLoadingCategorias(false);
       });
 
-    axios
-      .get("http://localhost:3001/proyectos/listado")
-      .then((response) => {
-        setListOfProyectos(response.data);
-      })
-      .catch((error) => {
-        console.error("Error al obtener datos de proyectos:", error);
-      });
+    obtenerDatosProveedores();
+    obtenerDatosProyectos();
   }, []);
 
   return (
@@ -318,8 +349,9 @@ function NuevoEgreso() {
                 </div>
 
                 <div className="info-box">
-                  {/* Indole Personal o Corporataivo */}
                   <h2 className="box-title titulo ">Para Qué</h2>
+
+                  {/* Indole Personal o Corporataivo */}
                   <PersonalCorporativo
                     setValue={(event) => {
                       setFormValues({
@@ -348,11 +380,20 @@ function NuevoEgreso() {
                     />
                   )}
 
+                  {/* Proyectos */}
                   {mostrarProyectos && (
                     <CampoDesplegableCreate
+                      fieldName={"proyecto"}
                       etiqueta="Proyecto"
                       values={listOfProyectos}
                       columName="nombre"
+                      handleAddValue={handleNuevoProyecto}
+                      handleChangeValue={(newValue) => {
+                        setFormValues({
+                          ...formValues,
+                          proyecto: newValue.nombre,
+                        });
+                      }}
                     />
                   )}
 
