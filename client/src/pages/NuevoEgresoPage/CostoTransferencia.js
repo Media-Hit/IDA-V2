@@ -9,10 +9,6 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { CampoDinero } from "../../components/CampoDinero/CampoDinero";
 
-// import Input from "@mui/material/Input";
-// import InputLabel from "@mui/material/InputLabel";
-// import InputAdornment from "@mui/material/InputAdornment";
-
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
 function CostoTransferencia(props) {
