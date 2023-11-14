@@ -24,6 +24,7 @@ function NuevoEgreso() {
     indole: null,
     categoria: null,
     subcategoria: null,
+    descripcion: null,
   });
 
   const handleSave = () => {
@@ -337,7 +338,7 @@ function NuevoEgreso() {
                       onSelect={handleCategoriaSelect}
                     />
                   )}
-
+                  {/* Subcategorúa */}
                   {subCategoriaExiste && (
                     <CampoAutocomplete
                       etiqueta="Sub Categoría"
@@ -347,13 +348,13 @@ function NuevoEgreso() {
                     />
                   )}
 
-                  {/* {mostrarProyectos && (
+                  {mostrarProyectos && (
                     <CampoDesplegableCreate
                       etiqueta="Proyecto"
                       values={listOfProyectos}
                       columName="nombre"
                     />
-                  )} */}
+                  )}
 
                   <Box component="form" noValidate autoComplete="off">
                     <TextField

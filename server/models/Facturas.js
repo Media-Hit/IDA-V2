@@ -1,17 +1,22 @@
 const { Sequelize } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  const Proyectos = sequelize.define(
-    "Proyectos",
+  const Facturas = sequelize.define(
+    "Facturas",
     {
-      id_proyecto: {
+      id_factura: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      nombre: {
+
+      identificador: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      fecha: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
       estado: {
@@ -24,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Proyectos.associate = (models) => {
-    Proyectos.hasOne(sequelize.models.Facturas, {
-      foreignKey: "id_proyecto",
+  Facturas.associate = (models) => {
+    Facturas.hasOne(sequelize.models.Proyectos, {
+      foreignKey: "id_factura",
     });
   };
 
-  return Proyectos;
+  return Facturas;
 };
