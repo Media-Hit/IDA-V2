@@ -26,6 +26,8 @@ function NuevoEgreso() {
     subcategoria: null,
     proyecto: null,
     descripcion: null,
+    pagado: 0,
+    ivaPagado: 0,
   });
 
   const handleSave = () => {
@@ -37,6 +39,8 @@ function NuevoEgreso() {
     console.log(`Subcategoria: ${formValues.subcategoria}`);
     console.log(`Proyecto: ${formValues.proyecto}`);
     console.log(`Descripción: ${formValues.descripcion}`);
+    console.log(`Pagado: ${formValues.pagado}`);
+    console.log(`IVA Pagado: ${formValues.ivaPagado}`);
   };
 
   // Recuperar la fecha seleccionada
@@ -129,8 +133,17 @@ function NuevoEgreso() {
     const monto = parseFloat(valor);
     if (!isNaN(monto)) {
       setMontoPagado(monto);
+
+      setFormValues({
+        ...formValues,
+        pagado: monto,
+      });
     } else {
       setMontoPagado(0);
+      setFormValues({
+        ...formValues,
+        pagado: 0,
+      });
     }
   };
 
@@ -138,8 +151,16 @@ function NuevoEgreso() {
     const monto = parseFloat(valor);
     if (!isNaN(monto)) {
       setMontoDelIva(monto);
+      setFormValues({
+        ...formValues,
+        ivaPagado: monto,
+      });
     } else {
       setMontoDelIva(0);
+      setFormValues({
+        ...formValues,
+        ivaPagado: 0,
+      });
     }
   };
 
@@ -411,7 +432,7 @@ function NuevoEgreso() {
                       }}
                     />
                   )}
-
+                  {/* Descripción */}
                   <Box component="form" noValidate autoComplete="off">
                     <TextField
                       label="Descripción"
@@ -445,6 +466,8 @@ function NuevoEgreso() {
               <div className="nuevoegreso_columna">
                 <div className="info-box">
                   <h2 className="box-title titulo ">Cuánto</h2>
+
+                  {/* Monto Pagado */}
                   <CampoDinero
                     etiqueta={"Monto Pagado"}
                     onChange={handleMontoPagadoChange}
@@ -453,6 +476,7 @@ function NuevoEgreso() {
                     disableBottomLine={false}
                   />
 
+                  {/* Iva Pagado */}
                   <CampoDinero
                     etiqueta={"IVA"}
                     onChange={handleMontoDelIVAChange}
