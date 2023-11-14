@@ -339,10 +339,17 @@ function NuevoEgreso() {
                       columName="nombre"
                       handleAddValue={handleNuevoProveedor}
                       handleChangeValue={(newValue) => {
-                        setFormValues({
-                          ...formValues,
-                          proveedor: newValue.nombre,
-                        });
+                        if (newValue) {
+                          setFormValues({
+                            ...formValues,
+                            proveedor: newValue.nombre,
+                          });
+                        } else {
+                          setFormValues({
+                            ...formValues,
+                            proveedor: null,
+                          });
+                        }
                       }}
                     />
                   )}
@@ -389,10 +396,17 @@ function NuevoEgreso() {
                       columName="nombre"
                       handleAddValue={handleNuevoProyecto}
                       handleChangeValue={(newValue) => {
-                        setFormValues({
-                          ...formValues,
-                          proyecto: newValue.nombre,
-                        });
+                        if (newValue) {
+                          setFormValues({
+                            ...formValues,
+                            proyecto: newValue.nombre,
+                          });
+                        } else {
+                          setFormValues({
+                            ...formValues,
+                            proyecto: null,
+                          });
+                        }
                       }}
                     />
                   )}

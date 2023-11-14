@@ -24,9 +24,7 @@ function CampoDesplegableCreate({
         value={value}
         onChange={(event, newValue) => {
           if (typeof newValue === "string") {
-            setValue({
-              [columName]: newValue,
-            });
+            setValue(newValue);
           } else if (newValue && newValue.inputValue) {
             // Si se selecciona "Añadir"
             handleAddValue(newValue);
